@@ -1,0 +1,23 @@
+#rate {
+    text-align: center;
+    margin-top: 10px;
+    padding-inline: 64px;
+    padding-block: 10px;
+    cursor: pointer;
+    background-color: rgb(61, 180, 186);
+    color: white;
+    border: none;
+    border-radius: 4%;
+
+
+
+
+}
+
+
+
+#middle {
+    position: relative;
+    border: 20px darkblue solid;
+
+}

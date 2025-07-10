@@ -53,9 +53,31 @@
 
 #more-news {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    /* 3 equal columns */
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    justify-items: center;
+    /* Center items inside each grid cell */
     gap: 20px;
-    /* optional spacing */
+   
 
+    width: 100%;
+    max-width: 600px;
+
+    margin: 0 auto;
+    
+}
+
+.news-card {
+    padding: 8px;
+    border-style: solid;
+    border-width: 1px;
+    width: 200px;
+    height: 300px;
+
+
+}
+
+.news-img{
+    height: 150px;
+    width: 200px;
 }

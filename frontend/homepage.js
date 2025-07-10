@@ -1,16 +1,35 @@
-// const button = document.getElementById("button");
-// button.addEventListener("click", () => {
-//     window.location.href = "screenpage.html";
-// });
+const button = document.getElementById("button");
+button.addEventListener("click", () => {
+    window.location.href = "politicians.html";
+});
 const data = [
-    { title: "Namaste", content: "Mumbra" },
-    { title: "Breaking News", content: "Delhi sees record rain" },
-    { title: "Update", content: "Stock market hits all-time high" },
-    { title: "Alert", content: "Heavy traffic in Bandra" },
-    { title: "Health", content: "New Yoga trend emerging" },
-    { title: "Politics", content: "Election results tomorrow" },
-
+    {
+        title: "Namaste",
+        content: "Mumbra locals start their day peacefully. Streets are calm and shops are slowly opening for business."
+    },
+    {
+        title: "Rainfall",
+        content: "Delhi records its heaviest rain this year. Waterlogging affects traffic in major city zones."
+    },
+    {
+        title: "Markets",
+        content: "Stock market sees a new all-time high. Investors are optimistic about upcoming reforms."
+    },
+    {
+        title: "Traffic",
+        content: "Heavy congestion in Bandra this morning. Commuters face long delays during peak hours."
+    },
+    {
+        title: "YogaNow",
+        content: "A new yoga trend is taking off fast. Fitness lovers are joining local morning sessions."
+    },
+    {
+        title: "Results",
+        content: "Election results expected by tomorrow noon. Supporters gather in anticipation outside party offices."
+    }
 ];
+
+
 
 function populateContent(data) {
     for (let i = 0; i < data.length; i++) {
@@ -30,7 +49,16 @@ document.getElementById("button").addEventListener("click", () => {
 
 
 
+const politicianButton = document.getElementById("pol");
+politicianButton.addEventListener("click" , () => {
+    window.location.href = "politicians.html"; 
+})
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
+
+    populateContent(data);
     const headlines = [
         "https://res.cloudinary.com/dffepahvl/image/upload/v1750468483/xg0l2hdmzggjdvyg3wor.jpg",
         "https://res.cloudinary.com/dffepahvl/image/upload/v1750109399/i5jhrcdg8ywmohmcybws.png",
@@ -52,3 +80,6 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error("Image element with id 'news' not found!");
     }
 })
+
+
+
