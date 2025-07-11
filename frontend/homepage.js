@@ -1,7 +1,7 @@
-const button = document.getElementById("button");
-button.addEventListener("click", () => {
-    window.location.href = "politicians.html";
-});
+// const button = document.getElementById("button");
+// button.addEventListener("click", () => {
+//     window.location.href = "politicians.html";
+// });
 const data = [
     {
         title: "Namaste",
@@ -43,17 +43,22 @@ function populateContent(data) {
     }
 }
 
-document.getElementById("button").addEventListener("click", () => {
-    populateContent(data);
-});
+// document.getElementById("button").addEventListener("click", () => {
+//     populateContent(data);
+// });
 
 
 
 const politicianButton = document.getElementById("pol");
-politicianButton.addEventListener("click" , () => {
-    window.location.href = "politicians.html"; 
-})
+politicianButton.addEventListener("click" , function() {
+    window.location.href = "politicians.html";
+}
+)
 
+const news = document.getElementById("news-page");
+news.addEventListener("click" , () => {
+    window.location.href = "news.html";
+})
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -79,7 +84,6 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         console.error("Image element with id 'news' not found!");
     }
-})
-
+});
 
 

@@ -14,3 +14,5 @@ async function ratePolitician(req , res) {
     }
     
 }
+
+module.exports = { ratePolitician };
