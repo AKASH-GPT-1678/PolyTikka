@@ -3,7 +3,7 @@ body {
     height: 100vh; /* ensures full height for centering */
     margin: 0;
 }
-
+/* 
 #rate-neta {
     position: absolute;
     top: 50%;
@@ -13,4 +13,4 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
