@@ -2,6 +2,12 @@ fetch("newssection/newsheader.html")
     .then(response => response.text())
     .then(data => {
         document.getElementById("header").innerHTML = data;
+
+
+
+        document.getElementById("btn1").addEventListener("click", () => {
+            window.location.href = "signup.html";
+        })
     });
 
 fetch("newssection/newscategory.html")

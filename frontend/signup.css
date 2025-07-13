@@ -1,0 +1,22 @@
+#name,
+#email,
+#password {
+  padding: 10px;
+}
+
+#signup-button{
+    padding: 6px;
+    cursor: pointer;
+}
+
+body{
+    position: relative;
+}
+
+#form{
+  max-width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(50%, 100%);
+}
