@@ -50,13 +50,13 @@ function populateContent(data) {
 
 
 const politicianButton = document.getElementById("pol");
-politicianButton.addEventListener("click" , function() {
+politicianButton.addEventListener("click", function () {
     window.location.href = "politicians.html";
 }
 )
 
 const news = document.getElementById("news-page");
-news.addEventListener("click" , () => {
+news.addEventListener("click", () => {
     window.location.href = "news.html";
 })
 
@@ -85,5 +85,44 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error("Image element with id 'news' not found!");
     }
 });
+
+
+
+
+
+async function collectTrendingNews() {
+    try {
+        const response = await fetch("http://localhost:3402/api/getTrendingNews");
+        const data = await response.json();
+        console.log(data);
+
+        const template = document.querySelector(".news"); // This gets one element
+
+        const container = document.getElementById("trending");
+
+        for (let i = 0; i < data.length; i++) {
+            const clone = template.cloneNode(true);
+            clone.style.display = "block"; 
+
+            clone.querySelector("img").src = data[i].imageUrl;
+            clone.querySelector(".category").textContent = data[i].category;
+            clone.querySelector(".description").textContent = data[i].title;
+
+            container.appendChild(clone);
+        }
+    } catch (error) {
+        console.error("Failed to fetch trending news:", error);
+    }
+}
+
+
+
+collectTrendingNews();
+
+fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("footer").innerHTML = data;
+    });
 
 

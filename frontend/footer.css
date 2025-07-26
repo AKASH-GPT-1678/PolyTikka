@@ -1,0 +1,16 @@
+#footer{
+    color: tomato;
+    background-color: darkolivegreen;
+    display: flex;
+    flex-direction: row;
+    gap: 50pc;
+    padding: 10px;
+}
+#left-content{
+    padding: 20px;
+}
+
+#description{
+    max-width: 400px;
+    color: white;
+}

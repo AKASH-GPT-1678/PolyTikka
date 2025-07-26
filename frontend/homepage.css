@@ -82,3 +82,10 @@
     height: 150px;
     width: 200px;
 }
+
+#trending{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+}
