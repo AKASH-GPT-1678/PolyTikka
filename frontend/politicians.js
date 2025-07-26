@@ -74,7 +74,7 @@ searchByName.addEventListener("change", async function () {
 
         });
 
-        
+
 
 
 
@@ -92,3 +92,114 @@ shorts.forEach((short) => {
         window.location.href = "politicianprofile.html";
     });
 });
+
+
+
+const topRated = document.getElementById("top-rated");
+async function getTopPoliticians() {
+
+    try {
+        const mostRating = document.getElementById("most-rated");
+
+        const topPoliticians = await fetch('http://localhost:3402/api/topPoliticians');
+        const json = await topPoliticians.json();
+        console.log(json);
+        const data = json.data;
+        // console.log(topPoliticians);
+        // console.log(data.length);
+
+        for (let i = 0; i < data.length; i++) {
+            const newDiv = document.createElement("div");
+
+            // Create and set up the image
+            let img = document.createElement("img");
+            img.src = data[i].profileImage;
+            img.alt = data[i].name + " Image";
+            img.style.width = "100%";
+            img.style.height = "200px";
+            img.style.objectFit = "cover";
+
+            // Create and set text elements
+            let name = document.createElement("h2");
+            name.textContent = data[i].name;
+
+            let party = document.createElement("p");
+            party.textContent = "Party: " + data[i].party;
+
+            let position = document.createElement("p");
+            position.textContent = "Position: " + (data[i].position || "N/A");
+
+            let ratings = document.createElement("p");
+            ratings.textContent = "Rating: " + data[i].avgRatings;
+
+            // Append all to newDiv
+            newDiv.appendChild(img);
+            newDiv.appendChild(name);
+            newDiv.appendChild(party);
+            newDiv.appendChild(position);
+            newDiv.appendChild(ratings);
+
+           
+
+            mostRating.appendChild(newDiv);
+        }
+
+
+
+    } catch (error) {
+        console.log(error);
+
+        
+
+    }
+
+};
+const mostSearched = document.getElementById("most-searched");
+
+async function getMostSearchedPoliticians() {
+    try {
+        const response = await fetch('http://localhost:3402/api/mostSearchedPoliticians');
+        const json = await response.json();
+        const data = json.data;
+        console.log(data);
+
+        for (let i = 0; i < data.length; i++) {
+            const newDiv = document.createElement("div");
+
+            // Create and set up the image
+            let img = document.createElement("img");
+            img.src = data[i].profileImage;
+            // img.alt = data[i].name + " Image";
+            // img.style.width = "100%";
+            // img.style.height = "200px";
+            // img.style.objectFit = "cover";
+
+            // Create and set text elements
+            let name = document.createElement("h2");
+            name.textContent = data[i].name;
+
+            let party = document.createElement("p");
+            party.textContent = "Party: " + data[i].party;
+
+            let position = document.createElement("p");
+            position.textContent = "Position: " + (data[i].position || "N/A");
+
+            let numSearches = document.createElement("p");
+            numSearches.textContent = "Searched: " + data[i].numOfSearched + " times";
+
+            // Append all to newDiv
+            newDiv.appendChild(img);
+            newDiv.appendChild(name);
+            newDiv.appendChild(party);
+            newDiv.appendChild(position);
+            newDiv.appendChild(numSearches);
+
+            mostSearched.appendChild(newDiv);
+        }
+    } catch (error) {
+        console.log("Error fetching most searched politicians:", error);
+    }
+}
+
+
+getTopPoliticians();

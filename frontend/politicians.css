@@ -4,11 +4,11 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    
+
 
 }
 
-.header #options{
+.header #options {
     padding: 12px;
     width: 260px;
     /* min-height: 100px; */
@@ -66,6 +66,7 @@
     gap: 5px;
     justify-items: center;
 }
+
 .simage {
     height: 50px;
     width: 50px;
@@ -88,4 +89,64 @@
     font-weight: bolder;
     font-size: larger;
     cursor: pointer;
+}
+
+#most-rated {
+    display: flex;
+    flex-direction: row;
+    gap: 20pt;
+
+
+}
+
+#most-rated div {
+    width: 250px;
+    height: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+
+    /* Add this for shadow */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px; /* optional, for rounded corners */
+    padding: 10px;       /* optional, for internal spacing */
+    box-sizing: border-box;
+}
+
+#most-rated div * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#most-searched {
+    display: flex;
+    flex-direction: row;
+    gap: 20pt;
+
+
+}
+
+#most-searched div {
+    width: 250px;
+    height: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+
+    /* Add this for shadow */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px; /* optional, for rounded corners */
+    padding: 10px;       /* optional, for internal spacing */
+    box-sizing: border-box;
+}
+
+#most-searched div * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -182,6 +183,14 @@
             font-size: 2.2rem;
         }
 
+        .election-details select {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+          
+        }
+
+
         .election-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -223,7 +232,8 @@
             padding: 40px;
         }
 
-        .rating-card, .ideology-card {
+        .rating-card,
+        .ideology-card {
             background: white;
             border-radius: 15px;
             padding: 30px;
@@ -268,7 +278,8 @@
         }
 
         /* News and Controversies */
-        .news-section, .controversy-section {
+        .news-section,
+        .controversy-section {
             padding: 40px;
         }
 
@@ -276,7 +287,8 @@
             background: #f0f8ff;
         }
 
-        .news-section h2, .controversy-section h2 {
+        .news-section h2,
+        .controversy-section h2 {
             color: #333;
             margin-bottom: 30px;
             text-align: center;
@@ -289,7 +301,8 @@
             gap: 25px;
         }
 
-        .news-card, .controversy-card {
+        .news-card,
+        .controversy-card {
             background: white;
             border-radius: 15px;
             padding: 25px;
@@ -299,7 +312,8 @@
             border-top: 4px solid #ff6b6b;
         }
 
-        .news-card:hover, .controversy-card:hover {
+        .news-card:hover,
+        .controversy-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
@@ -388,7 +402,7 @@
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
-            
+
             .rating-ideology {
                 grid-template-columns: 1fr;
             }
@@ -399,20 +413,20 @@
                 text-align: center;
                 padding: 30px 20px;
             }
-            
+
             .header h1 {
                 font-size: 2rem;
             }
-            
+
             .header .namaste {
                 font-size: 1.5rem;
             }
-            
+
             .container {
                 margin: 10px;
                 border-radius: 15px;
             }
-            
+
             .cards-grid {
                 grid-template-columns: 1fr;
             }
@@ -422,7 +436,7 @@
             body {
                 padding: 10px;
             }
-            
+
             .profile-section,
             .election-details,
             .rating-ideology,
@@ -435,6 +449,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- Header -->
@@ -448,22 +463,22 @@
             <div class="profile-image">
                 <img src="./assets/modiji2.png" alt="Narendra Modi">
             </div>
-            
+
             <div class="basic-info">
                 <h2>Narendra Damodardas Modi</h2>
                 <div class="position">Prime Minister of India</div>
-                
+
                 <div class="party-info">
                     <div class="party-logo">BJP</div>
                     <strong>Bharatiya Janata Party</strong>
                 </div>
-                
+
                 <div class="info-item"><strong>Born:</strong> 17 September 1950</div>
                 <div class="info-item"><strong>Constituency:</strong> Varanasi, Uttar Pradesh</div>
                 <div class="info-item"><strong>Previous Occupation:</strong> Tea Seller, Stock Broker</div>
                 <div class="info-item"><strong>Education:</strong> 12th Standard</div>
             </div>
-            
+
             <div class="experience-card">
                 <div class="experience-header">
                     <div class="experience-icon">🏛️</div>
@@ -478,6 +493,16 @@
         <!-- Election Details -->
         <div class="election-details">
             <h2>📊 2019 Election Results</h2>
+            <div>
+                <select name="election" id="election">
+                    <option value="india">India</option>
+                    <option value="china">China</option>
+                    <option value="usa">USA</option>
+                    <option value="russia">Russia</option>
+                    <option value="japan">Japan</option>
+                </select>
+
+            </div>
             <div class="election-grid">
                 <div class="election-item">
                     <strong>Year of Election</strong>
@@ -532,12 +557,14 @@
                     <p style="margin-top: 10px; font-size: 0.9rem;">Based on recent surveys</p>
                 </div>
             </div>
-            
+
             <div class="ideology-card">
                 <h2>🎯 Core Ideology</h2>
                 <h3 style="color: #9C27B0; margin-bottom: 15px;">Development for All</h3>
-                <p style="margin-bottom: 15px;"><strong>Vision Statement:</strong> Focused on inclusive development and empowering rural communities through digital transformation and economic growth.</p>
-                <p><strong>Public Perception:</strong> Known for strong oratory skills, grassroots-level engagement, and transformative leadership approach.</p>
+                <p style="margin-bottom: 15px;"><strong>Vision Statement:</strong> Focused on inclusive development and
+                    empowering rural communities through digital transformation and economic growth.</p>
+                <p><strong>Public Perception:</strong> Known for strong oratory skills, grassroots-level engagement, and
+                    transformative leadership approach.</p>
             </div>
         </div>
 
@@ -547,25 +574,29 @@
             <div class="cards-grid">
                 <div class="news-card">
                     <div class="card-content">
-                        Prime Minister launches new digital infrastructure initiative to connect rural India with urban opportunities.
+                        Prime Minister launches new digital infrastructure initiative to connect rural India with urban
+                        opportunities.
                     </div>
                     <a href="#" class="read-more">Continue Reading →</a>
                 </div>
                 <div class="news-card">
                     <div class="card-content">
-                        Modi addresses international climate summit, announces India's commitment to renewable energy goals.
+                        Modi addresses international climate summit, announces India's commitment to renewable energy
+                        goals.
                     </div>
                     <a href="#" class="read-more">Continue Reading →</a>
                 </div>
                 <div class="news-card">
                     <div class="card-content">
-                        New healthcare scheme launched to provide affordable medical care to millions of Indian families.
+                        New healthcare scheme launched to provide affordable medical care to millions of Indian
+                        families.
                     </div>
                     <a href="#" class="read-more">Continue Reading →</a>
                 </div>
                 <div class="news-card">
                     <div class="card-content">
-                        PM Modi's diplomatic visit strengthens international trade relationships and economic partnerships.
+                        PM Modi's diplomatic visit strengthens international trade relationships and economic
+                        partnerships.
                     </div>
                     <a href="#" class="read-more">Continue Reading →</a>
                 </div>
@@ -578,25 +609,29 @@
             <div class="cards-grid">
                 <div class="controversy-card">
                     <div class="card-content">
-                        Debate over economic policies and their impact on different sections of society continues to generate discussion.
+                        Debate over economic policies and their impact on different sections of society continues to
+                        generate discussion.
                     </div>
                     <a href="#" class="read-more">Continue Reading →</a>
                 </div>
                 <div class="controversy-card">
                     <div class="card-content">
-                        Statement on agricultural reforms sparks nationwide discussion among farming communities and experts.
+                        Statement on agricultural reforms sparks nationwide discussion among farming communities and
+                        experts.
                     </div>
                     <a href="#" class="read-more">Continue Reading →</a>
                 </div>
                 <div class="controversy-card">
                     <div class="card-content">
-                        Foreign policy decisions and international relations continue to be subjects of political discourse.
+                        Foreign policy decisions and international relations continue to be subjects of political
+                        discourse.
                     </div>
                     <a href="#" class="read-more">Continue Reading →</a>
                 </div>
                 <div class="controversy-card">
                     <div class="card-content">
-                        Environmental policies and development projects balance between progress and conservation concerns.
+                        Environmental policies and development projects balance between progress and conservation
+                        concerns.
                     </div>
                     <a href="#" class="read-more">Continue Reading →</a>
                 </div>
@@ -671,4 +706,5 @@
         </div>
     </div>
 </body>
+
 </html>
