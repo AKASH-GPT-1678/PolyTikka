@@ -1,270 +1,674 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="profile.css">
+    <title>Political Profile - Narendra Modi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #ff6b6b, #ffa500);
+            color: white;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header .namaste {
+            font-size: 2.5rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* Profile Section */
+        .profile-section {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 300px 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .profile-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: translateY(-5px);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .basic-info {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #ff6b6b;
+        }
+
+        .basic-info h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .basic-info .position {
+            color: #ff6b6b;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .party-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #f8f9ff;
+            border-radius: 8px;
+        }
+
+        .party-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ff6b6b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .info-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border-top: 4px solid #4CAF50;
+        }
+
+        .experience-header {
+            display: flex;
+            align-items: center;
+            padding: 25px;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+        }
+
+        .experience-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.5rem;
+        }
+
+        .experience-details h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .experience-details p {
+            opacity: 0.9;
+        }
+
+        /* Election Details */
+        .election-details {
+            padding: 40px;
+            background: #f8f9ff;
+        }
+
+        .election-details h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+        }
+
+        .election-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .election-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .election-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .election-item strong {
+            color: #ff6b6b;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .election-item span {
+            color: #333;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Rating and Ideology Section */
+        .rating-ideology {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 40px;
+        }
+
+        .rating-card, .ideology-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .rating-card {
+            border-left: 5px solid #2196F3;
+        }
+
+        .ideology-card {
+            border-left: 5px solid #9C27B0;
+        }
+
+        .rating-card h2 {
+            color: #2196F3;
+            margin-bottom: 20px;
+        }
+
+        .ideology-card h2 {
+            color: #9C27B0;
+            margin-bottom: 20px;
+        }
+
+        .rating-display {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #2196F3, #1976D2);
+            color: white;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .rating-stars {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .rating-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* News and Controversies */
+        .news-section, .controversy-section {
+            padding: 40px;
+        }
+
+        .news-section {
+            background: #f0f8ff;
+        }
+
+        .news-section h2, .controversy-section h2 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .news-card, .controversy-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-top: 4px solid #ff6b6b;
+        }
+
+        .news-card:hover, .controversy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-content {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .read-more {
+            color: #ff6b6b;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: #e55a5a;
+        }
+
+        /* Criminal Records and Assets */
+        .records-assets {
+            padding: 40px;
+            background: #fff5f5;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        .criminal-section {
+            margin-bottom: 40px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Family Background */
+        .family-section {
+            padding: 40px;
+            background: #f0fff0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .profile-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .rating-ideology {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                text-align: center;
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header .namaste {
+                font-size: 1.5rem;
+            }
+            
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .profile-section,
+            .election-details,
+            .rating-ideology,
+            .news-section,
+            .controversy-section,
+            .records-assets,
+            .family-section {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Narendra Modi</h1>
+            <div class="namaste">🙏 Namaste</div>
+        </div>
 
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <div class="profile-image">
+                <img src="./assets/modiji2.png" alt="Narendra Modi">
+            </div>
+            
+            <div class="basic-info">
+                <h2>Narendra Damodardas Modi</h2>
+                <div class="position">Prime Minister of India</div>
+                
+                <div class="party-info">
+                    <div class="party-logo">BJP</div>
+                    <strong>Bharatiya Janata Party</strong>
+                </div>
+                
+                <div class="info-item"><strong>Born:</strong> 17 September 1950</div>
+                <div class="info-item"><strong>Constituency:</strong> Varanasi, Uttar Pradesh</div>
+                <div class="info-item"><strong>Previous Occupation:</strong> Tea Seller, Stock Broker</div>
+                <div class="info-item"><strong>Education:</strong> 12th Standard</div>
+            </div>
+            
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div class="experience-icon">🏛️</div>
+                    <div class="experience-details">
+                        <h3>Chief Minister of Gujarat</h3>
+                        <p>2002 - 2014</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <div style="padding: 10px;background-color: cornflowerblue;display: flex;flex-direction: column;">
-        <div style="display: flex;flex-direction: row;justify-content: space-between;">
+        <!-- Election Details -->
+        <div class="election-details">
+            <h2>📊 2019 Election Results</h2>
+            <div class="election-grid">
+                <div class="election-item">
+                    <strong>Year of Election</strong>
+                    <span>2019</span>
+                </div>
+                <div class="election-item">
+                    <strong>Type of Election</strong>
+                    <span>Lok Sabha</span>
+                </div>
+                <div class="election-item">
+                    <strong>Constituency</strong>
+                    <span>Varanasi</span>
+                </div>
+                <div class="election-item">
+                    <strong>State</strong>
+                    <span>Uttar Pradesh</span>
+                </div>
+                <div class="election-item">
+                    <strong>Political Party</strong>
+                    <span>Bharatiya Janata Party</span>
+                </div>
+                <div class="election-item">
+                    <strong>Result</strong>
+                    <span>✅ Won</span>
+                </div>
+                <div class="election-item">
+                    <strong>Total Votes</strong>
+                    <span>6,74,664</span>
+                </div>
+                <div class="election-item">
+                    <strong>Vote Share</strong>
+                    <span>63.6%</span>
+                </div>
+                <div class="election-item">
+                    <strong>Opponent</strong>
+                    <span>Ajay Rai</span>
+                </div>
+                <div class="election-item">
+                    <strong>Victory Margin</strong>
+                    <span>4,79,505</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rating and Ideology -->
+        <div class="rating-ideology">
+            <div class="rating-card">
+                <h2>📈 Public Rating</h2>
+                <div class="rating-display">
+                    <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+                    <div class="rating-text">4.2/5.0</div>
+                    <p style="margin-top: 10px; font-size: 0.9rem;">Based on recent surveys</p>
+                </div>
+            </div>
+            
+            <div class="ideology-card">
+                <h2>🎯 Core Ideology</h2>
+                <h3 style="color: #9C27B0; margin-bottom: 15px;">Development for All</h3>
+                <p style="margin-bottom: 15px;"><strong>Vision Statement:</strong> Focused on inclusive development and empowering rural communities through digital transformation and economic growth.</p>
+                <p><strong>Public Perception:</strong> Known for strong oratory skills, grassroots-level engagement, and transformative leadership approach.</p>
+            </div>
+        </div>
+
+        <!-- Latest News -->
+        <div class="news-section">
+            <h2>📰 Latest News</h2>
+            <div class="cards-grid">
+                <div class="news-card">
+                    <div class="card-content">
+                        Prime Minister launches new digital infrastructure initiative to connect rural India with urban opportunities.
+                    </div>
+                    <a href="#" class="read-more">Continue Reading →</a>
+                </div>
+                <div class="news-card">
+                    <div class="card-content">
+                        Modi addresses international climate summit, announces India's commitment to renewable energy goals.
+                    </div>
+                    <a href="#" class="read-more">Continue Reading →</a>
+                </div>
+                <div class="news-card">
+                    <div class="card-content">
+                        New healthcare scheme launched to provide affordable medical care to millions of Indian families.
+                    </div>
+                    <a href="#" class="read-more">Continue Reading →</a>
+                </div>
+                <div class="news-card">
+                    <div class="card-content">
+                        PM Modi's diplomatic visit strengthens international trade relationships and economic partnerships.
+                    </div>
+                    <a href="#" class="read-more">Continue Reading →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controversies -->
+        <div class="controversy-section">
+            <h2>⚡ Popular Statements and Controversies</h2>
+            <div class="cards-grid">
+                <div class="controversy-card">
+                    <div class="card-content">
+                        Debate over economic policies and their impact on different sections of society continues to generate discussion.
+                    </div>
+                    <a href="#" class="read-more">Continue Reading →</a>
+                </div>
+                <div class="controversy-card">
+                    <div class="card-content">
+                        Statement on agricultural reforms sparks nationwide discussion among farming communities and experts.
+                    </div>
+                    <a href="#" class="read-more">Continue Reading →</a>
+                </div>
+                <div class="controversy-card">
+                    <div class="card-content">
+                        Foreign policy decisions and international relations continue to be subjects of political discourse.
+                    </div>
+                    <a href="#" class="read-more">Continue Reading →</a>
+                </div>
+                <div class="controversy-card">
+                    <div class="card-content">
+                        Environmental policies and development projects balance between progress and conservation concerns.
+                    </div>
+                    <a href="#" class="read-more">Continue Reading →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Criminal Records -->
+        <div class="records-assets">
+            <div class="criminal-section">
+                <h2 class="section-title">🛑 Criminal Records</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">2</div>
+                        <div class="stat-label">Total Cases</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">1</div>
+                        <div class="stat-label">Serious Charges</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">2</div>
+                        <div class="stat-label">Pending Cases</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Assets -->
             <div>
-                <h2>Narendra Modi</h2>
-
-            </div>
-
-
-            <div>
-                <h1>namaste</h1>
-
-            </div>
-
-        </div>
-
-        <div style="display: flex;flex-direction: row;gap: 20px;">
-
-
-            <div style="border: 2px solid;">
-                <img src="./assets/modiji2.png" alt="modiji2" height="300px" width="300px">
-            </div>
-            <div
-                style="display: flex;flex-direction: column;border: 2px solid;padding: 8px;padding-left: 40px;padding-right: 40px;">
-                <h3>Narendra Damodardas Modi</h3>
-                <p style="font-size: 16px; font-weight: bolder;">Prime Minister of India</p>
-                <div style="display: flex; flex-direction: row; align-items: center;gap: 6px;">
-                    <img src="../frontend/assets/bjplogo.png" alt="logo" height="40px" width="40px">
-                    <p style="font-size: 16px; font-weight: bolder;">Bharatiya Janata Party</p>
-                </div>
-                <p style="font-size: 16px; font-weight: bolder;">17 September 1950</p>
-                <p style="font-size: 16px; font-weight: bolder;">Varanasi Uttar Pradesh</p>
-                <p style="font-size: 16px; font-weight: bolder;">Earlier Stock Broker</p>
-                <p style="font-size: 16px; font-weight: bolder;">12th Dropout</p>
-
-
-            </div>
-            <div style="width: 800px;border: 2px solid;background-color: white;">
-                <div
-                    style="width: 100%;height: 100px;display: flex;flex-direction: row;align-items: center;padding: 0px 20px 0px 20px; border-bottom: 1px solid;">
-                    <img src="https://meat-bucket-2025.s3.ap-south-1.amazonaws.com/gujrat.png" alt="" height="70px"
-                        width="60px">
-
-                    <div style="display: flex;flex-direction: column;justify-content: center;margin-left: 40px;">
-                        <p style="font-size: 20px; font-weight: bolder;">Chief Minister of Gujarat</p>
-                        <p>2002-2014</p>
-
+                <h2 class="section-title">💰 Declared Assets</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">₹8.5 Cr</div>
+                        <div class="stat-label">Total Assets</div>
                     </div>
-
-
-                </div>
-
-            </div>
-        </div>
-        <div style="display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; background-color: #f9f9f9;">
-
-            <div style="flex: 1 1 30%;">
-                <strong>Year of Election:</strong> 2019
-            </div>
-
-            <div style="flex: 1 1 30%;">
-                <strong>Type of Election:</strong> Lok Sabha
-            </div>
-
-            <div style="flex: 1 1 30%;">
-                <strong>Constituency:</strong> Varanasi
-            </div>
-
-            <div style="flex: 1 1 30%;">
-                <strong>State:</strong> Uttar Pradesh
-            </div>
-
-            <div style="flex: 1 1 30%;">
-                <strong>Political Party:</strong> Bharatiya Janata Party
-            </div>
-
-            <div style="flex: 1 1 30%;">
-                <strong>Result:</strong> Won
-            </div>
-
-            <div style="flex: 1 1 30%;">
-                <strong>Total Votes Received:</strong> 6,74,664
-            </div>
-
-            <div style="flex: 1 1 30%;">
-                <strong>Vote Share:</strong> 63.6%
-            </div>
-
-            <div style="flex: 1 1 30%;">
-                <strong>Opponent Name:</strong> Ajay Rai
-            </div>
-
-            <div style="flex: 1 1 30%;">
-                <strong>Margin of Victory:</strong> 4,79,505
-            </div>
-
-        </div>
-        <div style="width: 100%; display: flex; flex-direction: row;">
-
-            <div style="width: 50%; border: 2px solid red;">
-                <h2>Rating</h2>
-                <div id="rate-neta">
-
-                </div>
-            </div>
-
-            <div style="width: 50%; border: 2px solid blue;">
-                <h2>Core Ideology: Mera Naam Chun Chun</h2>
-                <p><strong>Vision Statement:</strong> Focused on inclusive development and empowering rural communities.
-                </p>
-                <p><strong>Public Perception:</strong> Known for strong oratory skills and grassroots-level engagement.
-                </p>
-            </div>
-
-
-        </div>
-
-        <div>
-            <h3>Latest News</h3>
-
-
-            <div style="display: flex;flex-direction: row; padding: 20px;gap: 20px;">
-
-                <div style="width: 200px; height: 150px;border: 2px solid;padding: 6px;">
-                    <p>Namaste Mera Naam hai Chun Chun</p>
-                    <p style="cursor: pointer;">Continue Reading</p>
-
-                </div>
-                <div style="width: 200px; height: 150px;border: 2px solid;padding: 6px;">
-                    <p>Namaste Mera Naam hai Chun Chun</p>
-                    <p style="cursor: pointer;">Continue Reading</p>
-
-                </div>
-                <div style="width: 200px; height: 150px;border: 2px solid;padding: 6px;">
-                    <p>Namaste Mera Naam hai Chun Chun</p>
-                    <p style="cursor: pointer;">Continue Reading</p>
-
-                </div>
-                <div style="width: 200px; height: 150px;border: 2px solid;padding: 6px;">
-                    <p>Namaste Mera Naam hai Chun Chun</p>
-                    <p style="cursor: pointer;">Continue Reading</p>
-
-                </div>
-
-            </div>
-        </div>
-        <div>
-            <h2>Popular Statement and Controversies</h2>
-            <div style="display: flex;flex-direction: row; padding: 20px;gap: 20px;">
-
-                <div style="width: 200px; height: 150px;border: 2px solid;padding: 6px;">
-                    <p>Namaste Mera Naam hai Chun Chun</p>
-                    <p style="cursor: pointer;">Continue Reading</p>
-
-                </div>
-                <div style="width: 200px; height: 150px;border: 2px solid;padding: 6px;">
-                    <p>Namaste Mera Naam hai Chun Chun</p>
-                    <p style="cursor: pointer;">Continue Reading</p>
-
-                </div>
-                <div style="width: 200px; height: 150px;border: 2px solid;padding: 6px;">
-                    <p>Namaste Mera Naam hai Chun Chun</p>
-                    <p style="cursor: pointer;">Continue Reading</p>
-
-                </div>
-                <div style="width: 200px; height: 150px;border: 2px solid;padding: 6px;">
-                    <p>Namaste Mera Naam hai Chun Chun</p>
-                    <p style="cursor: pointer;">Continue Reading</p>
-
+                    <div class="stat-card">
+                        <div class="stat-value">₹2.3 Cr</div>
+                        <div class="stat-label">Movable Assets</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">₹6.2 Cr</div>
+                        <div class="stat-label">Immovable Assets</div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div style="padding: 20px; font-family: sans-serif; background-color: #f5f5f5;">
 
-            <!-- Criminal Records Section -->
-            <div style="margin-bottom: 30px;">
-                <h2 style="margin-bottom: 10px;">🛑 Criminal Records</h2>
-                <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-
-                    <div style="flex: 1 1 30%; background-color: white; padding: 15px; border-radius: 8px;">
-                        <strong>Total Cases:</strong> 2
-                    </div>
-
-                    <div style="flex: 1 1 30%; background-color: white; padding: 15px; border-radius: 8px;">
-                        <strong>Serious Charges:</strong> 1
-                    </div>
-
-                    <div style="flex: 1 1 30%; background-color: white; padding: 15px; border-radius: 8px;">
-                        <strong>Pending Cases:</strong> 2 (Under Trial)
-                    </div>
-
+        <!-- Family Background -->
+        <div class="family-section">
+            <h2 class="section-title">🏠 Family Background</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">Trading</div>
+                    <div class="stat-label">Family Profession</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">Lower Middle</div>
+                    <div class="stat-label">Economic Status</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">Rural</div>
+                    <div class="stat-label">Family Origin</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">OBC</div>
+                    <div class="stat-label">Community</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">Self-Made</div>
+                    <div class="stat-label">Political Legacy</div>
                 </div>
             </div>
-
-            <!-- Assets Section -->
-            <div>
-                <h2 style="margin-bottom: 10px;">💰 Declared Assets</h2>
-                <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-
-                    <div style="flex: 1 1 30%; background-color: white; padding: 15px; border-radius: 8px;">
-                        <strong>Total Assets:</strong> ₹8.5 Crore
-                    </div>
-
-                    <div style="flex: 1 1 30%; background-color: white; padding: 15px; border-radius: 8px;">
-                        <strong>Movable Assets:</strong> ₹2.3 Crore
-                    </div>
-
-                    <div style="flex: 1 1 30%; background-color: white; padding: 15px; border-radius: 8px;">
-                        <strong>Immovable Assets:</strong> ₹6.2 Crore
-                    </div>
-
-                </div>
-            </div>
-
         </div>
-        <div style="padding: 20px; font-family: sans-serif; background-color: #f5f5f5;">
-
-            <!-- Family Background Section -->
-            <div>
-                <h2 style="margin-bottom: 10px;">🏠 Family Background</h2>
-                <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-
-                    <div style="flex: 1 1 30%; background-color: white; padding: 15px; border-radius: 8px;">
-                        <strong>Family Profession:</strong> Small-scale business/trading
-                    </div>
-
-                    <div style="flex: 1 1 30%; background-color: white; padding: 15px; border-radius: 8px;">
-                        <strong>Socio-economic Status:</strong> Lower middle class
-                    </div>
-
-                    <div style="flex: 1 1 30%; background-color: white; padding: 15px; border-radius: 8px;">
-                        <strong>Family Origin:</strong> Rural background
-                    </div>
-
-                    <div style="flex: 1 1 30%; background-color: white; padding: 15px; border-radius: 8px;">
-                        <strong>Community Background:</strong> Belongs to OBC category
-                    </div>
-
-                    <div style="flex: 1 1 30%; background-color: white; padding: 15px; border-radius: 8px;">
-                        <strong>Political Legacy:</strong> No prior political background
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-
-
-
-
     </div>
-
-    <script src="profile.js"></script>
-    <script src="https://kit.fontawesome.com/ef7065664d.js" crossorigin="anonymous"></script>
-
 </body>
-
 </html>
