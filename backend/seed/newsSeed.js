@@ -6,96 +6,178 @@ async function main() {
   await prisma.news.createMany({
     data: [
       {
-        title: "Government Launches New Digital ID Program",
-        content: "The government has launched a new digital identity program aimed at streamlining public services and enhancing security.",
-        category: "Politics",
-        source: "NDTV",
-        url: "https://ndtv.com/news/digital-id",
-        imageUrl: "https://via.placeholder.com/300x200?text=Digital+ID",
-        publishedAt: new Date('2024-07-20T10:00:00Z')
+        title: "Modi visits Maldives to strengthen regional ties",
+        content: "Prime Minister Modi's visit to the Maldives aims at deepening strategic and economic partnerships.",
+        category: "Political",
+        source: "Hindustan Times",
+        url: "https://hindustantimes.com/article/modi-maldives",
+        imageUrl: "https://www.hindustantimes.com/ht-img/img/2025/07/26/550x309/modi_maldives_1753536465606_1753536485766.jpg",
+        publishedAt: "2025-07-25T10:00:00Z"
       },
       {
-        title: "Opposition Criticizes Budget Cuts in Education Sector",
-        content: "The opposition parties have strongly criticized the recent budget cuts in the education sector, calling it a step backward.",
-        category: "Politics",
+        title: "Indian markets surge after tech stocks rally",
+        content: "The BSE Sensex and NSE Nifty saw a sharp rise following gains in the technology sector.",
+        category: "Business",
         source: "Times of India",
-        url: "https://timesofindia.indiatimes.com/education-budget-cuts",
-        imageUrl: "https://via.placeholder.com/300x200?text=Budget+Cuts",
-        publishedAt: new Date('2024-07-21T12:30:00Z')
+        url: "https://toi.com/article/market-surge",
+        imageUrl: "https://static.toiimg.com/thumb/msid-122924826,imgsize-38252,width-400,resizemode-4/122924826.jpg",
+        publishedAt: "2025-07-25T11:30:00Z"
       },
       {
-        title: "AI Breakthrough Promises Faster Drug Discovery",
-        content: "A new AI model is revolutionizing how researchers approach drug discovery, significantly speeding up early testing.",
-        category: "Technology",
-        source: "BBC",
-        url: "https://bbc.com/news/ai-drug-discovery",
-        imageUrl: "https://via.placeholder.com/300x200?text=AI+Breakthrough",
-        publishedAt: new Date('2024-07-22T09:45:00Z')
+        title: "New education policy announced by central government",
+        content: "The new education policy focuses on digital learning and multilingual education at all levels.",
+        category: "Political",
+        source: "LiveMint",
+        url: "https://livemint.com/article/education-policy",
+        imageUrl: "https://www.livemint.com/lm-img/img/2025/07/26/600x338/Screenshot_2025-07-26_151322_1753523009696_1753523025140.png",
+        publishedAt: "2025-07-24T09:15:00Z"
       },
       {
-        title: "New Smartphone Launch Sets Sales Records in India",
-        content: "The latest smartphone model has shattered previous sales records in India with over 2 million units sold in 48 hours.",
-        category: "Technology",
-        source: "Gadgets360",
-        url: "https://gadgets.ndtv.com/news/smartphone-launch-records",
-        imageUrl: "https://via.placeholder.com/300x200?text=Smartphone+Launch",
-        publishedAt: new Date('2024-07-22T16:15:00Z')
-      },
-      {
-        title: "Stock Markets Hit Record Highs Amid Global Optimism",
-        content: "Markets around the world are surging, with major indices hitting record highs amid renewed investor confidence.",
-        category: "Business",
-        source: "Economic Times",
-        url: "https://economictimes.indiatimes.com/stock-market-highs",
-        imageUrl: "https://via.placeholder.com/300x200?text=Stock+Market",
-        publishedAt: new Date('2024-07-23T08:00:00Z')
-      },
-      {
-        title: "RBI Raises Interest Rates to Tame Inflation",
-        content: "The Reserve Bank of India has announced a rate hike in a bid to control rising inflation and stabilize the economy.",
-        category: "Business",
-        source: "Mint",
-        url: "https://livemint.com/news/rbi-interest-hike",
-        imageUrl: "https://via.placeholder.com/300x200?text=RBI+Rates",
-        publishedAt: new Date('2024-07-23T13:20:00Z')
-      },
-      {
-        title: "India Clinches Victory in Test Series Against England",
-        content: "In an exhilarating finish, India secured a test series win over England, continuing their strong cricketing form.",
-        category: "Sports",
-        source: "Cricbuzz",
-        url: "https://cricbuzz.com/news/india-test-win",
-        imageUrl: "https://via.placeholder.com/300x200?text=India+Wins",
-        publishedAt: new Date('2024-07-24T11:30:00Z')
-      },
-      {
-        title: "Olympic Champion Sets New World Record in Swimming",
-        content: "An Olympic gold medalist has set a new world record in the 100m freestyle event at an international meet.",
-        category: "Sports",
-        source: "ESPN",
-        url: "https://espn.com/olympics/swimming-record",
-        imageUrl: "https://via.placeholder.com/300x200?text=World+Record",
-        publishedAt: new Date('2024-07-24T18:10:00Z')
-      },
-      {
-        title: "Bollywood Blockbuster Earns ₹300 Crores in Opening Week",
-        content: "The latest Bollywood hit has crossed ₹300 crore in just 7 days, making it one of the biggest openers of the year.",
+        title: "Ranbir Kapoor’s new film breaks box office records",
+        content: "The film grossed ₹300 crores globally in just five days after release.",
         category: "Entertainment",
-        source: "India Today",
-        url: "https://indiatoday.in/bollywood-blockbuster",
-        imageUrl: "https://via.placeholder.com/300x200?text=Blockbuster",
-        publishedAt: new Date('2024-07-25T14:00:00Z')
+        source: "News18",
+        url: "https://news18.com/article/ranbir-boxoffice",
+        imageUrl: "https://images.news18.com/ibnlive/uploads/2025/07/Untitled-design-2025-07-26T141138.558-2025-07-08f92cb1b6c55d0f872e725fed410d12-16x9.jpg?impolicy=website&width=640&height=360",
+        publishedAt: "2025-07-24T08:00:00Z"
       },
       {
-        title: "Famous Singer Announces Surprise World Tour",
-        content: "Popular singer shocks fans by announcing an unexpected world tour starting this September in Asia.",
-        category: "Entertainment",
-        source: "Rolling Stone India",
-        url: "https://rollingstoneindia.com/world-tour-announcement",
-        imageUrl: "https://via.placeholder.com/300x200?text=World+Tour",
-        publishedAt: new Date('2024-07-25T19:30:00Z')
+        title: "Environmentalists protest over deforestation plans",
+        content: "Massive protests were held against the forest clearance in the Western Ghats region.",
+        category: "Environment",
+        source: "NewsBand",
+        url: "https://newsband.in/article/forest-protest",
+        imageUrl: "https://www.newsband.in/uploads/blog_main_img/e48b111ee8a2e22352fd4887dacba34d_1.jpg",
+        publishedAt: "2025-07-23T14:00:00Z"
+      },
+      {
+        title: "Opposition unites against central bill",
+        content: "All major opposition parties have agreed to oppose the new agricultural reform bill.",
+        category: "Political",
+        source: "NDTV",
+        url: "https://ndtv.com/article/opposition-unites",
+        imageUrl: "https://www.hindustantimes.com/ht-img/img/2025/07/26/550x309/modi_maldives_1753536465606_1753536485766.jpg",
+        publishedAt: "2025-07-23T13:30:00Z"
+      },
+      {
+        title: "Cricket team prepares for Asia Cup",
+        content: "The Indian cricket team begins training for the upcoming Asia Cup tournament in Dubai.",
+        category: "Sports",
+        source: "Times of India",
+        url: "https://toi.com/article/asia-cup-training",
+        imageUrl: "https://static.toiimg.com/thumb/msid-122924826,imgsize-38252,width-400,resizemode-4/122924826.jpg",
+        publishedAt: "2025-07-22T07:45:00Z"
+      },
+      {
+        title: "Parliament passes controversial surveillance bill",
+        content: "The government passed a new bill allowing real-time digital surveillance by agencies.",
+        category: "Political",
+        source: "LiveMint",
+        url: "https://livemint.com/article/surveillance-bill",
+        imageUrl: "https://www.livemint.com/lm-img/img/2025/07/26/600x338/Screenshot_2025-07-26_151322_1753523009696_1753523025140.png",
+        publishedAt: "2025-07-21T16:20:00Z"
+      },
+      {
+        title: "Heavy rains lash Mumbai, local trains delayed",
+        content: "Mumbai received record rainfall, disrupting daily life and halting rail services.",
+        category: "Weather",
+        source: "NewsBand",
+        url: "https://newsband.in/article/mumbai-rains",
+        imageUrl: "https://www.newsband.in/uploads/blog_main_img/e48b111ee8a2e22352fd4887dacba34d_1.jpg",
+        publishedAt: "2025-07-21T06:00:00Z"
+      },
+      {
+        title: "Congress leader announces rally against inflation",
+        content: "A mass rally will be conducted to protest against rising prices of essential goods.",
+        category: "Political",
+        source: "News18",
+        url: "https://news18.com/article/congress-rally-inflation",
+        imageUrl: "https://images.news18.com/ibnlive/uploads/2025/07/Untitled-design-2025-07-26T141138.558-2025-07-08f92cb1b6c55d0f872e725fed410d12-16x9.jpg?impolicy=website&width=640&height=360",
+        publishedAt: "2025-07-20T11:00:00Z"
+      },
+      {
+        title: "Government launches new MSME portal",
+        content: "The new MSME portal aims to support small businesses with credit and tax benefits.",
+        category: "Business",
+        source: "NDTV",
+        url: "https://ndtv.com/article/msme-portal",
+        imageUrl: "https://www.hindustantimes.com/ht-img/img/2025/07/26/550x309/modi_maldives_1753536465606_1753536485766.jpg",
+        publishedAt: "2025-07-19T09:45:00Z"
+      },
+      {
+        title: "Government reshuffles cabinet ministers",
+        content: "Several ministers were reassigned to new portfolios in a major reshuffle.",
+        category: "Political",
+        source: "Times of India",
+        url: "https://toi.com/article/cabinet-reshuffle",
+        imageUrl: "https://static.toiimg.com/thumb/msid-122924826,imgsize-38252,width-400,resizemode-4/122924826.jpg",
+        publishedAt: "2025-07-19T13:00:00Z"
+      },
+      {
+        title: "India secures gold at World Chess Championship",
+        content: "Indian grandmaster wins gold medal, defeating top players from Russia and China.",
+        category: "Sports",
+        source: "LiveMint",
+        url: "https://livemint.com/article/chess-gold-india",
+        imageUrl: "https://www.livemint.com/lm-img/img/2025/07/26/600x338/Screenshot_2025-07-26_151322_1753523009696_1753523025140.png",
+        publishedAt: "2025-07-18T17:00:00Z"
+      },
+      {
+        title: "Lok Sabha debates climate finance proposal",
+        content: "Lawmakers debated a proposal to increase funds allocated to climate adaptation.",
+        category: "Political",
+        source: "NewsBand",
+        url: "https://newsband.in/article/loksabha-climate",
+        imageUrl: "https://www.newsband.in/uploads/blog_main_img/e48b111ee8a2e22352fd4887dacba34d_1.jpg",
+        publishedAt: "2025-07-17T12:00:00Z"
+      },
+      {
+        title: "NASA plans mission to Europa in 2026",
+        content: "The space agency announced a mission to Jupiter's moon Europa to look for life.",
+        category: "Science",
+        source: "News18",
+        url: "https://news18.com/article/nasa-europa",
+        imageUrl: "https://images.news18.com/ibnlive/uploads/2025/07/Untitled-design-2025-07-26T141138.558-2025-07-08f92cb1b6c55d0f872e725fed410d12-16x9.jpg?impolicy=website&width=640&height=360",
+        publishedAt: "2025-07-16T10:30:00Z"
+      },
+      {
+        title: "PM Modi addresses nation on Independence Day",
+        content: "In his speech, PM Modi emphasized unity, innovation, and digital India.",
+        category: "Political",
+        source: "Hindustan Times",
+        url: "https://hindustantimes.com/article/independence-address",
+        imageUrl: "https://www.hindustantimes.com/ht-img/img/2025/07/26/550x309/modi_maldives_1753536465606_1753536485766.jpg",
+        publishedAt: "2025-07-15T08:00:00Z"
+      },
+      {
+        title: "ISRO launches 5 satellites into low earth orbit",
+        content: "India’s space agency successfully deployed 5 communication satellites.",
+        category: "Technology",
+        source: "Times of India",
+        url: "https://toi.com/article/isro-launch",
+        imageUrl: "https://static.toiimg.com/thumb/msid-122924826,imgsize-38252,width-400,resizemode-4/122924826.jpg",
+        publishedAt: "2025-07-14T07:00:00Z"
+      },
+      {
+        title: "Parliament adjourned amid protests over budget cut",
+        content: "Session was adjourned after MPs protested against the education budget cut.",
+        category: "Political",
+        source: "LiveMint",
+        url: "https://livemint.com/article/budget-cut-protest",
+        imageUrl: "https://www.livemint.com/lm-img/img/2025/07/26/600x338/Screenshot_2025-07-26_151322_1753523009696_1753523025140.png",
+        publishedAt: "2025-07-13T11:00:00Z"
+      },
+      {
+        title: "Taj Mahal to go solar in new green initiative",
+        content: "Government plans to install solar panels to reduce energy use at heritage site.",
+        category: "Environment",
+        source: "NewsBand",
+        url: "https://newsband.in/article/tajmahal-solar",
+        imageUrl: "https://www.newsband.in/uploads/blog_main_img/e48b111ee8a2e22352fd4887dacba34d_1.jpg",
+        publishedAt: "2025-07-12T09:00:00Z"
       }
     ]
+
   });
 
   console.log("✅ Seeded news articles.");

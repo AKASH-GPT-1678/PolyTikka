@@ -59,7 +59,7 @@ async function mostSearhchedPoliticians(req, res) {
             ...politician,
             ratingsOutOf: politician.ratingsOutOf?.toString(), // convert BigInt
         }));
-        console.log(serialized);
+
 
         return res.status(200).json({ data: serialized });
     } catch (error) {

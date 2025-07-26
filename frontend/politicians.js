@@ -25,7 +25,7 @@ async function getPoliticiansByName(name) {
     try {
         const response = await fetch(`http://localhost:3402/api/getPoliticiansByName/${name}`);
         const data = await response.json(); // Await here!
-        console.log(data); // This will log the array of objects
+        // console.log(data); // This will log the array of objects
         return data;
     } catch (error) {
         console.log(error);
@@ -46,6 +46,10 @@ searchByName.addEventListener("change", async function () {
         }));
 
         console.log("Filtered Info:", filterInfo);
+        if (filterInfo.length > 0) {
+            options.style.visibility = "visible";
+
+        }
 
         filterInfo.map((item) => {
             const newDiv = document.createElement("div")
@@ -105,9 +109,7 @@ async function getTopPoliticians() {
         const json = await topPoliticians.json();
         console.log(json);
         const data = json.data;
-        // console.log(topPoliticians);
-        // console.log(data.length);
-
+    
         for (let i = 0; i < data.length; i++) {
             const newDiv = document.createElement("div");
 
@@ -139,7 +141,11 @@ async function getTopPoliticians() {
             newDiv.appendChild(position);
             newDiv.appendChild(ratings);
 
-           
+            newDiv.addEventListener("click" , () => {
+                window.location.href = `politicianprofile.html?name=${name.textContent}`;
+            })
+
+
 
             mostRating.appendChild(newDiv);
         }
@@ -149,7 +155,7 @@ async function getTopPoliticians() {
     } catch (error) {
         console.log(error);
 
-        
+
 
     }
 
@@ -160,6 +166,7 @@ async function getMostSearchedPoliticians() {
     try {
         const response = await fetch('http://localhost:3402/api/mostSearchedPoliticians');
         const json = await response.json();
+
         const data = json.data;
         console.log(data);
 
@@ -169,6 +176,9 @@ async function getMostSearchedPoliticians() {
             // Create and set up the image
             let img = document.createElement("img");
             img.src = data[i].profileImage;
+            img.style.width = "100%";
+            img.style.height = "200px";
+            img.style.objectFit = "cover";
             // img.alt = data[i].name + " Image";
             // img.style.width = "100%";
             // img.style.height = "200px";
@@ -199,7 +209,94 @@ async function getMostSearchedPoliticians() {
     } catch (error) {
         console.log("Error fetching most searched politicians:", error);
     }
+};
+
+let newsData = [];
+async function getPoliticalNews() {
+
+    try {
+        const response = await fetch('http://localhost:3402/api/politicalNews');
+        const json = await response.json();
+        console.log("I am ready");
+        const data = json.data;
+        console.log(data);
+
+        newsData = data;
+        console.log("Hey i am news data", newsData);
+
+
+        return data;
+
+
+    } catch (error) {
+        console.log("Error fetching political news:", error);
+
+    }
+
+};
+
+
+// async function getData() {
+//     await getPoliticalNews();
+//      changeNews()
+
+// }
+
+
+const changeNews = async () => {
+    console.log(" i staretd running");
+    if (newsData.length == 0) {
+        console.log("Its Empty")
+    }
+
+
+    const mainSection = document.getElementById("main-section");
+    mainSection.style.backgroundImage = "url('" + newsData[0].imageUrl + "')";
+    mainSection.style.backgroundSize = "cover";
+    mainSection.style.backgroundPosition = "center";
+
+
+
+};
+
+
+
+
+
+async function getData() {
+    await getPoliticalNews();
+    changeNews()
+
+};
+getData();
+
+
+let indexPosition = 0;
+
+async function updateNews() {
+    const mainSection = document.getElementById("main-section");
+    mainSection.style.backgroundImage = "url('" + newsData[indexPosition].imageUrl + "')";
+    mainSection.style.backgroundSize = "cover";
+
+    mainSection.style.backgroundPosition = "center";
+    const newsDescription = document.getElementById("news-description");
+    newsDescription.innerHTML = newsData[indexPosition].title;
+
+
+    indexPosition = (indexPosition + 1) % newsData.length;
 }
 
 
+setInterval(updateNews, 5000);
+
+
 getTopPoliticians();
+getMostSearchedPoliticians();
+fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("footer").innerHTML = data;
+    });
+
+
+

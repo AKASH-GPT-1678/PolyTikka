@@ -3,6 +3,7 @@ const {createPoliticians , getPoliticiansByName} = require("../controllers/creat
 const {ratePolitician , topRatedPoliticians ,mostSearhchedPoliticians} = require("../controllers/ratingPoliticians.js");
 const {registerUser, loginUser} = require("../controllers/registerUser.js");
 const {getTrendingNews} = require("../controllers/trendingNews.js");
+const {getPoliticalNews} = require("../controllers/newsArticles.js");
 const router = express.Router();
 
 
@@ -14,4 +15,5 @@ router.get("/login" , loginUser);
 router.get("/getTrendingNews" , getTrendingNews);
 router.get("/topPoliticians", topRatedPoliticians);
 router.get("/mostSearchedPoliticians", mostSearhchedPoliticians);
+router.get("/politicalNews" , getPoliticalNews);
 module.exports = router
