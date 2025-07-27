@@ -24,4 +24,46 @@ const getPoliticalNews = async (req, res) => {
 };
 
 
-module.exports = { getPoliticalNews };
+async function getNewsByCategory(req, res) {
+    try {
+        const { category } = req.params;
+        const news = await prisma.news.findMany({
+            where: {
+                category: category
+            }
+        });
+        return res.status(200).json({ data: news });
+    } catch (error) {
+        console.log(error);
+    }
+};
+// Controller: getTopNewsByReads.js
+
+async function getTopNewsByReads(req, res) {
+    try {
+
+        const category = req.query.category;
+        const news = await prisma.news.findMany({
+            where: {
+                category: category
+            },
+            orderBy: {
+                reads: 'desc'
+            },
+            take: 5
+        });
+
+        console.log("Top news articles by reads:", news);
+
+        return res.status(200).json({ data: news });
+    } catch (error) {
+        console.error("Error fetching top news by reads:", error);
+        return res.status(500).json({ error: "Internal Server Error" });
+    }
+}
+
+
+
+
+
+module.exports = { getPoliticalNews, getNewsByCategory, getTopNewsByReads };

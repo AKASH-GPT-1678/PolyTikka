@@ -109,7 +109,7 @@ async function getTopPoliticians() {
         const json = await topPoliticians.json();
         console.log(json);
         const data = json.data;
-    
+
         for (let i = 0; i < data.length; i++) {
             const newDiv = document.createElement("div");
 
@@ -141,7 +141,7 @@ async function getTopPoliticians() {
             newDiv.appendChild(position);
             newDiv.appendChild(ratings);
 
-            newDiv.addEventListener("click" , () => {
+            newDiv.addEventListener("click", () => {
                 window.location.href = `politicianprofile.html?name=${name.textContent}`;
             })
 
@@ -204,6 +204,11 @@ async function getMostSearchedPoliticians() {
             newDiv.appendChild(position);
             newDiv.appendChild(numSearches);
 
+
+            newDiv.addEventListener("click", () => {
+                window.location.href = `politicianprofile.html?name=${name.textContent}`;
+            })
+
             mostSearched.appendChild(newDiv);
         }
     } catch (error) {
@@ -236,11 +241,6 @@ async function getPoliticalNews() {
 };
 
 
-// async function getData() {
-//     await getPoliticalNews();
-//      changeNews()
-
-// }
 
 
 const changeNews = async () => {
@@ -265,6 +265,7 @@ const changeNews = async () => {
 
 async function getData() {
     await getPoliticalNews();
+  
     changeNews()
 
 };
@@ -300,3 +301,50 @@ fetch("footer.html")
 
 
 
+async function getMostRead(category) {
+    const endpoint = 'http://localhost:3402/api/topReads';
+    const limit = 10;
+    const container = document.getElementById("most-read");
+    const template = document.getElementById("most-read-template");
+
+    if (!template || !container) {
+        console.warn("Template or container not found for Most Read section.");
+        return;
+    }
+
+    try {
+        const url = new URL(endpoint);
+        if (limit) url.searchParams.append("limit", limit);
+        if (category) url.searchParams.append("category", category);
+
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`Server responded with status ${response.status}`);
+
+        const result = await response.json();
+        const topNews = result.data;
+
+        // Clear the container first
+        container.innerHTML = "";
+
+        if (!topNews || topNews.length === 0) {
+            container.innerHTML = `<p style="text-align:center; color: gray;">No top reads for "${category}".</p>`;
+            return;
+        }
+
+        // Append each news item
+        topNews.forEach(news => {
+            const clone = template.cloneNode(true);
+            clone.style.display = "flex"; // Make it visible
+
+            clone.querySelector(".most-read-meta").textContent = `${news.category} • ${news.date}`;
+            clone.querySelector(".most-read-title").textContent = news.title;
+            clone.querySelector(".most-read-title").href = news.url;
+
+            container.appendChild(clone);
+        });
+
+    } catch (error) {
+        console.error("❌ Error fetching most read news:", error);
+        alert("Failed to load most read news. Please try again later.");
+    }
+}

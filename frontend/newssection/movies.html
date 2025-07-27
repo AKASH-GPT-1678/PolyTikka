@@ -8,55 +8,54 @@
 </head>
 
 <body>
-    <div style="width: 100%;">
+  <div id="movie-section-container" style="width: 100%; max-width: 500px; margin: auto; padding: 10px;">
 
-        <div style="display: flex; flex-direction: row;justify-content: space-between; align-items: end; padding: 2px;">
+    <!-- Header with Title and Tags -->
+    <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding-bottom: 8px;">
+        <h2 id="movie-section-title" style="font-weight: bold; font-size: 1.5rem; margin: 0;">Movies</h2>
 
-
-            <div>
-                <h2 style="font-weight: 200; font-weight: bolder;">Movies</h2>
-            </div>
-            <div style="display: flex;flex-direction: row;gap: 10px;">
-                <p>Trailers</p>
-                <p>Premiers</p>
-                <p>Announced</p>
-
-            </div>
-        </div>
-        <div style="display: flex; flex-direction: column;">
-            <iframe width="100%" height="300px" src="https://www.youtube.com/embed/MsQJLlSZcUY"
-                title="Sadhguru SHUTS DOWN LAW STUDENT Disrespecting National Anthem ( heated debate )" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            <h3 style="max-width: 400px;">Sadhguru SHUTS DOWN LAW STUDENT Disrespecting National Anthem ( heated debate
-                )</h3>
-
-            <p style="max-width: 400px;padding: 4px;">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-
-
-
-
-
-
-
-
-
-            </p>
-            <a href="www.google.com">Continue Reading</a>
-        </div>
-        <hr>
-        <div>
-            <h3>Actress Shefali jariwala found dead</h3>
-            <p style="max-width: 400px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
+        <div id="movie-tags" style="display: flex; gap: 10px;">
+            <p class="movie-tag" style="margin: 0; font-size: 14px; color: #5a2a8c; cursor: pointer;">Trailers</p>
+            <p class="movie-tag" style="margin: 0; font-size: 14px; color: #5a2a8c; cursor: pointer;">Premiers</p>
+            <p class="movie-tag" style="margin: 0; font-size: 14px; color: #5a2a8c; cursor: pointer;">Announced</p>
         </div>
     </div>
+
+    <!-- First Movie with Video -->
+    <div class="movie-news-block" style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;">
+        <iframe class="movie-video" width="100%" height="250px"
+            src="https://www.youtube.com/embed/MsQJLlSZcUY"
+            title="Sadhguru Debate" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+
+        <h3 class="movie-headline" style="font-size: 1.1rem; margin: 0; color: #222;">
+            Sadhguru SHUTS DOWN LAW STUDENT Disrespecting National Anthem
+        </h3>
+
+        <p class="movie-description" style="font-size: 14px; color: #444; margin: 0;">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+
+        <a class="movie-readmore" href="https://www.google.com" target="_blank"
+            style="font-size: 14px; color: #5a2a8c; text-decoration: none;"
+            onmouseover="this.style.textDecoration='underline'"
+            onmouseout="this.style.textDecoration='none'">Continue Reading</a>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid #ccc; margin: 10px 0;">
+
+    <!-- Second Movie Article -->
+    <div class="movie-news-block" style="display: flex; flex-direction: column; gap: 6px;">
+        <h3 class="movie-headline" style="font-size: 1.1rem; margin: 0; color: #222;">
+            Actress Shefali Jariwala found dead
+        </h3>
+
+        <p class="movie-description" style="font-size: 14px; color: #444; margin: 0;">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+    </div>
+</div>
 
 </body>
 

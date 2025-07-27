@@ -15,7 +15,7 @@ datasource db {
 }
 
 model Politician {
-  id            String         @id @default(uuid())
+  id            String   @id @default(uuid())
   name          String
   party         String
   state         String
@@ -23,19 +23,73 @@ model Politician {
   age           Int?
   gender        String?
   education     String?
-  criminalCases Int            @default(0)
-  totalAssets   Float? // in lakhs or crores
+  criminalCases Int      @default(0)
+  totalAssets   Float? // In lakhs or crores
   position      String? // e.g., MP, MLA, CM
-  biography     String?        @db.Text
+  biography     String?  @db.Text
   profileImage  String? // URL
   avgRatings    Int
   numOfSearched Int?
   ratingsOutOf  BigInt?
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @updatedAt
-  criminalCase  CriminalCase[]
-  newsArticles  NewsArticle[]
-  Comment       Comment[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relations
+  criminalCase   CriminalCase[]
+  newsArticles   NewsArticle[]
+  Comment        Comment[]
+  workHistory    WorkHistory[]
+  electionResult ElectionResult[]
+  familyDetail   FamilyDetail?
+  assetDetail    AssetDetail?
+  PublicProfile  PublicProfile?
+}
+
+model WorkHistory {
+  id           String     @id @default(uuid())
+  role         String // e.g., Municipal Corporator, MLA, MP, CM
+  startYear    Int?
+  endYear      Int?
+  constituency String?
+  state        String?
+  politician   Politician @relation(fields: [politicianId], references: [id])
+  politicianId String
+}
+
+model ElectionResult {
+  id            String     @id @default(uuid())
+  year          Int
+  electionType  String // e.g., Lok Sabha, Vidhan Sabha
+  constituency  String
+  state         String
+  party         String
+  result        String // e.g., "✅ Won" or "❌ Lost"
+  totalVotes    Int
+  voteShare     Float // e.g., 63.6
+  opponentName  String
+  victoryMargin Int // e.g., 479505
+  politician    Politician @relation(fields: [politicianId], references: [id])
+  politicianId  String
+}
+
+model FamilyDetail {
+  id           String     @id @default(uuid())
+  spouse       String?
+  children     Int?
+  fatherName   String?
+  motherName   String?
+  background   String?    @db.Text
+  politician   Politician @relation(fields: [politicianId], references: [id])
+  politicianId String     @unique
+}
+
+model AssetDetail {
+  id              String     @id @default(uuid())
+  totalAssets     Float // ₹8.5 Cr
+  movableAssets   Float // ₹2.3 Cr
+  immovableAssets Float // ₹6.2 Cr
+  politicianId    String     @unique
+  politician      Politician @relation(fields: [politicianId], references: [id])
 }
 
 model CriminalCase {
@@ -46,6 +100,19 @@ model CriminalCase {
   filedAt      DateTime?
   politicianId String
   politician   Politician @relation(fields: [politicianId], references: [id])
+}
+
+model PublicProfile {
+  id               String   @id @default(uuid())
+  coreIdeology     String // e.g., "Development for All"
+  visionStatement  String   @db.Text
+  publicPerception String   @db.Text
+  keyStrengths     String[] // e.g., ["Oratory Skills", "Grassroots Engagement"]
+  focusAreas       String[] // e.g., ["Digital Transformation", "Rural Empowerment"]
+  leadershipStyle  String? // e.g., "Transformative", "Inclusive"
+
+  politician   Politician @relation(fields: [politicianId], references: [id])
+  politicianId String     @unique
 }
 
 model NewsArticle {
@@ -62,6 +129,7 @@ model News {
   title       String
   content     String   @db.Text
   category    String?
+  reads       Int?
   source      String // e.g., "NDTV", "BBC", "Times of India"
   url         String // link to the original article
   imageUrl    String? // optional thumbnail or article image
@@ -82,7 +150,7 @@ model User {
 }
 
 model Comment {
-  id           String @id @default(cuid())
+  id           String      @id @default(cuid())
   politicianId String?
   politician   Politician? @relation(fields: [politicianId], references: [id])
 }
