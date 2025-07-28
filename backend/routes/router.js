@@ -9,7 +9,7 @@ const router = express.Router();
 
 
 router.post("/addPoliticians" , createPoliticians);
-router.get("/getPoliticiansByName/:name" , getPoliticiansByNam);
+router.get("/getPoliticiansByName/:name" , getPoliticiansByName);
 router.get("/ratePoliticians/:rating" , ratePolitician);
 router.post("/register" , registerUser);
 router.get("/login" , loginUser);

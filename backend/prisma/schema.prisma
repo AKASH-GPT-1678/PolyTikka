@@ -73,14 +73,22 @@ model ElectionResult {
 }
 
 model FamilyDetail {
-  id           String     @id @default(uuid())
-  spouse       String?
-  children     Int?
-  fatherName   String?
-  motherName   String?
-  background   String?    @db.Text
-  politician   Politician @relation(fields: [politicianId], references: [id])
-  politicianId String     @unique
+  id               String     @id @default(uuid())
+  spouse           String?
+  children         Int?
+  fatherName       String?
+  motherName       String?
+  background       String?    @db.Text
+
+  // 🔥 NEW FIELDS
+  familyProfession String?    // e.g., "Trading"
+  economicStatus   String?    // e.g., "Lower Middle"
+  familyOrigin     String?    // e.g., "Rural"
+  community        String?    // e.g., "OBC"
+  politicalLegacy  String?    // e.g., "Self-Made"
+
+  politician       Politician @relation(fields: [politicianId], references: [id])
+  politicianId     String     @unique
 }
 
 model AssetDetail {

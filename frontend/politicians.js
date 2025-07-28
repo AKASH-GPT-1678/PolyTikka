@@ -265,7 +265,7 @@ const changeNews = async () => {
 
 async function getData() {
     await getPoliticalNews();
-  
+
     changeNews()
 
 };

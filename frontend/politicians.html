@@ -67,6 +67,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -256,7 +257,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.1) 100%);
         }
 
         #headline {
@@ -306,14 +307,16 @@
             border-radius: 2px;
         }
 
-        #most-rated, #most-searched {
+        #most-rated,
+        #most-searched {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-bottom: 60px;
         }
 
-        #most-rated div, #most-searched div {
+        #most-rated div,
+        #most-searched div {
             background: white;
             border-radius: 20px;
             padding: 25px;
@@ -324,7 +327,8 @@
             overflow: hidden;
         }
 
-        #most-rated div::before, #most-searched div::before {
+        #most-rated div::before,
+        #most-searched div::before {
             content: '';
             position: absolute;
             top: 0;
@@ -334,12 +338,14 @@
             background: linear-gradient(90deg, #667eea, #764ba2);
         }
 
-        #most-rated div:hover, #most-searched div:hover {
+        #most-rated div:hover,
+        #most-searched div:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
-        #most-rated div img, #most-searched div img {
+        #most-rated div img,
+        #most-searched div img {
             width: 120px;
             height: 120px;
             border-radius: 50%;
@@ -349,21 +355,24 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
 
-        #most-rated div h2, #most-searched div h2 {
+        #most-rated div h2,
+        #most-searched div h2 {
             font-size: 22px;
             font-weight: 700;
             color: #2d3748;
             margin-bottom: 10px;
         }
 
-        #most-rated div p, #most-searched div p {
+        #most-rated div p,
+        #most-searched div p {
             color: #718096;
             margin-bottom: 8px;
             font-size: 15px;
         }
 
         /* Stats badges */
-        .rating-badge, .search-badge {
+        .rating-badge,
+        .search-badge {
             display: inline-flex;
             align-items: center;
             gap: 5px;
@@ -397,8 +406,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         /* Responsive Design */
@@ -436,7 +450,8 @@
                 font-size: 24px;
             }
 
-            #most-rated, #most-searched {
+            #most-rated,
+            #most-searched {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
@@ -448,6 +463,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -486,7 +502,7 @@
                 <i class="fas fa-landmark"></i>
                 <span>Political Hub</span>
             </div>
-            
+
             <div class="search-container">
                 <div class="search-wrapper">
                     <input type="text" placeholder="Search politicians..." id="searchByName">
@@ -494,11 +510,11 @@
                 </div>
                 <div id="options" style="visibility: hidden;"></div>
             </div>
-            
+
             <nav class="nav-menu">
                 <a href="#" class="nav-item"><i class="fas fa-star"></i> Top Rated</a>
                 <a href="#" class="nav-item"><i class="fas fa-trending-up"></i> Trending</a>
-                <a href="news.html" class="nav-item"><i class="fas fa-newspaper" ></i> News</a>
+                <a href="news.html" class="nav-item"><i class="fas fa-newspaper"></i> News</a>
             </nav>
         </div>
     </div>
@@ -530,28 +546,28 @@
     </div>
 
     <script src="politicians.js"></script>
-    
+
     <script>
 
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Add loading animation to search
             const searchInput = document.getElementById('searchByName');
             let searchTimeout;
-            
-            searchInput.addEventListener('input', function() {
+
+            searchInput.addEventListener('input', function () {
                 clearTimeout(searchTimeout);
                 // Add a subtle loading indicator
                 searchTimeout = setTimeout(() => {
                     // This doesn't interfere with your existing logic
                 }, 300);
             });
-            
+
             // Add smooth animations to cards
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
             };
-            
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -560,7 +576,7 @@
                     }
                 });
             }, observerOptions);
-            
+
             // Observe all cards when they're created
             const checkForCards = () => {
                 const cards = document.querySelectorAll('#most-rated > div, #most-searched > div');
@@ -570,10 +586,11 @@
                     }
                 });
             };
-            
-       
+
+
             setInterval(checkForCards, 1000);
         });
     </script>
 </body>
+
 </html>

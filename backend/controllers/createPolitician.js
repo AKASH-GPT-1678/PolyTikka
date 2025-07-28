@@ -99,7 +99,7 @@ async function getPoliticiansByNam(req, res) {
 // Controller function to search politicians by name
 const getPoliticiansByName = async (req, res) => {
   try {
-    const name = req.query.name;
+    const {name} = req.params;
     
     if (!name || name.trim().length === 0) {
       return res.status(400).json({
@@ -176,7 +176,7 @@ const getPoliticiansByName = async (req, res) => {
     });
 
     // Return politician with all core data + all relations
-    return res.status(200).json(serializedPolitician);
+    return res.status(200).json({data : serializedPolitician});
 
   } catch (error) {
     console.error('Error searching politician:', error);

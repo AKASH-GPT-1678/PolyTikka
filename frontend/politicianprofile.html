@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="profile.css">
     <title>Political Profile - Narendra Modi</title>
     <style>
         * {
@@ -187,7 +188,7 @@
             text-align: center;
             color: #333;
             margin-bottom: 30px;
-          
+
         }
 
 
@@ -461,7 +462,7 @@
         <!-- Profile Section -->
         <div class="profile-section">
             <div class="profile-image">
-                <img src="./assets/modiji2.png" alt="Narendra Modi">
+                <img src="./assets/modiji2.png" alt="Narendra Modi" id="profile-img">
             </div>
 
             <div class="basic-info">
@@ -473,18 +474,35 @@
                     <strong>Bharatiya Janata Party</strong>
                 </div>
 
-                <div class="info-item"><strong>Born:</strong> 17 September 1950</div>
-                <div class="info-item"><strong>Constituency:</strong> Varanasi, Uttar Pradesh</div>
-                <div class="info-item"><strong>Previous Occupation:</strong> Tea Seller, Stock Broker</div>
-                <div class="info-item"><strong>Education:</strong> 12th Standard</div>
-            </div>
+                <div class="info-item" style="display: flex; flex-direction: row; gap: 4px;">
+                    <strong>Born:</strong>
+                    <p id="date-of-birth">28 September 1950</p>
+                </div>
 
-            <div class="experience-card">
-                <div class="experience-header">
-                    <div class="experience-icon">🏛️</div>
-                    <div class="experience-details">
-                        <h3>Chief Minister of Gujarat</h3>
-                        <p>2002 - 2014</p>
+                <div class="info-item" style="display: flex; flex-direction: row; gap: 4px;">
+                    <strong>Constituency:</strong>
+                    <p id="constituency">Varanasi, Uttar Pradesh</p>
+                </div>
+
+                <div class="info-item" style="display: flex; flex-direction: row; gap: 4px;">
+                    <strong>Previous Occupation:</strong>
+                    <p id="poccupation">Tea Seller, Stock Broker</p>
+                </div>
+
+                <div class="info-item" style="display: flex; flex-direction: row; gap: 4px;">
+                    <strong>Education:</strong>
+                    <p id="education">12th Standard</p>
+                </div>
+
+            </div>
+            <div style="display: flex;flex-direction: column;gap: 10px;" class="experience-section">
+                <div class="experience-card" style="display: none;">
+                    <div class="experience-header">
+                        <div class="experience-icon">🏛️</div>
+                        <div class="experience-details">
+                            <h3></h3>
+                            <p></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -494,12 +512,9 @@
         <div class="election-details">
             <h2>📊 2019 Election Results</h2>
             <div>
-                <select name="election" id="election">
+                <select name="election" id="electionlist" style="padding: 10px;">
                     <option value="india">India</option>
-                    <option value="china">China</option>
-                    <option value="usa">USA</option>
-                    <option value="russia">Russia</option>
-                    <option value="japan">Japan</option>
+
                 </select>
 
             </div>
@@ -558,14 +573,54 @@
                 </div>
             </div>
 
-            <div class="ideology-card">
-                <h2>🎯 Core Ideology</h2>
-                <h3 style="color: #9C27B0; margin-bottom: 15px;">Development for All</h3>
-                <p style="margin-bottom: 15px;"><strong>Vision Statement:</strong> Focused on inclusive development and
-                    empowering rural communities through digital transformation and economic growth.</p>
-                <p><strong>Public Perception:</strong> Known for strong oratory skills, grassroots-level engagement, and
-                    transformative leadership approach.</p>
+      <div class="container">
+        <div class="ideology-card">
+            <h2 class="card-title">🎯 Core Ideology</h2>
+            
+            <h3 id="coreIdeologyTitle" class="core-ideology-title">
+                <!-- Core ideology will be inserted here -->
+            </h3>
+            
+            <div class="section">
+                <p class="section-text">
+                    <span class="section-label">Vision Statement:</span> 
+                    <span id="visionStatement"><!-- Vision statement will be inserted here --></span>
+                </p>
             </div>
+            
+            <div class="section">
+                <p class="section-text">
+                    <span class="section-label">Public Perception:</span> 
+                    <span id="publicPerception"><!-- Public perception will be inserted here --></span>
+                </p>
+            </div>
+            
+            <div class="section">
+                <p class="section-text">
+                    <span class="section-label">Leadership Style:</span> 
+                    <span id="leadershipStyle" class="leadership-badge"><!-- Leadership style will be inserted here --></span>
+                </p>
+            </div>
+            
+            <div class="section">
+                <p class="section-text">
+                    <span class="section-label">Focus Areas:</span>
+                </p>
+                <div id="focusAreas" class="tags-container">
+                    <!-- Focus area tags will be inserted here -->
+                </div>
+            </div>
+            
+            <div class="section">
+                <p class="section-text">
+                    <span class="section-label">Key Strengths:</span>
+                </p>
+                <div id="keyStrengths" class="tags-container">
+                    <!-- Key strength tags will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
         </div>
 
         <!-- Latest News -->
@@ -604,39 +659,7 @@
         </div>
 
         <!-- Controversies -->
-        <div class="controversy-section">
-            <h2>⚡ Popular Statements and Controversies</h2>
-            <div class="cards-grid">
-                <div class="controversy-card">
-                    <div class="card-content">
-                        Debate over economic policies and their impact on different sections of society continues to
-                        generate discussion.
-                    </div>
-                    <a href="#" class="read-more">Continue Reading →</a>
-                </div>
-                <div class="controversy-card">
-                    <div class="card-content">
-                        Statement on agricultural reforms sparks nationwide discussion among farming communities and
-                        experts.
-                    </div>
-                    <a href="#" class="read-more">Continue Reading →</a>
-                </div>
-                <div class="controversy-card">
-                    <div class="card-content">
-                        Foreign policy decisions and international relations continue to be subjects of political
-                        discourse.
-                    </div>
-                    <a href="#" class="read-more">Continue Reading →</a>
-                </div>
-                <div class="controversy-card">
-                    <div class="card-content">
-                        Environmental policies and development projects balance between progress and conservation
-                        concerns.
-                    </div>
-                    <a href="#" class="read-more">Continue Reading →</a>
-                </div>
-            </div>
-        </div>
+
 
         <!-- Criminal Records -->
         <div class="records-assets">
@@ -644,7 +667,9 @@
                 <h2 class="section-title">🛑 Criminal Records</h2>
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-value">2</div>
+                        <div class="stat-value">
+                            20
+                        </div>
                         <div class="stat-label">Total Cases</div>
                     </div>
                     <div class="stat-card">
@@ -705,6 +730,8 @@
             </div>
         </div>
     </div>
+
+    <script src="profile.js"></script>
 </body>
 
 </html>
