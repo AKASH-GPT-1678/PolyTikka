@@ -100,12 +100,12 @@ async function collectTrendingNews() {
 
         const container = document.getElementById("trending");
 
-        for (let i = 0; i < data.length; i++) {
+        for (let i = 0; i < 10; i++) {
             const clone = template.cloneNode(true);
             clone.style.display = "block"; 
 
             clone.querySelector("img").src = data[i].imageUrl;
-            clone.querySelector(".category").textContent = data[i].category;
+            // clone.querySelector(".category").textContent = data[i].category;
             clone.querySelector(".description").textContent = data[i].title;
 
             container.appendChild(clone);

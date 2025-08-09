@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Modal</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: #f5f5f5;
+    }
+
+    /* Overlay */
+    .modal-overlay {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    /* Modal Box */
+    .modal {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        width: 300px;
+        position: relative;
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+        text-align: center;
+    }
+
+    /* Close Button */
+    .close-btn {
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        font-size: 18px;
+        cursor: pointer;
+        border: none;
+        background: none;
+        color: #555;
+    }
+
+    /* Input */
+    input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 12px;
+        margin-bottom: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    /* Submit Button */
+    .submit-btn {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .submit-btn:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <button class="close-btn" id="closeModal">&times;</button>
+        <h2>Subscribe</h2>
+        <p>Enter your email to get updates:</p>
+        <input type="email" placeholder="Enter your email" id="emailInput">
+        <button class="submit-btn" id="submitEmail">Submit</button>
+    </div>
+</div>
+
+<script>
+    const closeModal = document.getElementById('closeModal');
+    const modalOverlay = document.getElementById('modalOverlay');
+
+    closeModal.addEventListener('click', () => {
+        modalOverlay.style.display = 'none';
+    });
+
+    document.getElementById('submitEmail').addEventListener('click', () => {
+        alert("Email submitted: " + document.getElementById('emailInput').value);
+    });
+</script>
+
+</body>
+</html>

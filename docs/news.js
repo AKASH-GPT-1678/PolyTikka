@@ -22,6 +22,9 @@ fetch("newssection/newscategory.html")
             item.addEventListener('click', () => {
                 console.log('You clicked:', item.textContent);
                 activeCatgory = item.textContent;
+                const options = { weekday: 'long', day: 'numeric', month: 'long' };
+                const today = new Date().toLocaleDateString('en-GB', options);
+                document.getElementById('date-info').textContent = today;
                 displayNews(activeCatgory);
             });
         });
@@ -31,12 +34,6 @@ fetch("newssection/newscategory.html")
         getMostRead(activeCatgory);
     });
 
-
-// fetch("newssection/movies.html")
-//     .then(response => response.text())
-//     .then(data => {
-//         document.getElementById("movies-info").innerHTML = data;
-//     });
 
 
 
@@ -70,7 +67,6 @@ async function displayNews(activeCatgory) {
         return;
     };
 
-    // Populate each news item
     collectNews.data.forEach(news => {
         const clone = template.cloneNode(true);
         clone.style.display = "flex"; // Make it visible

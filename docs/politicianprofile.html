@@ -562,65 +562,87 @@
             </div>
         </div>
 
+
         <!-- Rating and Ideology -->
         <div class="rating-ideology">
             <div class="rating-card">
                 <h2>📈 Public Rating</h2>
                 <div class="rating-display">
-                    <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+
+                    <i class="fa-solid fa-star rating-star" id="rating-star"></i>
+                    <i class="fa-solid fa-star rating-star"></i>
+                    <i class="fa-solid fa-star rating-star"></i>
+                    <i class="fa-solid fa-star rating-star"></i>
+                    <i class="fa-solid fa-star rating-star"></i>
+
+
                     <div class="rating-text">4.2/5.0</div>
                     <p style="margin-top: 10px; font-size: 0.9rem;">Based on recent surveys</p>
+                    <div style="display: none; gap: 8px; margin-top: 10px;" id="rating-form">
+                        <input type="email" id="email" placeholder="Your Email"
+                            style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 5px; font-size: 0.9rem;">
+
+                        <button
+                        id="submit"
+                            style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 0.9rem;">
+                            Submit
+                        </button>
+                    </div>
+
+
+
                 </div>
             </div>
 
-      <div class="container">
-        <div class="ideology-card">
-            <h2 class="card-title">🎯 Core Ideology</h2>
-            
-            <h3 id="coreIdeologyTitle" class="core-ideology-title">
-                <!-- Core ideology will be inserted here -->
-            </h3>
-            
-            <div class="section">
-                <p class="section-text">
-                    <span class="section-label">Vision Statement:</span> 
-                    <span id="visionStatement"><!-- Vision statement will be inserted here --></span>
-                </p>
-            </div>
-            
-            <div class="section">
-                <p class="section-text">
-                    <span class="section-label">Public Perception:</span> 
-                    <span id="publicPerception"><!-- Public perception will be inserted here --></span>
-                </p>
-            </div>
-            
-            <div class="section">
-                <p class="section-text">
-                    <span class="section-label">Leadership Style:</span> 
-                    <span id="leadershipStyle" class="leadership-badge"><!-- Leadership style will be inserted here --></span>
-                </p>
-            </div>
-            
-            <div class="section">
-                <p class="section-text">
-                    <span class="section-label">Focus Areas:</span>
-                </p>
-                <div id="focusAreas" class="tags-container">
-                    <!-- Focus area tags will be inserted here -->
+            <div class="container">
+                <div class="ideology-card">
+                    <h2 class="card-title">🎯 Core Ideology</h2>
+
+                    <h3 id="coreIdeologyTitle" class="core-ideology-title">
+                        <!-- Core ideology will be inserted here -->
+                    </h3>
+
+                    <div class="section">
+                        <p class="section-text">
+                            <span class="section-label">Vision Statement:</span>
+                            <span id="visionStatement"><!-- Vision statement will be inserted here --></span>
+                        </p>
+                    </div>
+
+                    <div class="section">
+                        <p class="section-text">
+                            <span class="section-label">Public Perception:</span>
+                            <span id="publicPerception"><!-- Public perception will be inserted here --></span>
+                        </p>
+                    </div>
+
+                    <div class="section">
+                        <p class="section-text">
+                            <span class="section-label">Leadership Style:</span>
+                            <span id="leadershipStyle"
+                                class="leadership-badge"><!-- Leadership style will be inserted here --></span>
+                        </p>
+                    </div>
+
+                    <div class="section">
+                        <p class="section-text">
+                            <span class="section-label">Focus Areas:</span>
+                        </p>
+                        <div id="focusAreas" class="tags-container">
+                            <!-- Focus area tags will be inserted here -->
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <p class="section-text">
+                            <span class="section-label">Key Strengths:</span>
+                        </p>
+                        <div id="keyStrengths" class="tags-container">
+                            <!-- Key strength tags will be inserted here -->
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="section">
-                <p class="section-text">
-                    <span class="section-label">Key Strengths:</span>
-                </p>
-                <div id="keyStrengths" class="tags-container">
-                    <!-- Key strength tags will be inserted here -->
-                </div>
-            </div>
-        </div>
-    </div>
         </div>
 
         <!-- Latest News -->
@@ -732,6 +754,7 @@
     </div>
 
     <script src="profile.js"></script>
+    <script src="https://kit.fontawesome.com/6734139f24.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

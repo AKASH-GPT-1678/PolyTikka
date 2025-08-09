@@ -12,23 +12,22 @@
 
 
 @media screen and (min-width: 1080px) {
-    #main-header {
-        padding: 40px;
-    }
+
 
 }
 
 .main-content {
     color: white;
     background-color: white;
-    padding: 10px;
+ 
 }
 
 .header {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
 
+
+    justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
 
@@ -80,6 +79,7 @@
 .news-category {
     display: flex;
     flex-direction: row;
+    gap: 10px;
     width: "100%";
 
     background-color: white;
@@ -116,7 +116,8 @@
     flex-direction: row;
     gap: 20px;
     width: "100%";
-    justify-content: space-between;
+    justify-content: center;
+   
 }
 
 #movies-info {
@@ -124,8 +125,12 @@
     flex-direction: row;
     gap: 20px; */
     width: "100%";
-    min-width: 400px;
+    min-width: 200px;
     justify-content: space-between;
 }
 
-
+@media screen and (max-width: 1000px) {
+    #latest-display {
+        display: none;
+    }
+} 

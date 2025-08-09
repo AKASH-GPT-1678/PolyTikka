@@ -2,48 +2,49 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-async function main() {
-  // Create 10 Politicians with all relations
-  
-  // Politician 1: Rajesh Kumar
+
+ // Comprehensive seed data for 10 Indian politicians with complete profiles
+
+async function seedPoliticians() {
+
+  // Politician 1: Narendra Modi
   const politician1 = await prisma.politician.create({
     data: {
-      name: "Rajesh Kumar Singh",
+      name: "Narendra Damodardas Modi",
       party: "Bharatiya Janata Party",
-      state: "Uttar Pradesh",
+      state: "Gujarat",
       constituency: "Varanasi",
-      age: 52,
+      age: 74,
       gender: "Male",
-      education: "MA Political Science, BHU Varanasi",
-      criminalCases: 2,
-      totalAssets: 850.0, // 8.5 Cr
-      position: "MP",
-      biography: "A seasoned politician with over 20 years of experience in public service. Known for his development initiatives in rural areas and strong advocacy for farmers' rights.",
+      education: "BA Political Science, MA Political Science",
+      criminalCases: 0,
+      totalAssets: 2500.0, // 2.5 Cr
+      position: "Prime Minister",
+      biography: "The 14th Prime Minister of India since 2014. Former Chief Minister of Gujarat (2001-2014). Known for economic reforms, digital India initiatives, and strong leadership.",
       profileImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
       avgRatings: 4,
-      numOfSearched: 15420,
-      ratingsOutOf: 25680,
+      numOfSearched: 185420,
+      ratingsOutOf: 225680,
       
-      // Work History
       workHistory: {
         create: [
           {
-            role: "Municipal Corporator",
-            startYear: 2004,
-            endYear: 2009,
-            constituency: "Ward 15, Varanasi",
-            state: "Uttar Pradesh"
+            role: "RSS Pracharak",
+            startYear: 1971,
+            endYear: 1987,
+            constituency: "Gujarat",
+            state: "Gujarat"
           },
           {
-            role: "MLA",
-            startYear: 2012,
-            endYear: 2017,
-            constituency: "Varanasi South",
-            state: "Uttar Pradesh"
+            role: "Chief Minister",
+            startYear: 2001,
+            endYear: 2014,
+            constituency: "Gujarat",
+            state: "Gujarat"
           },
           {
-            role: "MP",
-            startYear: 2019,
+            role: "Prime Minister",
+            startYear: 2014,
             endYear: null,
             constituency: "Varanasi",
             state: "Uttar Pradesh"
@@ -51,9 +52,20 @@ async function main() {
         ]
       },
       
-      // Election Results
       electionResult: {
         create: [
+          {
+            year: 2024,
+            electionType: "Lok Sabha",
+            constituency: "Varanasi",
+            state: "Uttar Pradesh",
+            party: "Bharatiya Janata Party",
+            result: "✅ Won",
+            totalVotes: 912673,
+            voteShare: 61.9,
+            opponentName: "Ajay Rai",
+            victoryMargin: 612970
+          },
           {
             year: 2019,
             electionType: "Lok Sabha",
@@ -61,224 +73,110 @@ async function main() {
             state: "Uttar Pradesh",
             party: "Bharatiya Janata Party",
             result: "✅ Won",
-            totalVotes: 853895,
+            totalVotes: 674664,
             voteShare: 63.6,
             opponentName: "Shalini Yadav",
             victoryMargin: 479505
-          },
-          {
-            year: 2017,
-            electionType: "Vidhan Sabha",
-            constituency: "Varanasi South",
-            state: "Uttar Pradesh",
-            party: "Bharatiya Janata Party",
-            result: "✅ Won",
-            totalVotes: 125430,
-            voteShare: 58.2,
-            opponentName: "Ramesh Gupta",
-            victoryMargin: 35420
           }
         ]
       },
       
-      // Family Details
       familyDetail: {
         create: {
-          spouse: "Sunita Singh",
-          children: 2,
-          fatherName: "Late Shri Mahendra Singh",
-          motherName: "Smt. Kamala Devi",
-          background: "Born into a middle-class family in Varanasi. Father was a government school teacher and mother was a homemaker. Has two children - one son pursuing engineering and one daughter studying medicine."
+          spouse: "Jashodaben Chimanlal Modi",
+          children: 0,
+          fatherName: "Damodardas Mulchand Modi",
+          motherName: "Hiraben Modi",
+          background: "Born into a Modh-Ghanchi family in Vadnagar, Gujarat. Father ran a tea stall at the local railway station. Helped father in tea business during childhood.",
+          familyProfession: "Tea Business",
+          economicStatus: "Lower Middle",
+          familyOrigin: "Rural",
+          community: "OBC",
+          politicalLegacy: "Self-Made"
         }
       },
       
-      // Asset Details
       assetDetail: {
         create: {
-          totalAssets: 850.0,
-          movableAssets: 230.0,
-          immovableAssets: 620.0
+          totalAssets: 2500.0,
+          movableAssets: 500.0,
+          immovableAssets: 2000.0
         }
       },
       
-      // Criminal Cases
       criminalCase: {
-        create: [
-          {
-            title: "Alleged misuse of government funds",
-            description: "Case filed regarding alleged irregularities in rural development fund allocation during tenure as MLA",
-            status: "Pending",
-            filedAt: new Date("2020-03-15")
-          },
-          {
-            title: "Defamation case",
-            description: "Defamation case filed by political opponent regarding statements made during election campaign",
-            status: "Acquitted",
-            filedAt: new Date("2019-01-10")
-          }
-        ]
+        create: []
       },
       
-      // Public Profile
       PublicProfile: {
         create: {
-          coreIdeology: "Development for All - Sabka Saath Sabka Vikas",
-          visionStatement: "To transform Varanasi into a model constituency through sustainable development, digital empowerment, and preservation of cultural heritage while ensuring inclusive growth for all sections of society.",
-          publicPerception: "Viewed as a development-oriented leader with strong grassroots connections. Popular among youth for digital initiatives and among farmers for agricultural reforms. Some criticism regarding slow implementation of infrastructure projects.",
-          keyStrengths: ["Oratory Skills", "Grassroots Engagement", "Digital Literacy Advocacy", "Cultural Preservation"],
-          focusAreas: ["Digital Transformation", "Rural Empowerment", "Heritage Conservation", "Education Reform"],
+          coreIdeology: "Sabka Saath, Sabka Vikas, Sabka Vishwas",
+          visionStatement: "To make India a developed nation by 2047 through digital transformation, economic growth, and social inclusion while preserving cultural heritage and values.",
+          publicPerception: "Highly popular leader with strong oratory skills and decisive governance. Praised for economic reforms and infrastructure development. Some criticism on social issues and democratic institutions.",
+          keyStrengths: ["Oratory Skills", "Digital Innovation", "Economic Vision", "International Relations"],
+          focusAreas: ["Digital India", "Make in India", "Clean Energy", "Infrastructure Development"],
           leadershipStyle: "Transformative"
         }
       },
       
-      // News Articles
       newsArticles: {
         create: [
           {
-            headline: "Rajesh Kumar launches digital literacy program in rural Varanasi",
-            url: "https://timesofindia.com/rajesh-kumar-digital-literacy-varanasi",
-            publishedAt: new Date("2024-01-15")
+            headline: "PM Modi launches new infrastructure projects worth ₹15,000 crores",
+            url: "https://timesofindia.com/modi-infrastructure-projects-15000-cr",
+            publishedAt: new Date("2024-08-05")
           },
           {
-            headline: "MP Rajesh Kumar advocates for farmer loan waivers in Parliament",
-            url: "https://indianexpress.com/rajesh-kumar-farmer-loans-parliament",
-            publishedAt: new Date("2024-01-10")
+            headline: "Modi emphasizes renewable energy targets at G20 summit",
+            url: "https://indianexpress.com/modi-renewable-energy-g20",
+            publishedAt: new Date("2024-07-20")
           }
         ]
       }
     }
   });
 
-  // Politician 2: Priya Sharma
+  // Politician 2: Rahul Gandhi
   const politician2 = await prisma.politician.create({
     data: {
-      name: "Dr. Priya Sharma",
+      name: "Rahul Gandhi",
       party: "Indian National Congress",
-      state: "Rajasthan",
-      constituency: "Jaipur Rural",
-      age: 45,
-      gender: "Female",
-      education: "MBBS, MD Public Health, AIIMS Delhi",
-      criminalCases: 0,
-      totalAssets: 320.0,
-      position: "MLA",
-      biography: "A medical doctor turned politician, dedicated to healthcare reforms and women's empowerment. Has been instrumental in improving rural healthcare infrastructure.",
-      profileImage: "https://images.unsplash.com/photo-1494790108755-2616b612b5c5?w=400&h=400&fit=crop&crop=face",
-      avgRatings: 5,
-      numOfSearched: 8750,
-      ratingsOutOf: 12400,
-      
-      workHistory: {
-        create: [
-          {
-            role: "Medical Officer",
-            startYear: 2005,
-            endYear: 2015,
-            constituency: "District Hospital Jaipur",
-            state: "Rajasthan"
-          },
-          {
-            role: "MLA",
-            startYear: 2018,
-            endYear: null,
-            constituency: "Jaipur Rural",
-            state: "Rajasthan"
-          }
-        ]
-      },
-      
-      electionResult: {
-        create: [
-          {
-            year: 2018,
-            electionType: "Vidhan Sabha",
-            constituency: "Jaipur Rural",
-            state: "Rajasthan",
-            party: "Indian National Congress",
-            result: "✅ Won",
-            totalVotes: 98540,
-            voteShare: 52.3,
-            opponentName: "Vikram Singh Rathore",
-            victoryMargin: 15680
-          }
-        ]
-      },
-      
-      familyDetail: {
-        create: {
-          spouse: "Dr. Amit Sharma",
-          children: 1,
-          fatherName: "Shri Rajendra Prasad",
-          motherName: "Smt. Meera Devi",
-          background: "Daughter of a government school principal. Married to a cardiologist. Has one daughter studying in class 10th."
-        }
-      },
-      
-      assetDetail: {
-        create: {
-          totalAssets: 320.0,
-          movableAssets: 120.0,
-          immovableAssets: 200.0
-        }
-      },
-      
-      PublicProfile: {
-        create: {
-          coreIdeology: "Healthcare for All - Swasthya Seva",
-          visionStatement: "To ensure quality healthcare reaches every doorstep while empowering women through education and economic opportunities.",
-          publicPerception: "Highly respected for her medical background and genuine concern for public welfare. Strong support among women and healthcare workers.",
-          keyStrengths: ["Medical Expertise", "Women's Rights Advocacy", "Policy Making", "Community Health"],
-          focusAreas: ["Healthcare Reform", "Women Empowerment", "Rural Development", "Education"],
-          leadershipStyle: "Inclusive"
-        }
-      },
-      
-      newsArticles: {
-        create: [
-          {
-            headline: "Dr. Priya Sharma inaugurates mobile health clinics for rural areas",
-            url: "https://hindustantimes.com/priya-sharma-mobile-clinics-rajasthan",
-            publishedAt: new Date("2024-01-20")
-          }
-        ]
-      }
-    }
-  });
-
-  // Politician 3: Arjun Reddy
-  const politician3 = await prisma.politician.create({
-    data: {
-      name: "Arjun Reddy Naidu",
-      party: "Telugu Desam Party",
-      state: "Andhra Pradesh",
-      constituency: "Vijayawada East",
-      age: 38,
+      state: "Kerala",
+      constituency: "Wayanad",
+      age: 54,
       gender: "Male",
-      education: "BTech Computer Science, MBA",
-      criminalCases: 1,
-      totalAssets: 1250.0,
-      position: "MLA",
-      biography: "A tech entrepreneur turned politician, focusing on digital governance and startup ecosystem development in Andhra Pradesh.",
+      education: "BA History, Harvard University; MPhil Development Studies, Trinity College Cambridge",
+      criminalCases: 3,
+      totalAssets: 1640.0, // 16.4 Cr
+      position: "MP",
+      biography: "Leader of Opposition in Lok Sabha. Former President of Indian National Congress. Member of the Nehru-Gandhi family with extensive political heritage.",
       profileImage: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-      avgRatings: 4,
-      numOfSearched: 12300,
-      ratingsOutOf: 18900,
+      avgRatings: 3,
+      numOfSearched: 125420,
+      ratingsOutOf: 185680,
       
       workHistory: {
         create: [
           {
-            role: "IT Entrepreneur",
-            startYear: 2010,
+            role: "MP",
+            startYear: 2004,
             endYear: 2019,
-            constituency: "Hyderabad",
-            state: "Andhra Pradesh"
+            constituency: "Amethi",
+            state: "Uttar Pradesh"
           },
           {
-            role: "MLA",
+            role: "Congress President",
+            startYear: 2017,
+            endYear: 2019,
+            constituency: "National",
+            state: "National"
+          },
+          {
+            role: "MP",
             startYear: 2019,
             endYear: null,
-            constituency: "Vijayawada East",
-            state: "Andhra Pradesh"
+            constituency: "Wayanad",
+            state: "Kerala"
           }
         ]
       },
@@ -286,34 +184,51 @@ async function main() {
       electionResult: {
         create: [
           {
-            year: 2019,
-            electionType: "Vidhan Sabha",
-            constituency: "Vijayawada East",
-            state: "Andhra Pradesh",
-            party: "Telugu Desam Party",
+            year: 2024,
+            electionType: "Lok Sabha",
+            constituency: "Wayanad",
+            state: "Kerala",
+            party: "Indian National Congress",
             result: "✅ Won",
-            totalVotes: 89650,
-            voteShare: 48.7,
-            opponentName: "Srinivas Rao",
-            victoryMargin: 8940
+            totalVotes: 647445,
+            voteShare: 59.7,
+            opponentName: "Annie Raja",
+            victoryMargin: 364422
+          },
+          {
+            year: 2019,
+            electionType: "Lok Sabha",
+            constituency: "Wayanad",
+            state: "Kerala",
+            party: "Indian National Congress",
+            result: "✅ Won",
+            totalVotes: 706367,
+            voteShare: 64.7,
+            opponentName: "P P Suneer",
+            victoryMargin: 431770
           }
         ]
       },
       
       familyDetail: {
         create: {
-          spouse: "Lakshmi Reddy",
-          children: 2,
-          fatherName: "Venkata Reddy",
-          motherName: "Smt. Padmavathi",
-          background: "Son of a successful businessman. Married to a software engineer. Has twin sons aged 8 years."
+          spouse: null,
+          children: 0,
+          fatherName: "Rajiv Gandhi",
+          motherName: "Sonia Gandhi",
+          background: "Born into the Nehru-Gandhi political dynasty. Son of former Prime Minister Rajiv Gandhi and Congress leader Sonia Gandhi. Educated abroad before entering politics.",
+          familyProfession: "Politics",
+          economicStatus: "Upper Class",
+          familyOrigin: "Urban",
+          community: "General",
+          politicalLegacy: "Fourth Generation"
         }
       },
       
       assetDetail: {
         create: {
-          totalAssets: 1250.0,
-          movableAssets: 450.0,
+          totalAssets: 1640.0,
+          movableAssets: 840.0,
           immovableAssets: 800.0
         }
       },
@@ -321,510 +236,95 @@ async function main() {
       criminalCase: {
         create: [
           {
-            title: "Tax evasion allegation",
-            description: "IT department investigation regarding alleged tax irregularities in previous business ventures",
-            status: "Under Investigation",
-            filedAt: new Date("2021-06-20")
+            title: "National Herald Case",
+            description: "Allegations of financial irregularities in the acquisition of Associated Journals Limited",
+            status: "Pending",
+            filedAt: new Date("2014-06-26")
+          },
+          {
+            title: "Defamation case - 'Modi surname' remark",
+            description: "Defamation case filed over remarks about people with Modi surname being thieves",
+            status: "Acquitted",
+            filedAt: new Date("2019-04-15")
+          },
+          {
+            title: "Savarkar defamation case",
+            description: "Case filed over comments on freedom fighter Veer Savarkar",
+            status: "Pending",
+            filedAt: new Date("2023-07-20")
           }
         ]
       },
       
       PublicProfile: {
         create: {
-          coreIdeology: "Digital First Governance",
-          visionStatement: "To make Andhra Pradesh the leading digital state of India through innovation, technology adoption, and entrepreneurship promotion.",
-          publicPerception: "Popular among young voters and IT professionals. Some skepticism from traditional voters regarding his business background.",
-          keyStrengths: ["Technology Vision", "Innovation", "Youth Connect", "Business Acumen"],
-          focusAreas: ["Digital Infrastructure", "Startup Ecosystem", "Innovation Hubs", "Skill Development"],
-          leadershipStyle: "Innovative"
+          coreIdeology: "Social Justice and Inclusive Development",
+          visionStatement: "To build an India that provides equal opportunities for all, protects democratic institutions, and ensures social justice while promoting sustainable economic growth.",
+          publicPerception: "Viewed as a champion of marginalized communities and democratic values. Strong critic of current government policies. Mixed public perception on leadership capabilities and political strategy.",
+          keyStrengths: ["Youth Connect", "International Education", "Social Justice Advocacy", "Democratic Values"],
+          focusAreas: ["Employment Generation", "Farmer Rights", "Social Justice", "Democratic Institutions"],
+          leadershipStyle: "Inclusive"
         }
       },
       
       newsArticles: {
         create: [
           {
-            headline: "Arjun Reddy proposes blockchain-based land records system",
-            url: "https://deccanchronicle.com/arjun-reddy-blockchain-land-records",
-            publishedAt: new Date("2024-01-18")
+            headline: "Rahul Gandhi leads opposition protest on Manipur violence",
+            url: "https://thehindu.com/rahul-gandhi-manipur-protest",
+            publishedAt: new Date("2024-07-25")
+          },
+          {
+            headline: "Gandhi calls for caste census in Parliament speech",
+            url: "https://indianexpress.com/rahul-gandhi-caste-census-parliament",
+            publishedAt: new Date("2024-07-15")
           }
         ]
       }
     }
   });
 
-  // Politician 4: Fatima Khan
-  const politician4 = await prisma.politician.create({
+  // Politician 3: Mamata Banerjee
+  const politician3 = await prisma.politician.create({
     data: {
-      name: "Fatima Khan",
+      name: "Mamata Banerjee",
       party: "All India Trinamool Congress",
       state: "West Bengal",
-      constituency: "Kolkata North",
-      age: 41,
+      constituency: "Bhabanipur",
+      age: 69,
       gender: "Female",
-      education: "LLB, Calcutta University",
-      criminalCases: 0,
-      totalAssets: 180.0,
-      position: "MP",
-      biography: "A lawyer and social activist dedicated to minority rights and urban development. Known for her work in slum rehabilitation and women's safety.",
-      profileImage: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=400&h=400&fit=crop&crop=face",
+      education: "BA History, MA Islamic History, LLB, MA Geography",
+      criminalCases: 2,
+      totalAssets: 1530.0, // 15.3 Cr
+      position: "Chief Minister",
+      biography: "Chief Minister of West Bengal since 2011. Founder of All India Trinamool Congress. Known for her fiery speeches and strong regional leadership.",
+      profileImage: "https://images.unsplash.com/photo-1494790108755-2616c88b2dc7?w=400&h=400&fit=crop&crop=face",
       avgRatings: 4,
-      numOfSearched: 9870,
-      ratingsOutOf: 14200,
+      numOfSearched: 95420,
+      ratingsOutOf: 135680,
       
       workHistory: {
         create: [
           {
-            role: "Advocate",
-            startYear: 2008,
-            endYear: 2016,
-            constituency: "Calcutta High Court",
-            state: "West Bengal"
-          },
-          {
-            role: "Councilor",
-            startYear: 2015,
-            endYear: 2019,
-            constituency: "Kolkata Municipal Corporation",
+            role: "MLA",
+            startYear: 1984,
+            endYear: 1991,
+            constituency: "Jadavpur",
             state: "West Bengal"
           },
           {
             role: "MP",
-            startYear: 2019,
-            endYear: null,
-            constituency: "Kolkata North",
+            startYear: 1991,
+            endYear: 2011,
+            constituency: "Calcutta South",
             state: "West Bengal"
-          }
-        ]
-      },
-      
-      electionResult: {
-        create: [
-          {
-            year: 2019,
-            electionType: "Lok Sabha",
-            constituency: "Kolkata North",
-            state: "West Bengal",
-            party: "All India Trinamool Congress",
-            result: "✅ Won",
-            totalVotes: 756420,
-            voteShare: 59.8,
-            opponentName: "Rahul Sinha",
-            victoryMargin: 124563
-          }
-        ]
-      },
-      
-      familyDetail: {
-        create: {
-          spouse: "Mohd. Arif Khan",
-          children: 2,
-          fatherName: "Late Abdul Rahman Khan",
-          motherName: "Smt. Nasreen Begum",
-          background: "Daughter of a small businessman. Husband is a chartered accountant. Has two children - one son and one daughter."
-        }
-      },
-      
-      assetDetail: {
-        create: {
-          totalAssets: 180.0,
-          movableAssets: 80.0,
-          immovableAssets: 100.0
-        }
-      },
-      
-      PublicProfile: {
-        create: {
-          coreIdeology: "Justice and Equality for All",
-          visionStatement: "To create an inclusive society where minorities feel secure and women are empowered to participate fully in economic and social development.",
-          publicPerception: "Highly respected for her integrity and commitment to social justice. Strong support among minorities and women voters.",
-          keyStrengths: ["Legal Expertise", "Social Justice", "Community Mobilization", "Women's Rights"],
-          focusAreas: ["Minority Rights", "Urban Development", "Women Safety", "Legal Reforms"],
-          leadershipStyle: "Empathetic"
-        }
-      },
-      
-      newsArticles: {
-        create: [
-          {
-            headline: "Fatima Khan leads initiative for women's safety in Kolkata",
-            url: "https://telegraphindia.com/fatima-khan-women-safety-kolkata",
-            publishedAt: new Date("2024-01-22")
-          }
-        ]
-      }
-    }
-  });
-
-  // Politician 5: Suresh Patel
-  const politician5 = await prisma.politician.create({
-    data: {
-      name: "Suresh Bhai Patel",
-      party: "Aam Aadmi Party",
-      state: "Gujarat",
-      constituency: "Ahmedabad West",
-      age: 55,
-      gender: "Male",
-      education: "BCom, Certified Public Accountant",
-      criminalCases: 3,
-      totalAssets: 450.0,
-      position: "MLA",
-      biography: "Former businessman and anti-corruption activist. Known for his transparency initiatives and efforts to clean up local governance.",
-      profileImage: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
-      avgRatings: 3,
-      numOfSearched: 6540,
-      ratingsOutOf: 11200,
-      
-      workHistory: {
-        create: [
-          {
-            role: "Business Owner",
-            startYear: 1995,
-            endYear: 2018,
-            constituency: "Ahmedabad",
-            state: "Gujarat"
           },
           {
-            role: "Social Activist",
-            startYear: 2015,
-            endYear: 2020,
-            constituency: "Ahmedabad",
-            state: "Gujarat"
-          },
-          {
-            role: "MLA",
-            startYear: 2022,
+            role: "Chief Minister",
+            startYear: 2011,
             endYear: null,
-            constituency: "Ahmedabad West",
-            state: "Gujarat"
-          }
-        ]
-      },
-      
-      electionResult: {
-        create: [
-          {
-            year: 2022,
-            electionType: "Vidhan Sabha",
-            constituency: "Ahmedabad West",
-            state: "Gujarat",
-            party: "Aam Aadmi Party",
-            result: "✅ Won",
-            totalVotes: 78950,
-            voteShare: 45.2,
-            opponentName: "Kiran Patel",
-            victoryMargin: 3420
-          }
-        ]
-      },
-      
-      familyDetail: {
-        create: {
-          spouse: "Manju Ben Patel",
-          children: 3,
-          fatherName: "Late Bharat Bhai Patel",
-          motherName: "Smt. Kokila Ben",
-          background: "Son of a farmer who moved to the city. Built a successful textile business. Has three children - two sons and one daughter."
-        }
-      },
-      
-      assetDetail: {
-        create: {
-          totalAssets: 450.0,
-          movableAssets: 180.0,
-          immovableAssets: 270.0
-        }
-      },
-      
-      criminalCase: {
-        create: [
-          {
-            title: "Protest related charges",
-            description: "Cases filed during anti-corruption protests and civil disobedience movements",
-            status: "Pending",
-            filedAt: new Date("2018-08-15")
-          },
-          {
-            title: "Defiance of prohibitory orders",
-            description: "Case related to organizing protests without permission during anti-government demonstrations",
-            status: "Bailed",
-            filedAt: new Date("2019-03-10")
-          },
-          {
-            title: "Public nuisance",
-            description: "Case filed for blocking traffic during protest march",
-            status: "Acquitted",
-            filedAt: new Date("2017-12-05")
-          }
-        ]
-      },
-      
-      PublicProfile: {
-        create: {
-          coreIdeology: "Transparent Governance",
-          visionStatement: "To eliminate corruption from grassroots level and ensure transparent, accountable governance that serves the common people.",
-          publicPerception: "Respected for his anti-corruption stance but faces criticism for his confrontational approach. Popular among middle-class voters.",
-          keyStrengths: ["Anti-Corruption", "Financial Management", "Grassroots Connect", "Transparency"],
-          focusAreas: ["Corruption Elimination", "Transparent Governance", "Public Services", "Administrative Reform"],
-          leadershipStyle: "Reformative"
-        }
-      },
-      
-      newsArticles: {
-        create: [
-          {
-            headline: "Suresh Patel exposes corruption in municipal contracts",
-            url: "https://gujaratsamachar.com/suresh-patel-corruption-municipal",
-            publishedAt: new Date("2024-01-25")
-          }
-        ]
-      }
-    }
-  });
-
-  // Politician 6: Meera Joshi
-  const politician6 = await prisma.politician.create({
-    data: {
-      name: "Meera Joshi",
-      party: "Shiv Sena",
-      state: "Maharashtra",
-      constituency: "Mumbai South",
-      age: 48,
-      gender: "Female",
-      education: "MA Sociology, PhD Social Work",
-      criminalCases: 0,
-      totalAssets: 680.0,
-      position: "MP",
-      biography: "Social worker and women's rights activist with extensive experience in urban development and slum rehabilitation programs.",
-      profileImage: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
-      avgRatings: 4,
-      numOfSearched: 11450,
-      ratingsOutOf: 16800,
-      
-      workHistory: {
-        create: [
-          {
-            role: "Social Worker",
-            startYear: 2000,
-            endYear: 2014,
-            constituency: "Mumbai Slums",
-            state: "Maharashtra"
-          },
-          {
-            role: "Municipal Corporator",
-            startYear: 2012,
-            endYear: 2017,
-            constituency: "Mumbai Municipal Corporation",
-            state: "Maharashtra"
-          },
-          {
-            role: "MP",
-            startYear: 2019,
-            endYear: null,
-            constituency: "Mumbai South",
-            state: "Maharashtra"
-          }
-        ]
-      },
-      
-      electionResult: {
-        create: [
-          {
-            year: 2019,
-            electionType: "Lok Sabha",
-            constituency: "Mumbai South",
-            state: "Maharashtra",
-            party: "Shiv Sena",
-            result: "✅ Won",
-            totalVotes: 542380,
-            voteShare: 51.7,
-            opponentName: "Milind Deora",
-            victoryMargin: 89560
-          }
-        ]
-      },
-      
-      familyDetail: {
-        create: {
-          spouse: "Prakash Joshi",
-          children: 2,
-          fatherName: "Shri Ramesh Kulkarni",
-          motherName: "Smt. Sushila Kulkarni",
-          background: "Daughter of a government officer. Husband works in the film industry. Has two daughters pursuing higher education."
-        }
-      },
-      
-      assetDetail: {
-        create: {
-          totalAssets: 680.0,
-          movableAssets: 280.0,
-          immovableAssets: 400.0
-        }
-      },
-      
-      PublicProfile: {
-        create: {
-          coreIdeology: "Mumbai for All Mumbaikars",
-          visionStatement: "To ensure Mumbai remains a city of dreams where every resident, regardless of economic status, has access to basic amenities and opportunities for growth.",
-          publicPerception: "Highly regarded for her work with underprivileged communities. Strong support among women and urban poor.",
-          keyStrengths: ["Social Work", "Urban Planning", "Women Empowerment", "Community Development"],
-          focusAreas: ["Slum Rehabilitation", "Urban Development", "Women's Rights", "Housing for All"],
-          leadershipStyle: "Compassionate"
-        }
-      },
-      
-      newsArticles: {
-        create: [
-          {
-            headline: "Meera Joshi launches affordable housing project in Mumbai",
-            url: "https://mumbaimirror.com/meera-joshi-affordable-housing-mumbai",
-            publishedAt: new Date("2024-01-28")
-          }
-        ]
-      }
-    }
-  });
-
-  // Politician 7: Vikram Singh
-  const politician7 = await prisma.politician.create({
-    data: {
-      name: "Vikram Singh Chauhan",
-      party: "Indian National Congress",
-      state: "Himachal Pradesh",
-      constituency: "Shimla",
-      age: 49,
-      gender: "Male",
-      education: "BSc Agriculture, Diploma in Horticulture",
-      criminalCases: 1,
-      totalAssets: 290.0,
-      position: "MLA",
-      biography: "Former army officer turned politician, focusing on border security, tourism development, and sustainable agriculture in hill states.",
-      profileImage: "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=400&h=400&fit=crop&crop=face",
-      avgRatings: 4,
-      numOfSearched: 7850,
-      ratingsOutOf: 12100,
-      
-      workHistory: {
-        create: [
-          {
-            role: "Army Officer",
-            startYear: 1998,
-            endYear: 2015,
-            constituency: "Indian Army",
-            state: "Various"
-          },
-          {
-            role: "MLA",
-            startYear: 2017,
-            endYear: null,
-            constituency: "Shimla",
-            state: "Himachal Pradesh"
-          }
-        ]
-      },
-      
-      electionResult: {
-        create: [
-          {
-            year: 2017,
-            electionType: "Vidhan Sabha",
-            constituency: "Shimla",
-            state: "Himachal Pradesh",
-            party: "Indian National Congress",
-            result: "✅ Won",
-            totalVotes: 65420,
-            voteShare: 54.8,
-            opponentName: "Suresh Bharadwaj",
-            victoryMargin: 12450
-          }
-        ]
-      },
-      
-      familyDetail: {
-        create: {
-          spouse: "Sunita Chauhan",
-          children: 2,
-          fatherName: "Late Col. Mahendra Singh",
-          motherName: "Smt. Kamla Devi",
-          background: "Son of a retired army colonel. Wife is a school teacher. Has one son in Indian Army and one daughter studying engineering."
-        }
-      },
-      
-      assetDetail: {
-        create: {
-          totalAssets: 290.0,
-          movableAssets: 120.0,
-          immovableAssets: 170.0
-        }
-      },
-      
-      criminalCase: {
-        create: [
-          {
-            title: "Land dispute case",
-            description: "Civil dispute regarding ancestral property boundaries with neighboring landowner",
-            status: "Under Mediation",
-            filedAt: new Date("2020-11-12")
-          }
-        ]
-      },
-      
-      PublicProfile: {
-        create: {
-          coreIdeology: "Hill State Development with Security",
-          visionStatement: "To develop Himachal Pradesh as a model hill state balancing economic growth through sustainable tourism while ensuring border security and environmental protection.",
-          publicPerception: "Respected for his military background and disciplined approach. Popular among ex-servicemen and tourism industry.",
-          keyStrengths: ["Military Experience", "Discipline", "Security Awareness", "Tourism Development"],
-          focusAreas: ["Border Security", "Sustainable Tourism", "Hill Agriculture", "Ex-servicemen Welfare"],
-          leadershipStyle: "Disciplined"
-        }
-      },
-      
-      newsArticles: {
-        create: [
-          {
-            headline: "Vikram Singh proposes eco-tourism policy for Himachal",
-            url: "https://tribuneindia.com/vikram-singh-eco-tourism-himachal",
-            publishedAt: new Date("2024-01-30")
-          }
-        ]
-      }
-    }
-  });
-
-  // Politician 8: Kavita Menon
-  const politician8 = await prisma.politician.create({
-    data: {
-      name: "Dr. Kavita Menon",
-      party: "Communist Party of India (Marxist)",
-      state: "Kerala",
-      constituency: "Thiruvananthapuram",
-      age: 44,
-      gender: "Female",
-      education: "MBBS, MD Pediatrics, MPH",
-      criminalCases: 0,
-      totalAssets: 85.0,
-      position: "MLA",
-      biography: "Pediatrician and public health expert committed to healthcare accessibility and social justice. Known for her work in child health and nutrition programs.",
-      profileImage: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&h=400&fit=crop&crop=face",
-      avgRatings: 5,
-      numOfSearched: 5420,
-      ratingsOutOf: 8900,
-      
-      workHistory: {
-        create: [
-          {
-            role: "Pediatrician",
-            startYear: 2005,
-            endYear: 2021,
-            constituency: "Medical College Hospital",
-            state: "Kerala"
-          },
-          {
-            role: "MLA",
-            startYear: 2021,
-            endYear: null,
-            constituency: "Thiruvananthapuram",
-            state: "Kerala"
+            constituency: "Bhabanipur",
+            state: "West Bengal"
           }
         ]
       },
@@ -834,73 +334,538 @@ async function main() {
           {
             year: 2021,
             electionType: "Vidhan Sabha",
-            constituency: "Thiruvananthapuram",
-            state: "Kerala",
-            party: "Communist Party of India (Marxist)",
+            constituency: "Bhabanipur",
+            state: "West Bengal",
+            party: "All India Trinamool Congress",
             result: "✅ Won",
-            totalVotes: 89640,
-            voteShare: 49.8,
-            opponentName: "Rajeev Chandrasekhar",
-            victoryMargin: 4850
+            totalVotes: 85263,
+            voteShare: 71.9,
+            opponentName: "Priyanka Tibrewal",
+            victoryMargin: 58835
+          },
+          {
+            year: 2011,
+            electionType: "Vidhan Sabha",
+            constituency: "Bhabanipur",
+            state: "West Bengal",
+            party: "All India Trinamool Congress",
+            result: "✅ Won",
+            totalVotes: 69564,
+            voteShare: 62.1,
+            opponentName: "Deepa Dasmunshi",
+            victoryMargin: 50080
           }
         ]
       },
       
       familyDetail: {
         create: {
-          spouse: "Dr. Suresh Menon",
-          children: 1,
-          fatherName: "Shri K.P. Nair",
-          motherName: "Smt. Latha Nair",
-          background: "Daughter of a retired teacher. Married to a cardiologist. Has one son studying medicine."
+          spouse: null,
+          children: 0,
+          fatherName: "Upendra Nath Banerjee",
+          motherName: "Gayetri Devi",
+          background: "Born in a middle-class Bengali family in Calcutta. Father was a freedom fighter. Started political career at a young age with Congress party.",
+          familyProfession: "Freedom Fighter/Teacher",
+          economicStatus: "Middle Class",
+          familyOrigin: "Urban",
+          community: "General",
+          politicalLegacy: "Self-Made"
         }
       },
       
       assetDetail: {
         create: {
-          totalAssets: 85.0,
-          movableAssets: 50.0,
-          immovableAssets: 35.0
+          totalAssets: 1530.0,
+          movableAssets: 430.0,
+          immovableAssets: 1100.0
         }
       },
       
       criminalCase: {
         create: [
           {
-            title: "Land dispute case",
-            description: "Civil dispute regarding ancestral property boundaries with neighboring landowner",
-            status: "Under Mediation",
-            filedAt: new Date("2020-11-12")
+            title: "Narada Sting Operation",
+            description: "Case related to alleged bribery captured in sting operation involving TMC leaders",
+            status: "Pending",
+            filedAt: new Date("2017-03-17")
+          },
+          {
+            title: "Chit Fund Scam",
+            description: "Investigation related to various chit fund companies operating in West Bengal",
+            status: "Under Investigation",
+            filedAt: new Date("2013-04-24")
           }
         ]
       },
       
       PublicProfile: {
         create: {
-          coreIdeology: "Health and Social Justice",
-          visionStatement: "To ensure access to quality healthcare for all and promote social justice through education and empowerment.",
-          publicPerception: "Known for her dedication to child health and nutrition programs. Popular among families and healthcare professionals.",
-          keyStrengths: ["Pediatrician", "Public Health Expertise", "Social Justice", "Child Health"],  
-          focusAreas: ["Child Health", "Health Accessibility", "Social Justice", "Child Nutrition"],
-          leadershipStyle: "Empathetic"  
+          coreIdeology: "Ma-Mati-Manush (Mother-Soil-People)",
+          visionStatement: "To make West Bengal the most developed state in India through industrial growth, cultural preservation, and social welfare while maintaining Bengali identity.",
+          publicPerception: "Strong regional leader with mass appeal. Known for emotional connect with people and decisive governance. Criticism on handling of opposition and democratic dissent.",
+          keyStrengths: ["Mass Appeal", "Regional Pride", "Quick Decision Making", "Cultural Connect"],
+          focusAreas: ["Industrial Development", "Cultural Preservation", "Women Empowerment", "Social Welfare"],
+          leadershipStyle: "Populist"
         }
-      },      
+      },
       
       newsArticles: {
         create: [
           {
-            headline: "Kavita Menon launches child health initiative in Kerala",
-            url: "https://hindustantimes.com/kavita-menon-child-health-initiative-kerala",
-            publishedAt: new Date("2024-01-30")
+            headline: "Mamata launches new industrial policy for West Bengal",
+            url: "https://telegraphindia.com/mamata-industrial-policy-bengal",
+            publishedAt: new Date("2024-08-01")
+          },
+          {
+            headline: "Bengal CM announces relief for flood-affected districts",
+            url: "https://anandabazar.com/mamata-flood-relief-bengal",
+            publishedAt: new Date("2024-07-18")
           }
         ]
       }
     }
   });
+
+  // Politician 4: Yogi Adityanath
+  const politician4 = await prisma.politician.create({
+    data: {
+      name: "Yogi Adityanath",
+      party: "Bharatiya Janata Party",
+      state: "Uttar Pradesh",
+      constituency: "Gorakhpur Urban",
+      age: 52,
+      gender: "Male",
+      education: "BSc Mathematics",
+      criminalCases: 6,
+      totalAssets: 740.0, // 7.4 Cr
+      position: "Chief Minister",
+      biography: "Chief Minister of Uttar Pradesh since 2017. Former MP from Gorakhpur for five consecutive terms. Head priest of Gorakhnath Temple.",
+      profileImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+      avgRatings: 3,
+      numOfSearched: 85420,
+      ratingsOutOf: 125680,
+      
+      workHistory: {
+        create: [
+          {
+            role: "MP",
+            startYear: 1998,
+            endYear: 2017,
+            constituency: "Gorakhpur",
+            state: "Uttar Pradesh"
+          },
+          {
+            role: "Head Priest",
+            startYear: 2014,
+            endYear: null,
+            constituency: "Gorakhnath Temple",
+            state: "Uttar Pradesh"
+          },
+          {
+            role: "Chief Minister",
+            startYear: 2017,
+            endYear: null,
+            constituency: "Gorakhpur Urban",
+            state: "Uttar Pradesh"
+          }
+        ]
+      },
+      
+      electionResult: {
+        create: [
+          {
+            year: 2022,
+            electionType: "Vidhan Sabha",
+            constituency: "Gorakhpur Urban",
+            state: "Uttar Pradesh",
+            party: "Bharatiya Janata Party",
+            result: "✅ Won",
+            totalVotes: 110564,
+            voteShare: 67.3,
+            opponentName: "Subhawati Shukla",
+            victoryMargin: 74782
+          },
+          {
+            year: 2014,
+            electionType: "Lok Sabha",
+            constituency: "Gorakhpur",
+            state: "Uttar Pradesh",
+            party: "Bharatiya Janata Party",
+            result: "✅ Won",
+            totalVotes: 597648,
+            voteShare: 61.2,
+            opponentName: "Praveen Kumar Nishad",
+            victoryMargin: 312692
+          }
+        ]
+      },
+      
+      familyDetail: {
+        create: {
+          spouse: null,
+          children: 0,
+          fatherName: "Anand Singh Bisht",
+          motherName: "Savitri Devi",
+          background: "Born as Ajay Singh Bisht in Panchur village, Uttarakhand. Became a disciple of Mahant Avaidyanath and took sanyas. Dedicated to religious and political service.",
+          familyProfession: "Agriculture/Forest Officer",
+          economicStatus: "Middle Class",
+          familyOrigin: "Rural",
+          community: "General",
+          politicalLegacy: "Self-Made"
+        }
+      },
+      
+      assetDetail: {
+        create: {
+          totalAssets: 740.0,
+          movableAssets: 140.0,
+          immovableAssets: 600.0
+        }
+      },
+      
+      criminalCase: {
+        create: [
+          {
+            title: "Communal riots case",
+            description: "Cases related to alleged inflammatory speeches during communal tensions",
+            status: "Pending",
+            filedAt: new Date("2007-01-27")
+          },
+          {
+            title: "Unlawful assembly",
+            description: "Case filed for unlawful assembly and rioting during protests",
+            status: "Acquitted",
+            filedAt: new Date("2006-11-15")
+          },
+          {
+            title: "Attempt to murder",
+            description: "Case related to alleged attack on opponents during political rivalry",
+            status: "Under Trial",
+            filedAt: new Date("2008-03-10")
+          }
+        ]
+      },
+      
+      PublicProfile: {
+        create: {
+          coreIdeology: "Hindutva and Cultural Nationalism",
+          visionStatement: "To transform Uttar Pradesh into a developed state through law and order, infrastructure development, and cultural revival while ensuring social harmony.",
+          publicPerception: "Strong administrator known for improved law and order. Popular among Hindu voters for cultural initiatives. Criticism on minority rights and democratic space.",
+          keyStrengths: ["Law and Order", "Religious Leadership", "Administrative Skills", "Mass Base"],
+          focusAreas: ["Law and Order", "Infrastructure", "Religious Tourism", "Industrial Development"],
+          leadershipStyle: "Authoritative"
+        }
+      },
+      
+      newsArticles: {
+        create: [
+          {
+            headline: "Yogi government launches new industrial policy for UP",
+            url: "https://timesofindia.com/yogi-industrial-policy-up",
+            publishedAt: new Date("2024-08-03")
+          },
+          {
+            headline: "UP CM inaugurates religious tourism circuit projects",
+            url: "https://indianexpress.com/yogi-religious-tourism-up",
+            publishedAt: new Date("2024-07-22")
+          }
+        ]
+      }
+    }
+  });
+
+  // Politician 5: Arvind Kejriwal
+  const politician5 = await prisma.politician.create({
+    data: {
+      name: "Arvind Kejriwal",
+      party: "Aam Aadmi Party",
+      state: "Delhi",
+      constituency: "New Delhi",
+      age: 56,
+      gender: "Male",
+      education: "BTech Mechanical Engineering IIT Kharagpur",
+      criminalCases: 4,
+      totalAssets: 230.0, // 2.3 Cr
+      position: "Chief Minister",
+      biography: "Chief Minister of Delhi. Former IRS officer and social activist. Founder of Aam Aadmi Party. Known for anti-corruption movement and welfare policies.",
+      profileImage: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
+      avgRatings: 4,
+      numOfSearched: 115420,
+      ratingsOutOf: 155680,
+      
+      workHistory: {
+        create: [
+          {
+            role: "IRS Officer",
+            startYear: 1992,
+            endYear: 2006,
+            constituency: "Income Tax Department",
+            state: "Delhi"
+          },
+          {
+            role: "Social Activist",
+            startYear: 2006,
+            endYear: 2012,
+            constituency: "Anti-corruption Movement",
+            state: "Delhi"
+          },
+          {
+            role: "Chief Minister",
+            startYear: 2013,
+            endYear: null,
+            constituency: "New Delhi",
+            state: "Delhi"
+          }
+        ]
+      },
+      
+      electionResult: {
+        create: [
+          {
+            year: 2020,
+            electionType: "Vidhan Sabha",
+            constituency: "New Delhi",
+            state: "Delhi",
+            party: "Aam Aadmi Party",
+            result: "✅ Won",
+            totalVotes: 71596,
+            voteShare: 53.6,
+            opponentName: "Sunil Kumar Yadav",
+            victoryMargin: 21697
+          },
+          {
+            year: 2015,
+            electionType: "Vidhan Sabha",
+            constituency: "New Delhi",
+            state: "Delhi",
+            party: "Aam Aadmi Party",
+            result: "✅ Won",
+            totalVotes: 69076,
+            voteShare: 62.3,
+            opponentName: "Kiran Walia",
+            victoryMargin: 31583
+          }
+        ]
+      },
+      
+      familyDetail: {
+        create: {
+          spouse: "Sunita Kejriwal",
+          children: 2,
+          fatherName: "Gobind Ram Kejriwal",
+          motherName: "Gita Devi",
+          background: "Born in a middle-class family in Siwani, Haryana. Father was an electrical engineer. Studied at IIT Kharagpur and worked as IRS officer before entering politics.",
+          familyProfession: "Engineering/Government Service",
+          economicStatus: "Middle Class",
+          familyOrigin: "Rural",
+          community: "General",
+          politicalLegacy: "Self-Made"
+        }
+      },
+      
+      assetDetail: {
+        create: {
+          totalAssets: 230.0,
+          movableAssets: 80.0,
+          immovableAssets: 150.0
+        }
+      },
+      
+      criminalCase: {
+        create: [
+          {
+            title: "Defamation case - Nitin Gadkari",
+            description: "Criminal defamation case filed by Nitin Gadkari over corruption allegations",
+            status: "Pending",
+            filedAt: new Date("2015-05-19")
+          },
+          {
+            title: "Defamation case - Arun Jaitley",
+            description: "Criminal defamation case related to allegations against Arun Jaitley",
+            status: "Acquitted",
+            filedAt: new Date("2017-12-07")
+          },
+          {
+            title: "Excise Policy case",
+            description: "Case related to alleged irregularities in Delhi's excise policy",
+            status: "Under Investigation",
+            filedAt: new Date("2022-08-17")
+          }
+        ]
+      },
+      
+      PublicProfile: {
+        create: {
+          coreIdeology: "Swaraj and Anti-Corruption",
+          visionStatement: "To create a corruption-free governance model focused on education, healthcare, and citizen services while ensuring transparency and accountability.",
+          publicPerception: "Popular for education and healthcare reforms in Delhi. Strong anti-corruption stance. Criticism on confrontational politics and governance style.",
+          keyStrengths: ["Anti-Corruption", "Education Reform", "Healthcare Innovation", "Citizen Connect"],
+          focusAreas: ["Education", "Healthcare", "Power Supply", "Public Transport"],
+          leadershipStyle: "Reformist"
+        }
+      },
+      
+      newsArticles: {
+        create: [
+          {
+            headline: "Kejriwal announces free electricity scheme expansion",
+            url: "https://thehindu.com/kejriwal-free-electricity-expansion",
+            publishedAt: new Date("2024-08-04")
+          },
+          {
+            headline: "Delhi CM launches new pollution control measures",
+            url: "https://indianexpress.com/kejriwal-pollution-control-delhi",
+            publishedAt: new Date("2024-07-28")
+          }
+        ]
+      }
+    }
+  });
+
+  // Politician 6: Nitish Kumar
+  const politician6 = await prisma.politician.create({
+    data: {
+      name: "Nitish Kumar",
+      party: "Janata Dal (United)",
+      state: "Bihar",
+      constituency: "Nalanda",
+      age: 73,
+      gender: "Male",
+      education: "BTech Electrical Engineering, NIT Patna",
+      criminalCases: 1,
+      totalAssets: 680.0, // 6.8 Cr
+      position: "Chief Minister",
+      biography: "Chief Minister of Bihar for multiple terms. Former Union Minister. Known for development work and social engineering in Bihar politics.",
+      profileImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+      avgRatings: 3,
+      numOfSearched: 75420,
+      ratingsOutOf: 115680,
+      
+      workHistory: {
+        create: [
+          {
+            role: "MLA",
+            startYear: 1985,
+            endYear: 1989,
+            constituency: "Harnaut",
+            state: "Bihar"
+          },
+          {
+            role: "MP",
+            startYear: 1989,
+            endYear: 2005,
+            constituency: "Barh",
+            state: "Bihar"
+          },
+          {
+            role: "Chief Minister",
+            startYear: 2005,
+            endYear: null,
+            constituency: "Nalanda",
+            state: "Bihar"
+          }
+        ]
+      },
+      
+      electionResult: {
+        create: [
+          {
+            year: 2020,
+            electionType: "Vidhan Sabha",
+            constituency: "Nalanda",
+            state: "Bihar",
+            party: "Janata Dal (United)",
+            result: "✅ Won",
+            totalVotes: 92540,
+            voteShare: 56.7,
+            opponentName: "Keshav Kumar",
+            victoryMargin: 15388
+          },
+          {
+            year: 2015,
+            electionType: "Vidhan Sabha",
+            constituency: "Nalanda",
+            state: "Bihar",
+            party: "Janata Dal (United)",
+            result: "✅ Won",
+            totalVotes: 88234,
+            voteShare: 58.2,
+            opponentName: "Kundan Kumar",
+            victoryMargin: 18567
+          }
+        ]
+      },
+      
+      familyDetail: {
+        create: {
+          spouse: "Late Manju Sinha",
+          children: 1,
+          fatherName: "Kaviraj Ram",
+          motherName: "Parmeshwari Devi",
+          background: "Born in Kalyanpur village, Nalanda district. Father was a freedom fighter and village head. Started political career with Jayaprakash Narayan movement.",
+          familyProfession: "Agriculture/Village Leadership",
+          economicStatus: "Middle Class",
+          familyOrigin: "Rural",
+          community: "OBC",
+          politicalLegacy: "Self-Made"
+        }
+      },
+      
+      assetDetail: {
+        create: {
+          totalAssets: 680.0,
+          movableAssets: 180.0,
+          immovableAssets: 500.0
+        }
+      },
+      
+      criminalCase: {
+        create: [
+          {
+            title: "Fodder Scam",
+            description: "Case related to alleged involvement in multi-crore fodder scam in Bihar",
+            status: "Acquitted",
+            filedAt: new Date("1996-01-29")
+          }
+        ]
+      },
+      
+      PublicProfile: {
+        create: {
+          coreIdeology: "Social Justice and Development",
+          visionStatement: "To transform Bihar through good governance, social justice, women empowerment, and sustainable development while maintaining communal harmony.",
+          publicPerception: "Respected for development work in Bihar, especially infrastructure and women empowerment. Known for political pragmatism and coalition building.",
+          keyStrengths: ["Development Focus", "Social Engineering", "Coalition Building", "Women Empowerment"],
+          focusAreas: ["Infrastructure", "Education", "Women Rights", "Prohibition"],
+          leadershipStyle: "Pragmatic"
+        }
+      },
+      
+      newsArticles: {
+        create: [
+          {
+            headline: "Nitish Kumar launches new road connectivity projects in Bihar",
+        
+            url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+
+      
+            publishedAt: new Date("2023-01-01")
+          },
+          {
+            headline: "Nitish Kumar wins election in Bihar",
+            url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+            publishedAt: new Date("2023-01-01")
+          }
+        ]
+      }
+    }
+  }); 
+  
+
 };
 
 
-main()
+seedPoliticians()
   .catch((e) => {
     console.error("❌ Seeding error:", e);
     process.exit(1);

@@ -1,53 +1,68 @@
-// const ratings = document.getElementById("rate-neta");
-// fetch('ratepopup.html')
-//     .then(response => response.text())
-//     .then(data => {
-//         const newDiv = document.createElement("div");
-//         newDiv.innerHTML = data;
-//         ratings.appendChild(newDiv);
-//         let allStars = newDiv.querySelectorAll(".star-icon");
-//         let choosen = 0;
-//         Array.from(allStars).forEach((star, index) => {
-//             star.addEventListener("mouseenter", () => {
-//                 choosen = index;
-//                 star.style.color = "yellow"
-//                 allStars.forEach((item, subindex) => {
-//                     if (subindex <= choosen) {
-//                         item.style.color = "pink"
+function submitRating(politicianId, rating, email) {
+    alert("i am active");
+    const payload = {
+        politicianId: politicianId,
+        rating: rating,
+        email: email
+    };
+    console.log(payload);
 
-//                     } else {
-//                         item.style.color = "black"
-//                     }
-//                 });
+    // fetch("/api/submit-rating", {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify(payload)
+    // })
+    // .then(res => res.json())
+    // .then(data => {
+    //     console.log("Rating submitted successfully:", data);
+    //     alert("Thank you for your feedback!");
+    // })
+    // .catch(err => {
+    //     console.error("Error submitting rating:", err);
+    //     alert("Something went wrong. Please try again.");
+    // });
+}
 
-//                 document.getElementById("rating").innerHTML = choosen + 1;
-//                 document.getElementById("make-rate").addEventListener("click" , 
-//                     submitRating(choosen + 1)
-//                 )
+const allStars = document.querySelectorAll(".rating-star");
+let global = false;
+Array.from(allStars).forEach((star, index) => {
+    star.addEventListener("mouseenter", () => {
+        const ratingform = document.querySelector("#rating-form");
+        let choosen = index; // set directly from hovered index
 
-//             });
+        // Show the rating form in flex layout
+        ratingform.style.display = "flex";
+
+        // Update star colors
+        allStars.forEach((item, subindex) => {
+            item.style.color = subindex <= choosen ? "pink" : "black";
+        });
+
+        const email = document.querySelector("#rating-form #email");
+        const submitButton = document.querySelector("#rating-form #submit");
+
+        submitButton.addEventListener("click", () => {
+            if (!email.value) {
+                return;
+            }
+     
+         
+            submitRating("12345", choosen + 1, email.value);
+        });
+
+        // Update chosen rating if needed
+        const ratingDisplay = document.getElementById("rating");
+        if (ratingDisplay) {
+            ratingDisplay.textContent = choosen + 1;
+        }
+    });
+});
 
 
-//         });
-
-//     });
 
 
-
-
-const submitRating = async (rating) => {
-    try {
-        const response = await fetch(`http://localhost:3402/api/ratePoliticians/${rating}`);
-        const data = await response.json();
-        console.log(data);
-        return data;
-
-    } catch (error) {
-        console.log(error);
-
-    }
-
-};
 
 
 const getPolticianDetails = async () => {
