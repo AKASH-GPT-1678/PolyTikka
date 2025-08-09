@@ -5,8 +5,6 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-
-  
   provider      = "prisma-client-js"
   binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
 }
@@ -45,6 +43,16 @@ model Politician {
   familyDetail   FamilyDetail?
   assetDetail    AssetDetail?
   PublicProfile  PublicProfile?
+  ratings        Rating[]
+}
+
+model Rating {
+  id           String     @id @default(uuid())
+  email        String
+  rating       Int
+  createdAt    DateTime   @default(now())
+  politicianId String
+  politician   Politician @relation(fields: [politicianId], references: [id])
 }
 
 model WorkHistory {
@@ -75,20 +83,20 @@ model ElectionResult {
 }
 
 model FamilyDetail {
-  id               String     @id @default(uuid())
+  id               String  @id @default(uuid())
   spouse           String?
   children         Int?
   fatherName       String?
   motherName       String?
-  background       String?    @db.Text
-  familyProfession String?    // e.g., "Trading"
-  economicStatus   String?    // e.g., "Lower Middle"
-  familyOrigin     String?    // e.g., "Rural"
-  community        String?    // e.g., "OBC"
-  politicalLegacy  String?    // e.g., "Self-Made"
+  background       String? @db.Text
+  familyProfession String? // e.g., "Trading"
+  economicStatus   String? // e.g., "Lower Middle"
+  familyOrigin     String? // e.g., "Rural"
+  community        String? // e.g., "OBC"
+  politicalLegacy  String? // e.g., "Self-Made"
 
-  politician       Politician @relation(fields: [politicianId], references: [id])
-  politicianId     String     @unique
+  politician   Politician @relation(fields: [politicianId], references: [id])
+  politicianId String     @unique
 }
 
 model AssetDetail {

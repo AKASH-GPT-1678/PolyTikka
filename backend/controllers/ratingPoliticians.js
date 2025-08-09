@@ -5,14 +5,13 @@ const prisma = new PrismaClient();
 
 async function ratePolitician(req, res) {
     const { politicianId } = req.params; // politician ID from URL
-    const { rating } = req.body; // rating from body (e.g., 1–5)
+    const { rating, email } = req.body; // rating and email from body
 
     try {
-        if (!politicianId || !rating) {
-            return res.status(400).json({ message: "Politician ID and rating are required" });
+        if (!politicianId || !rating || !email) {
+            return res.status(400).json({ message: "Politician ID, rating, and email are required" });
         }
 
-        // Find existing politician
         const politician = await prisma.politician.findUnique({
             where: { id: politicianId }
         });
@@ -21,12 +20,33 @@ async function ratePolitician(req, res) {
             return res.status(404).json({ message: "Politician not found" });
         }
 
-        // Calculate new rating stats
+
+        const existingRating = await prisma.rating.findFirst({
+            where: {
+                politicianId: politicianId,
+                email: email
+            }
+        });
+
+        if (existingRating) {
+            return res.status(400).json({ message: "You have already rated this politician" });
+        }
+
+  
+        await prisma.rating.create({
+            data: {
+                politicianId,
+                email,
+                rating
+            }
+        });
+
+ 
         const totalRatingsCount = Number(politician.ratingsOutOf || 0) + 1;
         const totalRatingSum = (politician.avgRatings * (totalRatingsCount - 1)) + rating;
         const newAverageRating = Math.round(totalRatingSum / totalRatingsCount);
 
-        // Update politician
+
         await prisma.politician.update({
             where: { id: politicianId },
             data: {
@@ -45,6 +65,7 @@ async function ratePolitician(req, res) {
         return res.status(500).json({ message: "Internal Server Error" });
     }
 }
+
 
 
 
