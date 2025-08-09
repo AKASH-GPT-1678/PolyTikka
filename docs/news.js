@@ -179,8 +179,6 @@ async function loadMovieNews() {
         const movieNewsList = result.data;
         console.log("Movie News List:", movieNewsList);
 
-        // Clear existing content
-
 
         if (!movieNewsList || movieNewsList.length === 0) {
             container.innerHTML += `<p style="text-align:center; color: gray;">No movie news found.</p>`;

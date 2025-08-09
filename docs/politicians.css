@@ -97,7 +97,7 @@
             z-index: 50;
         }
 
-        .short {
+        .shortdetails {
             display: flex;
             align-items: center;
             gap: 12px;
@@ -108,7 +108,7 @@
             margin-bottom: 5px;
         }
 
-        .short:hover {
+        .shortdetails:hover {
             background: #f7fafc;
             transform: translateX(5px);
         }

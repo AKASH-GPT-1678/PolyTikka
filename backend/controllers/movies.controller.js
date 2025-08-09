@@ -7,7 +7,7 @@ async function getMovieNews(req, res) {
             where: {
                 category: "Movies"
             },
-            take: 10,
+            take: 3,
         });
 
         console.log("Fetched movie news:", movieNews);

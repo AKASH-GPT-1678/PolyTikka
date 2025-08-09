@@ -97,10 +97,12 @@ async function getPoliticiansByNam(req, res) {
 };
 
 // Controller function to search politicians by name
-const getPoliticiansByName = async (req, res) => {
+const getFullDetailsByName = async (req, res) => {
   try {
-    const {name} = req.params;
-    
+    const { name } = req.params;
+    console.log("Request arrived for name:", name);
+
+    // Validate input
     if (!name || name.trim().length === 0) {
       return res.status(400).json({
         success: false,
@@ -108,7 +110,7 @@ const getPoliticiansByName = async (req, res) => {
       });
     }
 
-    // Find single politician with ALL core data + ALL relations
+    // Find politician by name (case insensitive)
     const politician = await prisma.politician.findFirst({
       where: {
         name: {
@@ -117,7 +119,6 @@ const getPoliticiansByName = async (req, res) => {
         }
       },
       select: {
-        // Core politician data
         id: true,
         name: true,
         party: true,
@@ -136,8 +137,8 @@ const getPoliticiansByName = async (req, res) => {
         ratingsOutOf: true,
         createdAt: true,
         updatedAt: true,
-        
-        // All relations
+
+        // Relations
         workHistory: true,
         electionResult: true,
         familyDetail: true,
@@ -149,7 +150,6 @@ const getPoliticiansByName = async (req, res) => {
       }
     });
 
-    // If politician not found
     if (!politician) {
       return res.status(404).json({
         success: false,
@@ -157,39 +157,38 @@ const getPoliticiansByName = async (req, res) => {
       });
     }
 
-    // Convert BigInt to string for JSON serialization
+    // Serialize BigInt for JSON
     const serializedPolitician = {
       ...politician,
-      ratingsOutOf: politician.ratingsOutOf ? politician.ratingsOutOf.toString() : null
+      ratingsOutOf: politician.ratingsOutOf
+        ? politician.ratingsOutOf.toString()
+        : null
     };
 
-    // Update search count for the found politician
+    // Increment search count
     await prisma.politician.update({
-      where: {
-        id: politician.id
-      },
-      data: {
-        numOfSearched: {
-          increment: 1
-        }
-      }
+      where: { id: politician.id },
+      data: { numOfSearched: { increment: 1 } }
     });
 
-    // Return politician with all core data + all relations
-    return res.status(200).json({data : serializedPolitician});
+    // Send successful response
+    return res.status(200).json({
+      success: true,
+      data: serializedPolitician
+    });
 
   } catch (error) {
-    console.error('Error searching politician:', error);
+    console.error("Error searching politician:", error);
     return res.status(500).json({
       success: false,
       message: "Internal server error while searching politician",
-      error: process.env.NODE_ENV === 'development' ? error.message : undefined
+      error: process.env.NODE_ENV === "development" ? error.message : undefined
     });
   }
 };
 
 module.exports = {
   createPoliticians,
-  getPoliticiansByName,
+  getFullDetailsByName,
   getPoliticiansByNam
 }

@@ -30,13 +30,17 @@ async function getPoliticiansByName(name) {
     } catch (error) {
         console.log(error);
     }
-}
-searchByName.addEventListener("change", async function () {
+};
+
+const searchIcon = document.getElementById("search-icon");
+searchIcon.addEventListener("click", async function () {
     const inputValue = searchByName.value;
     const length = inputValue.length;
+    console.log("Input Value:", inputValue);
 
-    if (length > 0 && length % 2 === 0) {
+    if (length > 0) {
         const polyInfo = await getPoliticiansByName(inputValue);
+        console.log("Poly Info:", polyInfo);
 
         const filterInfo = polyInfo.map((item) => ({
             name: item.name,
@@ -52,8 +56,9 @@ searchByName.addEventListener("change", async function () {
         }
 
         filterInfo.map((item) => {
-            const newDiv = document.createElement("div")
-            newDiv.setAttribute("class", "short")
+            const newDiv = document.createElement("div");
+            newDiv.setAttribute("class", "shortdetails");
+
             const profile = document.createElement("img");
             profile.setAttribute("class", "simage")
 
@@ -61,7 +66,8 @@ searchByName.addEventListener("change", async function () {
             name.setAttribute("class", "sname");
 
             const party = document.createElement("p");
-            party.setAttribute("class", "sparty")
+            party.setAttribute("class", "sparty");
+
 
             profile.src = item.profileImage;
             name.innerHTML = item.name;
@@ -72,7 +78,7 @@ searchByName.addEventListener("change", async function () {
             options.appendChild(newDiv);
 
             newDiv.addEventListener("click", () => {
-                window.location.href = "politicianprofile.html";
+                window.location.href = `politicianprofile.html?name=${encodeURIComponent(item.name)}`;
             });
 
 
@@ -87,15 +93,32 @@ searchByName.addEventListener("change", async function () {
     }
 });
 
+// Select all shortdetails containers
+const shortDetailsElements = document.querySelectorAll(".shortdetails");
 
+// Loop and add event listeners
+shortDetailsElements.forEach((detail) => {
+    detail.addEventListener("click", () => {
+        // Find the .sname element inside THIS shortdetails
+        const snameElement = detail.querySelector(".sname");
+        if (snameElement) {
+            const snameText = snameElement.textContent.trim();
+            console.log("Clicked politician name:", snameText);
 
-const shorts = document.querySelectorAll(".short");
-
-shorts.forEach((short) => {
-    short.addEventListener("click", () => {
-        window.location.href = "politicianprofile.html";
+            // Do whatever you want with the name here
+        }
     });
 });
+
+
+
+// const shorts = document.querySelectorAll(".short");
+
+// shorts.forEach((short) => {
+//     short.addEventListener("click", () => {
+//         window.location.href = "politicianprofile.html";
+//     });
+// });
 
 
 
@@ -251,7 +274,7 @@ const changeNews = async () => {
 
 
     const mainSection = document.getElementById("main-section");
-    mainSection.style.backgroundImage = "url('" + newsData[0].imageUrl + "')";
+    // mainSection.style.backgroundImage = "url('" + newsData[0].imageUrl + "')";
     mainSection.style.backgroundSize = "cover";
     mainSection.style.backgroundPosition = "center";
 
@@ -276,7 +299,7 @@ let indexPosition = 0;
 
 async function updateNews() {
     const mainSection = document.getElementById("main-section");
-    mainSection.style.backgroundImage = "url('" + newsData[indexPosition].imageUrl + "')";
+    // mainSection.style.backgroundImage = "url('" + newsData[indexPosition].imageUrl + "')";
     mainSection.style.backgroundSize = "cover";
 
     mainSection.style.backgroundPosition = "center";

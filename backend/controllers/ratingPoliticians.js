@@ -32,7 +32,7 @@ async function ratePolitician(req, res) {
             return res.status(400).json({ message: "You have already rated this politician" });
         }
 
-  
+
         await prisma.rating.create({
             data: {
                 politicianId,
@@ -41,7 +41,7 @@ async function ratePolitician(req, res) {
             }
         });
 
- 
+
         const totalRatingsCount = Number(politician.ratingsOutOf || 0) + 1;
         const totalRatingSum = (politician.avgRatings * (totalRatingsCount - 1)) + rating;
         const newAverageRating = Math.round(totalRatingSum / totalRatingsCount);
@@ -55,7 +55,7 @@ async function ratePolitician(req, res) {
             }
         });
 
-        return res.status(200).json({ 
+        return res.status(200).json({
             message: "Politician rated successfully",
             newAverageRating
         });

@@ -1,32 +1,24 @@
-function submitRating(politicianId, rating, email) {
-    alert("i am active");
+async function submitRating(politicianId, rating, email) {
     const payload = {
         politicianId: politicianId,
         rating: rating,
         email: email
     };
-    console.log(payload);
 
-    // fetch("/api/submit-rating", {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify(payload)
-    // })
-    // .then(res => res.json())
-    // .then(data => {
-    //     console.log("Rating submitted successfully:", data);
-    //     alert("Thank you for your feedback!");
-    // })
-    // .catch(err => {
-    //     console.error("Error submitting rating:", err);
-    //     alert("Something went wrong. Please try again.");
-    // });
+    const response = await fetch(`http://localhost:3402/api/ratePoliticians/${politicianId}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    })
+    console.log(payload);
+    const result = await response.json();
+    console.log(result);
+
 }
 
 const allStars = document.querySelectorAll(".rating-star");
-let global = false;
 Array.from(allStars).forEach((star, index) => {
     star.addEventListener("mouseenter", () => {
         const ratingform = document.querySelector("#rating-form");
@@ -42,14 +34,15 @@ Array.from(allStars).forEach((star, index) => {
 
         const email = document.querySelector("#rating-form #email");
         const submitButton = document.querySelector("#rating-form #submit");
+        const politicianId = document.querySelector('.basic-info #userid').textContent;
 
         submitButton.addEventListener("click", () => {
             if (!email.value) {
                 return;
             }
-     
-         
-            submitRating("12345", choosen + 1, email.value);
+
+
+            submitRating(politicianId, choosen + 1, email.value);
         });
 
         // Update chosen rating if needed
@@ -72,31 +65,69 @@ const getPolticianDetails = async () => {
 
 
     try {
-        const data = await fetch(`http://localhost:3402/api/getPoliticiansByName/${name}`);
+        ;
+        const data = await fetch(`http://localhost:3402/api/getFullDetailsByName/${name}`,
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+        );
         console.log(data);
         const response = await data.json();
-        console.log(response.data);
+        console.log("i am here", response.data);
         return response.data;
 
     } catch (error) {
-        console.log(error);
+        console.log(error, "dikkat");
+
 
     }
 };
 
+let electionDetails = [];
+const selectElement = document.getElementById("electionlist");
+selectElement.addEventListener("change", function () {
+    choosenElection = this.value;  
+    console.log("Selected election ID:", choosenElection);
+    const collectedResults = electionDetails.find(item => item.id === choosenElection);
+    const electionItems = document.querySelectorAll('.election-item');
+
+    electionItems[0].querySelector('span').textContent = collectedResults.year;
+    electionItems[1].querySelector('span').textContent = collectedResults.electionType;
+    electionItems[2].querySelector('span').textContent = collectedResults.constituency;
+    electionItems[3].querySelector('span').textContent = collectedResults.state;
+    electionItems[4].querySelector('span').textContent = collectedResults.party;
+    electionItems[5].querySelector('span').textContent = collectedResults.result;
+    electionItems[6].querySelector('span').textContent = collectedResults.totalVotes.toLocaleString();  // formats like 756,420
+    electionItems[7].querySelector('span').textContent = `${collectedResults.voteShare}%`;
+    electionItems[8].querySelector('span').textContent = collectedResults.opponentName;
+    electionItems[9].querySelector('span').textContent = collectedResults.victoryMargin.toLocaleString();
+
+});
+
+
+
 async function updatePoliticainData() {
 
     const data = await getPolticianDetails();
+    console.log("i am uey", data);
 
     if (!data) return;
-    console.log(data);
+    console.log("i am duey", data);
     document.querySelector('.header h1').textContent = data.name;
     document.querySelector('.basic-info .position').textContent = data.position;
     document.getElementById('profile-img').src = data.profileImage;
+    document.querySelector('.basic-info p').textContent = data.description;
     document.querySelector('.basic-info h2').textContent = data.name;
     document.getElementById('date-of-birth').innerHTML = data.updatedAt;
     document.getElementById('constituency').innerHTML = data.constituency;
     document.getElementById('education').innerHTML = data.education;
+    document.querySelector('.basic-info #userid').textContent = data.id;
+    document.querySelector('.rating-text').textContent = data.avgRatings + " / 5";
+    document.querySelector('.basic-info #userid').style.display = 'none';
+
     const section = document.querySelector('.experience-section');
 
 
@@ -128,6 +159,7 @@ async function updatePoliticainData() {
 
     const selectElement = document.getElementById("electionlist");
     const electionList = data.electionResult;
+    electionDetails = data.electionResult;
 
 
 
@@ -211,11 +243,11 @@ async function updatePoliticainData() {
     const familyCards = document.querySelectorAll('.family-section .stat-card');
 
     // Assign test values
-    familyCards[0].querySelector('.stat-value').textContent = "Trading";
-    familyCards[1].querySelector('.stat-value').textContent = data.familyDetail.children;
-    familyCards[2].querySelector('.stat-value').textContent = "Urban";
-    familyCards[3].querySelector('.stat-value').textContent = "General";
-    familyCards[4].querySelector('.stat-value').textContent = "Political Dynasty";
+    familyCards[0].querySelector('.stat-value').textContent = data.familyDetail.familyProfession;
+    familyCards[1].querySelector('.stat-value').textContent = data.familyDetail.economicStatus;
+    familyCards[2].querySelector('.stat-value').textContent = data.familyDetail.familyOrigin;
+    familyCards[3].querySelector('.stat-value').textContent = data.familyDetail.community;
+    familyCards[4].querySelector('.stat-value').textContent = data.familyDetail.politicalLegacy;
 
     const cardsGrid = document.querySelector('.cards-grid');
 
