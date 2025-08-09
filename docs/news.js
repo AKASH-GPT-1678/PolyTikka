@@ -6,9 +6,9 @@ fetch("newssection/newsheader.html")
     .then(data => {
         document.getElementById("header").innerHTML = data;
 
-        document.getElementById("btn1").addEventListener("click", () => {
-            window.location.href = "signup.html";
-        });
+        // document.getElementById("btn1").addEventListener("click", () => {
+        //     window.location.href = "signup.html";
+        // });
     });
 
 

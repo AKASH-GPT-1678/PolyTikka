@@ -107,6 +107,9 @@ async function collectTrendingNews() {
             clone.querySelector("img").src = data[i].imageUrl;
             // clone.querySelector(".category").textContent = data[i].category;
             clone.querySelector(".description").textContent = data[i].title;
+            clone.querySelector(".category").textContent = data[i].category;
+            clone.querySelector(".read").textContent = "5 Min Read";
+            clone.querySelector
 
             container.appendChild(clone);
         }

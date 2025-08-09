@@ -7,10 +7,11 @@ const getPoliticalNews = async (req, res) => {
 
         const topNews = await prisma.news.findMany({
             where: {
-                category: "Political"
+                category: "Politics"
             }
         });
         console.log(topNews);
+        console.log("Fetched political news:", topNews);
 
         return res.status(200).json({ data: topNews });
 

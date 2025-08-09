@@ -243,7 +243,12 @@ let newsData = [];
 async function getPoliticalNews() {
 
     try {
-        const response = await fetch('http://localhost:3402/api/politicalNews');
+        const response = await fetch('http://localhost:3402/api/politicalNews', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
         const json = await response.json();
         console.log("I am ready");
         const data = json.data;
@@ -289,6 +294,7 @@ const changeNews = async () => {
 async function getData() {
     await getPoliticalNews();
 
+
     changeNews()
 
 };
@@ -299,7 +305,7 @@ let indexPosition = 0;
 
 async function updateNews() {
     const mainSection = document.getElementById("main-section");
-    // mainSection.style.backgroundImage = "url('" + newsData[indexPosition].imageUrl + "')";
+    mainSection.style.backgroundImage = "url('" + newsData[indexPosition].imageUrl + "')";
     mainSection.style.backgroundSize = "cover";
 
     mainSection.style.backgroundPosition = "center";
