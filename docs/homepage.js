@@ -102,12 +102,14 @@ async function collectTrendingNews() {
 
         for (let i = 0; i < 10; i++) {
             const clone = template.cloneNode(true);
-            clone.style.display = "block"; 
+            clone.className = "news";
+
+            clone.style.display = "block";
 
             clone.querySelector("img").src = data[i].imageUrl;
-            // clone.querySelector(".category").textContent = data[i].category;
-            clone.querySelector(".description").textContent = data[i].title;
+            clone.querySelector(".description").textContent = data[i].title.substring(0, 50) + "...";
             clone.querySelector(".category").textContent = data[i].category;
+            clone.querySelector("#content").textContent = data[i].content.substring(0, 100) + "...";
             clone.querySelector(".read").textContent = "5 Min Read";
             clone.querySelector
 
@@ -116,11 +118,20 @@ async function collectTrendingNews() {
     } catch (error) {
         console.error("Failed to fetch trending news:", error);
     }
-}
+};
 
 
 
 collectTrendingNews();
+const allNews = document.querySelectorAll(".news");
+allNews.forEach(news => {
+    news.addEventListener("click", () => {
+        alert("clicked");
+        window.location.href = "www.google.com";
+    });
+});
+
+
 
 fetch("footer.html")
     .then(response => response.text())

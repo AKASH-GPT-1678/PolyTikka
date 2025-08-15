@@ -27,7 +27,7 @@
   display: flex;
   flex-direction: row;
   gap: 20px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-left: 10px;
   font-weight: bold;
   cursor: pointer;
@@ -35,12 +35,7 @@
 
 }
 
-/* .links div {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    align-items: center;
-} */
+
 
 .sub-links {
   display: flex;
@@ -259,6 +254,8 @@ body {
     margin-bottom: 50px;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
     gap: 30px;
     flex-wrap: wrap;
 
