@@ -29,7 +29,7 @@ async function ratePolitician(req, res) {
         });
 
         if (existingRating) {
-            return res.status(400).json({ message: "You have already rated this politician" });
+            return res.status(400).json({ message: "You have already rated this politician", existing : true });
         }
 
 

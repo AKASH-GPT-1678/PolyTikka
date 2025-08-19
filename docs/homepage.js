@@ -96,13 +96,13 @@ async function collectTrendingNews() {
         const data = await response.json();
         console.log(data);
 
-        const template = document.querySelector(".news"); // This gets one element
+        const template = document.querySelector(".news");
 
         const container = document.getElementById("trending");
 
         for (let i = 0; i < 10; i++) {
             const clone = template.cloneNode(true);
-            clone.className = "news";
+
 
             clone.style.display = "block";
 
@@ -111,7 +111,10 @@ async function collectTrendingNews() {
             clone.querySelector(".category").textContent = data[i].category;
             clone.querySelector("#content").textContent = data[i].content.substring(0, 100) + "...";
             clone.querySelector(".read").textContent = "5 Min Read";
-            clone.querySelector
+            clone.addEventListener("click", () => {
+                window.location.href = "news.html";
+            })
+
 
             container.appendChild(clone);
         }
@@ -123,12 +126,8 @@ async function collectTrendingNews() {
 
 
 collectTrendingNews();
-const allNews = document.querySelectorAll(".news");
-allNews.forEach(news => {
-    news.addEventListener("click", () => {
-        alert("clicked");
-        window.location.href = "www.google.com";
-    });
+document.querySelectorAll(".news").forEach(el => {
+    el.addEventListener("click", () => console.log("Clicked"));
 });
 
 

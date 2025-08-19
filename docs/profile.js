@@ -15,6 +15,10 @@ async function submitRating(politicianId, rating, email) {
     console.log(payload);
     const result = await response.json();
     console.log(result);
+    if(result.existing === true){
+        alert("You have already rated this politician");
+    }
+
 
 }
 
@@ -222,9 +226,9 @@ async function updatePoliticainData() {
     // Select all stat-card elements
     const statCards = document.querySelectorAll('.records-assets .stat-card');
 
-    let totalCases = statCards[0].querySelector('.stat-value').textContent = "20";
-    let seriousCharges = statCards[1].querySelector('.stat-value').textContent = "40";
-    let pendingCases = statCards[2].querySelector('.stat-value').textContent = "60";
+    let totalCases = statCards[0].querySelector('.stat-value').textContent = data.criminalCases;
+    let seriousCharges = statCards[1].querySelector('.stat-value').textContent = data.criminalCases;
+    // let pendingCases = statCards[2].querySelector('.stat-value').textContent = "60";
 
 
 
