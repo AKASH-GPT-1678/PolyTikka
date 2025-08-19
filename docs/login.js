@@ -5,7 +5,7 @@
 
 
     try {
-        const response = await fetch(`http://localhost:3402/api/login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`);
+        const response = await fetch(`https://polytikka-production.up.railway.app/api/login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`);
         const result = await response.json();
         console.log(result);
 

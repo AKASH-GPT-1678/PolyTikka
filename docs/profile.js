@@ -5,7 +5,7 @@ async function submitRating(politicianId, rating, email) {
         email: email
     };
 
-    const response = await fetch(`http://localhost:3402/api/ratePoliticians/${politicianId}`, {
+    const response = await fetch(`https://polytikka-production.up.railway.app/api/ratePoliticians/${politicianId}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -70,7 +70,7 @@ const getPolticianDetails = async () => {
 
     try {
         ;
-        const data = await fetch(`http://localhost:3402/api/getFullDetailsByName/${name}`,
+        const data = await fetch(`https://polytikka-production.up.railway.app/api/getFullDetailsByName/${name}`,
             {
                 method: 'GET',
                 headers: {

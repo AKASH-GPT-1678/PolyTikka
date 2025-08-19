@@ -23,7 +23,7 @@ const options = document.getElementById("options");
 
 async function getPoliticiansByName(name) {
     try {
-        const response = await fetch(`http://localhost:3402/api/getPoliticiansByName/${name}`);
+        const response = await fetch(`https://polytikka-production.up.railway.app/api/getPoliticiansByName/${name}`);
         const data = await response.json(); // Await here!
         // console.log(data); // This will log the array of objects
         return data;
@@ -128,7 +128,7 @@ async function getTopPoliticians() {
     try {
         const mostRating = document.getElementById("most-rated");
 
-        const topPoliticians = await fetch('http://localhost:3402/api/topPoliticians');
+        const topPoliticians = await fetch('https://polytikka-production.up.railway.app/api/topPoliticians');
         const json = await topPoliticians.json();
         console.log(json);
         const data = json.data;
@@ -187,7 +187,7 @@ const mostSearched = document.getElementById("most-searched");
 
 async function getMostSearchedPoliticians() {
     try {
-        const response = await fetch('http://localhost:3402/api/mostSearchedPoliticians');
+        const response = await fetch('https://polytikka-production.up.railway.app/api/mostSearchedPoliticians');
         const json = await response.json();
 
         const data = json.data;
@@ -243,7 +243,7 @@ let newsData = [];
 async function getPoliticalNews() {
 
     try {
-        const response = await fetch('http://localhost:3402/api/politicalNews', {
+        const response = await fetch('https://polytikka-production.up.railway.app/api/politicalNews', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -331,7 +331,7 @@ fetch("footer.html")
 
 
 async function getMostRead(category) {
-    const endpoint = 'http://localhost:3402/api/topReads';
+    const endpoint = 'https://polytikka-production.up.railway.app/api/topReads';
     const limit = 10;
     const container = document.getElementById("most-read");
     const template = document.getElementById("most-read-template");

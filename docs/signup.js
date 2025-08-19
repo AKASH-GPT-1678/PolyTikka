@@ -9,7 +9,7 @@ const phoneNumber = document.getElementById("phone");
 
   async function handleFormSubmit(name, email, password, phoneNumber) {
     try {
-      const response = await fetch("http://localhost:3402/api/register", {
+      const response = await fetch("https://polytikka-production.up.railway.app/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

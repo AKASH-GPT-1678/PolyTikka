@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 async function collectTrendingNews() {
     try {
-        const response = await fetch("http://localhost:3402/api/getTrendingNews");
+        const response = await fetch("https://polytikka-production.up.railway.app/api/getTrendingNews");
         const data = await response.json();
         console.log(data);
 

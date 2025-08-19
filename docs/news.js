@@ -39,7 +39,7 @@ fetch("newssection/newscategory.html")
 
 async function getNewsByCategory(category) {
     try {
-        const response = await fetch(`http://localhost:3402/api/getByCategory/${category}`);
+        const response = await fetch(`https://polytikka-production.up.railway.app/api/getByCategory/${category}`);
         const data = await response.json();
         console.log("Fetched Data:", data);
         return data;
@@ -91,7 +91,7 @@ setInterval(() => {
 const mostRead = document.getElementById("most-read");
 
 async function getMostRead(category) {
-    const endpoint = 'http://localhost:3402/api/topReads';
+    const endpoint = 'https://polytikka-production.up.railway.app/api/topReads';
     const limit = 10;
     const container = document.getElementById("most-read");
     const template = document.getElementById("most-read-template");
@@ -162,7 +162,7 @@ function populateMovieBlock(videoUrl, headline, description, readMoreUrl) {
 
 
 async function loadMovieNews() {
-    const endpoint = 'http://localhost:3402/api/movies';
+    const endpoint = 'https://polytikka-production.up.railway.app/api/movies';
     const container = document.getElementById("movie-section-container");
     const template = document.getElementById("movie-news-template");
 
