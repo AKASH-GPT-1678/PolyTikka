@@ -182,3 +182,16 @@
     }
 
 }
+
+.min-links{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding-left: 30px;
+}
+
+.min-nav-item{
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bolder;
+}

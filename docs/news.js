@@ -184,7 +184,7 @@ async function loadBottomNews() {
         const topNews = result.data;
         console.log("Mai naach raha hoon")
 
-   
+
 
         if (!topNews || topNews.length === 0) {
             container.innerHTML += `<p style="text-align:center; color: gray;">No top reads for "${category}".</p>`;
@@ -231,4 +231,19 @@ window.addEventListener("resize", checkScreenSize);
 
 
 loadMovieNews();
+
+
+window.addEventListener("DOMContentLoaded", () => {
+    const navItems = document.querySelectorAll('.min-nav-item');
+
+    navItems[1].addEventListener("click", () => {
+        window.location.href = "politicians.html";
+    });
+    navItems[2].addEventListener("click", () => {
+        window.location.href = "news.html";
+    });
+    navItems[4].addEventListener("click", () => {
+        window.location.href = "contact.html";
+    });
+});
 

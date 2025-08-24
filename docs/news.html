@@ -11,179 +11,160 @@
 <body>
 
 
-    <div id="main-header">
-        <div id="main-content" style="position: relative;">
+<div id="main-header">
+    <div id="main-content" style="position: relative;">
 
+        <div id="header"></div>
+        <div id="header-category"></div>
 
-            <div id="header">
-
+        <div class="min-links">
+            <div class="min-nav-item">
+                <p>Home</p>
             </div>
-            <div id="header-category">
-
-
+            <div class="min-nav-item">
+                <p>Politicians</p>
             </div>
-            <!-- <div style="position: absolute;">
-                <div class="sidebar">
-                    <h2>Categories</h2>
-                    <p>Politics</p>
-                    <p>Business</p>
-                    <p>Entertainment</p>
-                    <p>Science</p>
-                    <p>World</p>
-                    <p>Sports</p>
-                    <p>Technology</p>
-                </div>
-            </div> -->
-            <div class="news-display" style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px;">
+            <div class="min-nav-item">
+                <p>News</p>
+            </div>
+            <div class="min-nav-item">
+                <p>Events</p>
+            </div>
+            <div class="min-nav-item">
+                <p>Contact</p>
+            </div>
+        </div>
 
+        <div class="news-display" style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px;">
 
+            <div id="movie-section-container" style="width: fit-content; max-width: 500px; padding: 10px;">
 
-                <div id="movie-section-container" style="width: fit-content; max-width: 500px; padding: 10px;">
+                <div
+                    style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 2px solid #eee; margin-bottom: 16px;">
+                    <h2 id="movie-section-title" style="font-weight: bold; font-size: 1.6rem; margin: 0; color: #333;">
+                        Movies</h2>
 
-                    <div
-                        style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 2px solid #eee; margin-bottom: 16px;">
-                        <h2 id="movie-section-title"
-                            style="font-weight: bold; font-size: 1.6rem; margin: 0; color: #333;">Movies</h2>
-
-                        <div id="movie-tags" style="display: flex; gap: 10px;">
-                            <p class="movie-tag"
-                                style="margin: 0; font-size: 13px; padding: 4px 8px; background-color: #f0e6ff; border-radius: 4px; color: #5a2a8c; cursor: pointer;">
-                                Trailers</p>
-                            <p class="movie-tag"
-                                style="margin: 0; font-size: 13px; padding: 4px 8px; background-color: #f0e6ff; border-radius: 4px; color: #5a2a8c; cursor: pointer;">
-                                Premiers</p>
-                            <p class="movie-tag"
-                                style="margin: 0; font-size: 13px; padding: 4px 8px; background-color: #f0e6ff; border-radius: 4px; color: #5a2a8c; cursor: pointer;">
-                                Announced</p>
-                        </div>
-                    </div>
-
-                    <!-- First Movie with Video -->
-
-                    <div class="movie-news-block"
-                        style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; background-color: #fff; padding: 12px; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
-                        <iframe width="100%" height="250px" src="https://www.youtube.com/embed/mjBym9uKth4"
-                            title="WAR 2 | Official Trailer | Hrithik Roshan | NTR | Kiara Advani | Ayan Mukerji | YRF Spy Universe"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-                        <h3 class="movie-headline" style="font-size: 1.1rem; margin: 0; color: #222;">War 2: Official Trailer
-                        </h3>
-
-                        <p class="movie-description" style="font-size: 14px; color: #444; margin: 0;">
-                            WAR 2 is an upcoming Indian Hindi-language action thriller film directed by Ayan Mukerji
-                             and produced by Aditya Chopra under Yash Raj Films. The film stars Hrithik Roshan and Jr. NTR in the lead roles. It is the sequel to the 2019 film War and is scheduled to release on 15 August 2023, coinciding with the Independence Day of India.
-                        </p>
-
-                        <a class="movie-readmore" href="https://www.google.com" target="_blank"
-                            style="font-size: 14px; color: #5a2a8c; text-decoration: none;"
-                            onmouseover="this.style.textDecoration='underline'"
-                            onmouseout="this.style.textDecoration='none'">Continue Reading</a>
-                    </div>
-
-                    <hr style="border: 0; border-top: 1px solid #ccc; margin: 16px 0;">
-
-
-                    <div id="movie-news-template"
-                        style="display: none; flex-direction: column; padding: 12px; border: 1px solid #ddd; border-radius: 10px; max-width: 500px; margin: 16px auto; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); background-color: #fff;">
-                        <div
-                            style="display: flex; flex-direction: row; gap: 12px; align-items: center; margin-bottom: 6px;">
-                            <p class="movie-category"
-                                style="padding: 2px 6px; font-weight: bold; font-size: 13px; background-color: #f1f1f1; border-radius: 4px;">
-                                Category</p>
-                            <p class="movie-date" style="color: gray; font-size: 12px;">Date</p>
-                        </div>
-
-                        <div
-                            style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 10px;">
-                            <h2 class="movie-title"
-                                style="max-width: 300px; font-size: 1rem; font-weight: 500; margin: 0; color: #222; line-height: 1.3;">
-                                Headline goes here</h2>
-                            <img class="movie-image"
-                                src="https://meat-bucket-2025.s3.ap-south-1.amazonaws.com/yatch.webp"
-                                alt="movie thumbnail"
-                                style="width: 90px; height: 90px; object-fit: cover; border-radius: 6px;">
-                        </div>
-
-                        <a class="movie-link" href="#" target="_blank"
-                            style="margin-top: 10px; font-size: 14px; color: #5a2a8c; font-weight: 500; text-decoration: none;"
-                            onmouseover="this.style.textDecoration='underline'"
-                            onmouseout="this.style.textDecoration='none'">Continue Reading</a>
-                    </div>
-
-                </div>
-
-                <!-- Latest News -->
-                <div id="news-container">
-
-                    <div id="latest-news"
-                        style="display: none; flex-direction: column; padding: 16px; border: 1px solid #ddd; border-radius: 10px; max-width: 500px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); background-color: #fff;">
-                        <small id="news-meta" class="news-meta" style="color: gray;">Category • Date</small>
-
-                        <h3 id="news-title" class="news-title" style="margin: 5px 0;">
-                            <a id="news-link" class="news-link" href="#"
-                                style="text-decoration: none; color: black;">News Title</a>
-                        </h3>
-
-                        <p id="news-snippet" class="news-snippet" style="margin: 0 0 10px; font-size: 14px;">News
-                            Snippet</p>
-
-                        <a id="read-more-link" class="read-more" href="#"
-                            style="color: #5a2a8c; font-size: 14px;">Continue Reading</a>
+                    <div id="movie-tags" style="display: flex; gap: 10px;">
+                        <p class="movie-tag"
+                            style="margin: 0; font-size: 13px; padding: 4px 8px; background-color: #f0e6ff; border-radius: 4px; color: #5a2a8c; cursor: pointer;">
+                            Trailers</p>
+                        <p class="movie-tag"
+                            style="margin: 0; font-size: 13px; padding: 4px 8px; background-color: #f0e6ff; border-radius: 4px; color: #5a2a8c; cursor: pointer;">
+                            Premiers</p>
+                        <p class="movie-tag"
+                            style="margin: 0; font-size: 13px; padding: 4px 8px; background-color: #f0e6ff; border-radius: 4px; color: #5a2a8c; cursor: pointer;">
+                            Announced</p>
                     </div>
                 </div>
 
-                <!-- Most Read Section -->
-                <div id="latest-display" style="max-width: 500px;">
+                <div class="movie-news-block"
+                    style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; background-color: #fff; padding: 12px; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <iframe width="100%" height="250px" src="https://www.youtube.com/embed/mjBym9uKth4"
+                        title="WAR 2 | Official Trailer | Hrithik Roshan | NTR | Kiara Advani | Ayan Mukerji | YRF Spy Universe"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-                </div>
+                    <h3 class="movie-headline" style="font-size: 1.1rem; margin: 0; color: #222;">War 2: Official
+                        Trailer</h3>
 
-                <div id="most-read-template"
-                    style="display: none; flex-direction: column; padding: 12px; border: 1px solid #ddd; border-radius: 10px; max-width: 500px; margin: 16px auto; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); background-color: #fff;">
-                    <div
-                        style="display: flex; flex-direction: row; gap: 12px; align-items: center; margin-bottom: 6px;">
-                        <p class="most-read-category"
-                            style="padding: 2px 6px; font-weight: bold; font-size: 13px; background-color: #f1f1f1; border-radius: 4px;">
-                            Category</p>
-                        <p class="most-read-date" style="color: gray; font-size: 12px;">Date</p>
-                    </div>
+                    <p class="movie-description" style="font-size: 14px; color: #444; margin: 0;">
+                        WAR 2 is an upcoming Indian Hindi-language action thriller film directed by Ayan Mukerji
+                        and produced by Aditya Chopra under Yash Raj Films. The film stars Hrithik Roshan and Jr.
+                        NTR in the lead roles. It is the sequel to the 2019 film War and is scheduled to release on
+                        15 August 2023, coinciding with the Independence Day of India.
+                    </p>
 
-                    <div
-                        style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 10px;">
-                        <h2 class="most-read-title"
-                            style="max-width: 300px; font-size: 1rem; font-weight: 500; margin: 0; color: #222; line-height: 1.3;">
-                            Headline goes here</h2>
-                        <img class="most-read-image"
-                            src="https://meat-bucket-2025.s3.ap-south-1.amazonaws.com/yatch.webp" alt="news image"
-                            style="width: 90px; height: 90px; object-fit: cover; border-radius: 6px;">
-                    </div>
-
-                    <a class="most-read-link" href="#" target="_blank"
-                        style="margin-top: 10px; font-size: 14px; color: #5a2a8c; font-weight: 500; text-decoration: none;"
+                    <a class="movie-readmore" href="https://www.google.com" target="_blank"
+                        style="font-size: 14px; color: #5a2a8c; text-decoration: none;"
                         onmouseover="this.style.textDecoration='underline'"
                         onmouseout="this.style.textDecoration='none'">Continue Reading</a>
                 </div>
 
-                <div id="most-read" style="max-width: 500px; ">
-                    <h2 style="font-size: 1.4rem; color: #333; border-bottom: 2px solid #eee; padding-bottom: 6px;">Most
-                        Read</h2>
+                <hr style="border: 0; border-top: 1px solid #ccc; margin: 16px 0;">
+
+                <div id="movie-news-template"
+                    style="display: none; flex-direction: column; padding: 12px; border: 1px solid #ddd; border-radius: 10px; max-width: 500px; margin: 16px auto; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); background-color: #fff;">
+                    <div
+                        style="display: flex; flex-direction: row; gap: 12px; align-items: center; margin-bottom: 6px;">
+                        <p class="movie-category"
+                            style="padding: 2px 6px; font-weight: bold; font-size: 13px; background-color: #f1f1f1; border-radius: 4px;">
+                            Category</p>
+                        <p class="movie-date" style="color: gray; font-size: 12px;">Date</p>
+                    </div>
+
+                    <div
+                        style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 10px;">
+                        <h2 class="movie-title"
+                            style="max-width: 300px; font-size: 1rem; font-weight: 500; margin: 0; color: #222; line-height: 1.3;">
+                            Headline goes here</h2>
+                        <img class="movie-image" src="https://meat-bucket-2025.s3.ap-south-1.amazonaws.com/yatch.webp"
+                            alt="movie thumbnail"
+                            style="width: 90px; height: 90px; object-fit: cover; border-radius: 6px;">
+                    </div>
+
+                    <a class="movie-link" href="#" target="_blank"
+                        style="margin-top: 10px; font-size: 14px; color: #5a2a8c; font-weight: 500; text-decoration: none;"
+                        onmouseover="this.style.textDecoration='underline'"
+                        onmouseout="this.style.textDecoration='none'">Continue Reading</a>
                 </div>
             </div>
 
+            <!-- Latest News -->
+            <div id="news-container">
+                <div id="latest-news"
+                    style="display: none; flex-direction: column; padding: 16px; border: 1px solid #ddd; border-radius: 10px; max-width: 500px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); background-color: #fff;">
+                    <small id="news-meta" class="news-meta" style="color: gray;">Category • Date</small>
 
+                    <h3 id="news-title" class="news-title" style="margin: 5px 0;">
+                        <a id="news-link" class="news-link" href="#" style="text-decoration: none; color: black;">News
+                            Title</a>
+                    </h3>
 
+                    <p id="news-snippet" class="news-snippet" style="margin: 0 0 10px; font-size: 14px;">News
+                        Snippet</p>
 
+                    <a id="read-more-link" class="read-more" href="#" style="color: #5a2a8c; font-size: 14px;">Continue
+                        Reading</a>
+                </div>
+            </div>
 
+            <!-- Most Read Section -->
+            <div id="latest-display" style="max-width: 500px;"></div>
 
+            <div id="most-read-template"
+                style="display: none; flex-direction: column; padding: 12px; border: 1px solid #ddd; border-radius: 10px; max-width: 500px; margin: 16px auto; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); background-color: #fff;">
+                <div style="display: flex; flex-direction: row; gap: 12px; align-items: center; margin-bottom: 6px;">
+                    <p class="most-read-category"
+                        style="padding: 2px 6px; font-weight: bold; font-size: 13px; background-color: #f1f1f1; border-radius: 4px;">
+                        Category</p>
+                    <p class="most-read-date" style="color: gray; font-size: 12px;">Date</p>
+                </div>
 
+                <div
+                    style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 10px;">
+                    <h2 class="most-read-title"
+                        style="max-width: 300px; font-size: 1rem; font-weight: 500; margin: 0; color: #222; line-height: 1.3;">
+                        Headline goes here</h2>
+                    <img class="most-read-image" src="https://meat-bucket-2025.s3.ap-south-1.amazonaws.com/yatch.webp"
+                        alt="news image" style="width: 90px; height: 90px; object-fit: cover; border-radius: 6px;">
+                </div>
 
+                <a class="most-read-link" href="#" target="_blank"
+                    style="margin-top: 10px; font-size: 14px; color: #5a2a8c; font-weight: 500; text-decoration: none;"
+                    onmouseover="this.style.textDecoration='underline'"
+                    onmouseout="this.style.textDecoration='none'">Continue Reading</a>
+            </div>
 
+            <div id="most-read" style="max-width: 500px;">
+                <h2 style="font-size: 1.4rem; color: #333; border-bottom: 2px solid #eee; padding-bottom: 6px;">Most
+                    Read</h2>
+            </div>
+        </div> <!-- end of .news-display -->
 
+    </div> <!-- end of #main-content -->
+</div> <!-- end of #main-header -->
 
-
-        </div>
-    </div>
 
     <script src="news.js"></script>
 
