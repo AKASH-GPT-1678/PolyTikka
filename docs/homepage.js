@@ -100,7 +100,7 @@ async function collectTrendingNews() {
 
         const container = document.getElementById("trending");
 
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 8; i++) {
             const clone = template.cloneNode(true);
 
 
@@ -139,3 +139,24 @@ fetch("footer.html")
     });
 
 
+const navItems = document.querySelectorAll(".min-nav-item");
+
+navItems[1].addEventListener("click", () => {
+    window.location.href = "politicians.html";
+});
+navItems[2].addEventListener("click", () => {
+    window.location.href = "news.html";
+});
+navItems[4].addEventListener("click", () => {
+    window.location.href = "contact.html";
+});
+
+
+document.querySelector("#sidebar").addEventListener("click", () => {
+
+    document.querySelector(".min-sidebar").style.display = "block";
+
+});
+document.querySelector("#close").addEventListener("click", () => {
+    document.querySelector(".min-sidebar").style.display = "none";
+});

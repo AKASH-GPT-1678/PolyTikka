@@ -94,104 +94,84 @@ const prisma = new PrismaClient();
 // ];
 const sampleNews = [
   {
-    title: "Shadow City",
-    content: "A gripping noir thriller about a detective unraveling the secrets of a corrupt metropolis.",
-    category: "Movies",
-    reads: 1450,
-    source: "BBC",
-    url: "https://www.bbc.com/movies/shadow-city",
-    imageUrl: "https://example.com/images/movies1.jpg",
-    publishedAt: new Date("2025-07-01T10:00:00Z")
+    "title": "India says US trade negotiations ongoing amid looming tariffs",
+    "content": "India’s Foreign Minister Subrahmanyam Jaishankar said bilateral trade talks with the U.S. continue despite expected fresh tariffs—up to 50%—on Indian goods. Analysts warn full tariff implementation could reduce India’s annual growth by 0.8 percentage points.",
+    "category": "Politics",
+    "reads": 1200,
+    "source": "Reuters",
+    "url": "https://www.reuters.com/world/china/india-says-us-trade-negotiations-are-still-going-fresh-tariffs-loom-2025-08-23",
+    "imageUrl": "https://storage.googleapis.com/mangementbkt/modi-trump.webp",
+    "publishedAt": "2025-08-23T09:00:00Z"
   },
   {
-    title: "Eternal Skies",
-    content: "A breathtaking sci-fi epic exploring humanity's first journey beyond the Milky Way.",
-    category: "Movies",
-    reads: 1675,
-    source: "NDTV",
-    url: "https://www.ndtv.com/movies/eternal-skies",
-    imageUrl: "https://example.com/images/movies2.jpg",
-    publishedAt: new Date("2025-07-02T12:30:00Z")
+    "title": "PM Modi outlines India’s next-gen ambitions in chip, space & EVs at WLF 2025",
+    "content": "At the WLF 2025, Prime Minister Modi emphasized India’s growing global economic role and pushed for reforms and innovation in semiconductor manufacturing, space exploration, and electric vehicles.",
+    "category": "Economy",
+    "reads": 980,
+    "source": "Economic Times",
+    "url": "https://economictimes.indiatimes.com/news/india/et-wlf-2025-pm-modi-outlines-indias-next-gen-ambitions-in-chip-space-evs/articleshow/123473321.cms",
+    "imageUrl": "https://storage.googleapis.com/mangementbkt/semiconductor.jpg",
+    "publishedAt": "2025-08-23T11:00:00Z"
   },
   {
-    title: "The Silent Oath",
-    content: "A historical drama about loyalty, betrayal, and the untold heroes of independence.",
-    category: "Movies",
-    reads: 980,
-    source: "Times of India",
-    url: "https://timesofindia.indiatimes.com/movies/the-silent-oath",
-    imageUrl: "https://example.com/images/movies3.jpg",
-    publishedAt: new Date("2025-07-03T09:15:00Z")
+    "title": "National Space Day 2025: ISRO’s journey celebrated across India",
+    "content": "National Space Day, observed on August 23, pays tribute to ISRO's achievements—from satellite launches to visionary space science—highlighting India’s ascent in global space exploration.",
+    "category": "Science",
+    "reads": 760,
+    "source": "Economic Times",
+    "url": "https://economictimes.indiatimes.com/news/india/national-space-day-2025-date-theme-and-how-isro-is-inspiring-the-world-with-its-space-achievements/articleshow/123465878.cms",
+    "imageUrl": "https://storage.googleapis.com/mangementbkt/isro.jpg",
+    "publishedAt": "2025-08-23T12:30:00Z"
   },
   {
-    title: "Neon Horizon",
-    content: "A cyberpunk action film following a hacker's fight against a megacorporation.",
-    category: "Movies",
-    reads: 1540,
-    source: "BBC",
-    url: "https://www.bbc.com/movies/neon-horizon",
-    imageUrl: "https://example.com/images/movies4.jpg",
-    publishedAt: new Date("2025-07-04T15:45:00Z")
+    "title": "PM Modi says 'the day is not far' when India will have its own space station",
+    "content": "On August 23, Prime Minister Modi revealed India plans to establish its own space station, marking a pivotal milestone in the country’s evolving space ambitions.",
+    "category": "Space",
+    "reads": 1500,
+    "source": "Times of India",
+    "url": "https://timesofindia.indiatimes.com/india/the-day-is-not-far-pm-modi-sets-big-space-ambition-says-india-will-soon-have-its-own-space-station/articleshow/123473980.cms",
+    "imageUrl": "https://storage.googleapis.com/mangementbkt/red-fort.jpg",
+    "publishedAt": "2025-08-23T14:00:00Z"
   },
   {
-    title: "Under the Banyan Moon",
-    content: "A romantic drama set in rural India, where tradition clashes with modern love.",
-    category: "Movies",
-    reads: 1120,
-    source: "NDTV",
-    url: "https://www.ndtv.com/movies/under-the-banyan-moon",
-    imageUrl: "https://example.com/images/movies5.jpg",
-    publishedAt: new Date("2025-07-05T18:20:00Z")
+    "title": "Nationwide pro-Palestinian protests expected to break records",
+    "content": "Record participation is anticipated in pro-Palestinian demonstrations across the U.S., amid ongoing political tensions and international solidarity actions.",
+    "category": "Social",
+    "reads": 2100,
+    "source": "SBS News",
+    "url": "https://www.sbs.com.au/news/podcast-episode/nationwide-pro-palestinian-protests-expected-to-break-records-morning-news-bulletin-24-august-2025/tselt2lzu",
+    "imageUrl": "https://storage.googleapis.com/mangementbkt/us-palestine.webp",
+    "publishedAt": "2025-08-24T06:00:00Z"
   },
   {
-    title: "Steel Wings",
-    content: "An inspiring war story of fighter pilots during the 1971 Indo-Pak war.",
-    category: "Movies",
-    reads: 1300,
-    source: "Times of India",
-    url: "https://timesofindia.indiatimes.com/movies/steel-wings",
-    imageUrl: "https://example.com/images/movies6.jpg",
-    publishedAt: new Date("2025-07-06T08:00:00Z")
+    "title": "Little Pepe, not Bitcoin, tops crypto trending charts in August 2025",
+    "content": "Surging ahead of Ethereum and Bitcoin, the frog-themed Layer-2 meme coin 'Little Pepe' has become the most trending crypto in August 2025.",
+    "category": "Technology",
+    "reads": 3200,
+    "source": "Outlook India",
+    "url": "https://www.outlookindia.com/xhub/blockchain-insights/heres-why-little-pepe-lilpepe-not-ethereum-eth-or-bitcoin-btc-is-the-top-trending-crypto-in-august-2025",
+    "imageUrl": "https://storage.googleapis.com/mangementbkt/crypto-war.jpg",
+    "publishedAt": "2025-08-23T10:30:00Z"
   },
   {
-    title: "The Forgotten Island",
-    content: "An adventure film where a group of explorers uncover ancient mysteries on a lost island.",
-    category: "Movies",
-    reads: 1760,
-    source: "BBC",
-    url: "https://www.bbc.com/movies/the-forgotten-island",
-    imageUrl: "https://example.com/images/movies7.jpg",
-    publishedAt: new Date("2025-07-07T21:10:00Z")
+    "title": "Rare Black Moon graces Indian skies",
+    "content": "A 'Black Moon'—a rare astronomical event—was visible in India. The term refers either to the second new moon in a calendar month or another infrequent lunar occurrence, appearing only once every ~33 months.",
+    "category": "Science",
+    "reads": 890,
+    "source": "Moneycontrol",
+    "url": "https://www.moneycontrol.com/science/rare-black-moon-in-the-sky-tonight-when-and-how-to-see-august-2025-special-moon-in-india-article-13479844.html",
+    "imageUrl": "https://storage.googleapis.com/mangementbkt/rare-moon.jpg",
+    "publishedAt": "2025-08-23T20:00:00Z"
   },
   {
-    title: "Dancing Through Time",
-    content: "A musical romance that blends past and present through a magical time-travel twist.",
-    category: "Movies",
-    reads: 940,
-    source: "NDTV",
-    url: "https://www.ndtv.com/movies/dancing-through-time",
-    imageUrl: "https://example.com/images/movies8.jpg",
-    publishedAt: new Date("2025-07-08T14:25:00Z")
-  },
-  {
-    title: "Blood and Sand",
-    content: "A gritty revenge drama set in the deserts of Rajasthan.",
-    category: "Movies",
-    reads: 1230,
-    source: "Times of India",
-    url: "https://timesofindia.indiatimes.com/movies/blood-and-sand",
-    imageUrl: "https://example.com/images/movies9.jpg",
-    publishedAt: new Date("2025-07-09T19:40:00Z")
-  },
-  {
-    title: "Digital Shadows",
-    content: "A cyber-crime thriller exploring the dark web and stolen identities.",
-    category: "Movies",
-    reads: 1500,
-    source: "BBC",
-    url: "https://www.bbc.com/movies/digital-shadows",
-    imageUrl: "https://example.com/images/movies10.jpg",
-    publishedAt: new Date("2025-07-10T20:10:00Z")
+    "title": "Garena Free Fire Max releases redeem codes for August 23, 2025",
+    "content": "Players of Garena Free Fire Max can claim free in-game rewards by using the newly released redeem codes—12-character alphanumeric combinations valid for August 23, 2025.",
+    "category": "Entertainment",
+    "reads": 2500,
+    "source": "Economic Times",
+    "url": "https://m.economictimes.com/news/new-updates/garena-free-fire-max-redeem-codes-for-august-23-2025-unlock-10-free-rewards-now/articleshow/123465867.cms",
+    "imageUrl": "https://storage.googleapis.com/mangementbkt/free-fire.jpg",
+    "publishedAt": "2025-08-23T16:00:00Z"
   }
 ]
 

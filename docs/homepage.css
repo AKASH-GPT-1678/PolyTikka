@@ -73,6 +73,25 @@
   cursor: pointer;
 }
 
+
+@media screen and (max-width: 500px) {
+  .links button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 14px;
+
+    height: 40px;
+    width: 80px;
+    font-size: 12px;
+    font-weight: lighter;
+    cursor: pointer;
+
+  }
+
+
+}
+
 #subscribe {
   background-color: rgb(61, 180, 186);
   color: white;
@@ -273,6 +292,8 @@ body {
     display: inline;
   }
 
+  #subscribe {}
+
 
 }
 
@@ -281,10 +302,11 @@ body {
     display: none;
     /* or whatever */
   }
+
   .min-sidebar {
     display: none;
   }
-   
+
 }
 
 
