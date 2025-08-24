@@ -135,7 +135,7 @@ async function getMostRead(category) {
             // Inject data
             clone.querySelector(".most-read-category").textContent = news.category;
             clone.querySelector(".most-read-date").textContent = formattedDate;
-            clone.querySelector(".most-read-title").textContent = news.content ;
+            clone.querySelector(".most-read-title").textContent = news.content;
             clone.querySelector(".most-read-title").href = news.url;
             clone.querySelector(".most-read-image").src = news.imageUrl || "https://via.placeholder.com/100";
 
@@ -158,38 +158,43 @@ function populateMovieBlock(videoUrl, headline, description, readMoreUrl) {
     if (headlineEl) headlineEl.textContent = headline;
     if (descriptionEl) descriptionEl.textContent = description;
     if (readMoreLink) readMoreLink.href = readMoreUrl;
-}
+};
 
 
-async function loadMovieNews() {
-    const endpoint = 'https://polytikka-production.up.railway.app/api/movies';
+async function loadBottomNews() {
+    const endpoint = 'https://polytikka-production.up.railway.app/api/topReads';
+    const limit = 10;
     const container = document.getElementById("movie-section-container");
-    const template = document.getElementById("movie-news-template");
+    const template = document.getElementById("most-read-template");
 
     if (!template || !container) {
-        console.warn("Template or container not found for Movie News section.");
+        console.warn("Template or container not found for Most Read section.");
         return;
     }
 
     try {
-        const response = await fetch(endpoint);
+        const url = new URL(endpoint);
+        url.searchParams.append("limit", limit);
+        url.searchParams.append("category", "Business");
+
+        const response = await fetch(url);
         if (!response.ok) throw new Error(`Status ${response.status}`);
 
         const result = await response.json();
-        const movieNewsList = result.data;
-        console.log("Movie News List:", movieNewsList);
+        const topNews = result.data;
+        console.log("Mai naach raha hoon")
 
+   
 
-        if (!movieNewsList || movieNewsList.length === 0) {
-            container.innerHTML += `<p style="text-align:center; color: gray;">No movie news found.</p>`;
+        if (!topNews || topNews.length === 0) {
+            container.innerHTML += `<p style="text-align:center; color: gray;">No top reads for "${category}".</p>`;
             return;
         }
 
-        movieNewsList.forEach(news => {
+        topNews.forEach(news => {
             const clone = template.cloneNode(true);
             clone.style.display = "flex";
 
-            // Format date
             const date = new Date(news.publishedAt);
             const formattedDate = date.toLocaleDateString('en-US', {
                 year: 'numeric',
@@ -198,21 +203,32 @@ async function loadMovieNews() {
             });
 
             // Inject data
-            clone.querySelector(".movie-category").textContent = news.category || "Movies";
-            clone.querySelector(".movie-date").textContent = formattedDate;
-            clone.querySelector(".movie-title").textContent = news.title;
-            clone.querySelector(".movie-title").href = news.url;
-            clone.querySelector(".movie-image").src = news.imageUrl || "https://via.placeholder.com/90";
-            clone.querySelector(".movie-link").href = news.url;
+            clone.querySelector(".most-read-category").textContent = news.category;
+            clone.querySelector(".most-read-date").textContent = formattedDate;
+            clone.querySelector(".most-read-title").textContent = news.content;
+            clone.querySelector(".most-read-title").href = news.url;
+            clone.querySelector(".most-read-image").src = news.imageUrl || "https://via.placeholder.com/100";
 
             container.appendChild(clone);
         });
 
     } catch (error) {
-        console.error("Error loading movie news:", error);
-        alert("Could not load movie news.");
+        console.error("Error loading most read:", error);
+        alert("Could not load top news.");
     }
-};
+
+}
+
+function checkScreenSize() {
+    if (window.innerWidth < 800) {
+        loadBottomNews();
+    }
+}
+checkScreenSize();
+
+// run again if user resizes
+window.addEventListener("resize", checkScreenSize);
+
 
 loadMovieNews();
 
