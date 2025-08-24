@@ -43,9 +43,6 @@ function populateContent(data) {
     }
 }
 
-// document.getElementById("button").addEventListener("click", () => {
-//     populateContent(data);
-// });
 
 
 

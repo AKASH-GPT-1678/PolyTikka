@@ -1,17 +1,7 @@
-/* @media screen and (min-width: 1080px) {
-    body {
-        padding: 80px;
-        background-color: #E5E4E2;
+@media screen and (max-width: 1280px) {
+    #most-read {
+        display: none;
     }
-
-
-
-
-} */
-
-
-
-@media screen and (min-width: 1080px) {
 
 
 }
@@ -19,7 +9,7 @@
 .main-content {
     color: white;
     background-color: white;
- 
+
 }
 
 .header {
@@ -58,6 +48,7 @@
     border-radius: 4px;
     transition: background-color 0.3s ease;
 }
+
 #btn1 {
     cursor: pointer;
     padding: 16px 32px;
@@ -111,13 +102,20 @@
     cursor: pointer;
 }
 
+@media screen and (max-width: 740px) {
+    .news-category .categories {
+        display: none;
+    }
+
+}
+
 .news-display {
     display: flex;
     flex-direction: row;
     gap: 20px;
     width: "100%";
     justify-content: center;
-   
+
 }
 
 #movies-info {
@@ -129,8 +127,58 @@
     justify-content: space-between;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1080px) {
     #latest-display {
         display: none;
     }
-} 
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 220px;
+    background-color: #1e1e2f;
+    color: #fff;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+.sidebar p {
+    padding: 12px 20px;
+    margin: 0;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.sidebar p:hover {
+    background-color: #3a3a5c;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 220px;
+    padding: 20px;
+    flex: 1;
+}
+
+
+@media screen and (min-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+}

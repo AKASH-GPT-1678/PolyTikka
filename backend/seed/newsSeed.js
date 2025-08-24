@@ -92,93 +92,64 @@ const prisma = new PrismaClient();
 //     "publishedAt": "2025-07-17T09:00:00Z"
 //   }
 // ];
-const sampleNews = [
+const businessNews = [
   {
-    "title": "India says US trade negotiations ongoing amid looming tariffs",
-    "content": "India’s Foreign Minister Subrahmanyam Jaishankar said bilateral trade talks with the U.S. continue despite expected fresh tariffs—up to 50%—on Indian goods. Analysts warn full tariff implementation could reduce India’s annual growth by 0.8 percentage points.",
-    "category": "Politics",
-    "reads": 1200,
+    "title": "Adani Group secures $2.5B investment from global sovereign funds",
+    "content": "Adani Group has attracted a $2.5 billion investment from sovereign wealth funds in the Middle East, boosting confidence in India’s infrastructure growth story.",
+    "category": "Business",
+    "reads": 1750,
+    "source": "Bloomberg",
+    "url": "https://www.bloomberg.com/news/articles/2025-08-23/adani-group-secures-2-5b-investment-from-global-sovereign-funds",
+    "imageUrl": "https://storage.googleapis.com/mangementbkt/adani.avif",
+    "publishedAt": "2025-08-23T09:30:00Z"
+  },
+  {
+    "title": "TCS unveils AI-driven enterprise suite for global clients",
+    "content": "Tata Consultancy Services launched a new AI-powered suite designed to automate workflows for banking, retail, and healthcare clients across 30 countries.",
+    "category": "Business",
+    "reads": 1420,
+    "source": "Economic Times",
+    "url": "https://economictimes.indiatimes.com/tech/ites/tcs-unveils-ai-driven-enterprise-suite-for-global-clients/articleshow/123478903.cms",
+    "imageUrl": "https://storage.googleapis.com/mangementbkt/tcs.png",
+    "publishedAt": "2025-08-23T12:00:00Z"
+  },
+  {
+    "title": "Reliance Retail in talks with Walmart for strategic e-commerce tie-up",
+    "content": "Reliance Retail is reportedly negotiating with Walmart for a partnership that could reshape India’s fast-growing online retail sector.",
+    "category": "Business",
+    "reads": 2200,
     "source": "Reuters",
-    "url": "https://www.reuters.com/world/china/india-says-us-trade-negotiations-are-still-going-fresh-tariffs-loom-2025-08-23",
-    "imageUrl": "https://storage.googleapis.com/mangementbkt/modi-trump.webp",
-    "publishedAt": "2025-08-23T09:00:00Z"
+    "url": "https://www.reuters.com/business/reliance-retail-walmart-in-strategic-ecommerce-tieup-talks-2025-08-23",
+    "imageUrl": "https://storage.googleapis.com/mangementbkt/reliance-walmart.avif",//https://storage.googleapis.com/mangementbkt/reliance-walmart.avif
+    "publishedAt": "2025-08-23T15:00:00Z"
   },
   {
-    "title": "PM Modi outlines India’s next-gen ambitions in chip, space & EVs at WLF 2025",
-    "content": "At the WLF 2025, Prime Minister Modi emphasized India’s growing global economic role and pushed for reforms and innovation in semiconductor manufacturing, space exploration, and electric vehicles.",
-    "category": "Economy",
-    "reads": 980,
-    "source": "Economic Times",
-    "url": "https://economictimes.indiatimes.com/news/india/et-wlf-2025-pm-modi-outlines-indias-next-gen-ambitions-in-chip-space-evs/articleshow/123473321.cms",
-    "imageUrl": "https://storage.googleapis.com/mangementbkt/semiconductor.jpg",
-    "publishedAt": "2025-08-23T11:00:00Z"
+    "title": "HDFC Bank announces record quarterly profit amid digital push",
+    "content": "HDFC Bank posted its highest-ever quarterly profit at ₹18,200 crore, driven by digital adoption and a surge in retail loan growth.",
+    "category": "Business",
+    "reads": 1960,
+    "source": "Mint",
+    "url": "https://www.livemint.com/companies/news/hdfc-bank-reports-record-quarterly-profit-18200-crore-digital-push-2025-08-23",
+    "imageUrl": "https://storage.googleapis.com/mangementbkt/hdfc-profit.jpg",
+    "publishedAt": "2025-08-23T18:00:00Z"
   },
   {
-    "title": "National Space Day 2025: ISRO’s journey celebrated across India",
-    "content": "National Space Day, observed on August 23, pays tribute to ISRO's achievements—from satellite launches to visionary space science—highlighting India’s ascent in global space exploration.",
-    "category": "Science",
-    "reads": 760,
-    "source": "Economic Times",
-    "url": "https://economictimes.indiatimes.com/news/india/national-space-day-2025-date-theme-and-how-isro-is-inspiring-the-world-with-its-space-achievements/articleshow/123465878.cms",
-    "imageUrl": "https://storage.googleapis.com/mangementbkt/isro.jpg",
-    "publishedAt": "2025-08-23T12:30:00Z"
-  },
-  {
-    "title": "PM Modi says 'the day is not far' when India will have its own space station",
-    "content": "On August 23, Prime Minister Modi revealed India plans to establish its own space station, marking a pivotal milestone in the country’s evolving space ambitions.",
-    "category": "Space",
-    "reads": 1500,
-    "source": "Times of India",
-    "url": "https://timesofindia.indiatimes.com/india/the-day-is-not-far-pm-modi-sets-big-space-ambition-says-india-will-soon-have-its-own-space-station/articleshow/123473980.cms",
-    "imageUrl": "https://storage.googleapis.com/mangementbkt/red-fort.jpg",
-    "publishedAt": "2025-08-23T14:00:00Z"
-  },
-  {
-    "title": "Nationwide pro-Palestinian protests expected to break records",
-    "content": "Record participation is anticipated in pro-Palestinian demonstrations across the U.S., amid ongoing political tensions and international solidarity actions.",
-    "category": "Social",
-    "reads": 2100,
-    "source": "SBS News",
-    "url": "https://www.sbs.com.au/news/podcast-episode/nationwide-pro-palestinian-protests-expected-to-break-records-morning-news-bulletin-24-august-2025/tselt2lzu",
-    "imageUrl": "https://storage.googleapis.com/mangementbkt/us-palestine.webp",
-    "publishedAt": "2025-08-24T06:00:00Z"
-  },
-  {
-    "title": "Little Pepe, not Bitcoin, tops crypto trending charts in August 2025",
-    "content": "Surging ahead of Ethereum and Bitcoin, the frog-themed Layer-2 meme coin 'Little Pepe' has become the most trending crypto in August 2025.",
-    "category": "Technology",
-    "reads": 3200,
-    "source": "Outlook India",
-    "url": "https://www.outlookindia.com/xhub/blockchain-insights/heres-why-little-pepe-lilpepe-not-ethereum-eth-or-bitcoin-btc-is-the-top-trending-crypto-in-august-2025",
-    "imageUrl": "https://storage.googleapis.com/mangementbkt/crypto-war.jpg",
-    "publishedAt": "2025-08-23T10:30:00Z"
-  },
-  {
-    "title": "Rare Black Moon graces Indian skies",
-    "content": "A 'Black Moon'—a rare astronomical event—was visible in India. The term refers either to the second new moon in a calendar month or another infrequent lunar occurrence, appearing only once every ~33 months.",
-    "category": "Science",
-    "reads": 890,
-    "source": "Moneycontrol",
-    "url": "https://www.moneycontrol.com/science/rare-black-moon-in-the-sky-tonight-when-and-how-to-see-august-2025-special-moon-in-india-article-13479844.html",
-    "imageUrl": "https://storage.googleapis.com/mangementbkt/rare-moon.jpg",
-    "publishedAt": "2025-08-23T20:00:00Z"
-  },
-  {
-    "title": "Garena Free Fire Max releases redeem codes for August 23, 2025",
-    "content": "Players of Garena Free Fire Max can claim free in-game rewards by using the newly released redeem codes—12-character alphanumeric combinations valid for August 23, 2025.",
-    "category": "Entertainment",
-    "reads": 2500,
-    "source": "Economic Times",
-    "url": "https://m.economictimes.com/news/new-updates/garena-free-fire-max-redeem-codes-for-august-23-2025-unlock-10-free-rewards-now/articleshow/123465867.cms",
-    "imageUrl": "https://storage.googleapis.com/mangementbkt/free-fire.jpg",
-    "publishedAt": "2025-08-23T16:00:00Z"
+    "title": "Infosys bags $1.8B contract from European telecom giant",
+    "content": "Infosys signed a $1.8 billion multi-year deal with a leading European telecom operator to modernize its digital infrastructure and cloud services.",
+    "category": "Business",
+    "reads": 2340,
+    "source": "Business Standard",
+    "url": "https://www.business-standard.com/article/companies/infosys-bags-1-8b-contract-from-european-telecom-giant-125082301234_1.html",
+    "imageUrl": "https://storage.googleapis.com/mangementbkt/infosys.avif",
+    "publishedAt": "2025-08-23T20:30:00Z"
   }
 ]
 
 
+
 async function main() {
   await prisma.news.createMany({
-    data: sampleNews
+    data: businessNews
 
 
   });

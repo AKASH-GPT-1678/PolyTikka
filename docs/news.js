@@ -135,7 +135,7 @@ async function getMostRead(category) {
             // Inject data
             clone.querySelector(".most-read-category").textContent = news.category;
             clone.querySelector(".most-read-date").textContent = formattedDate;
-            clone.querySelector(".most-read-title").textContent = news.content + news.imageUrl;
+            clone.querySelector(".most-read-title").textContent = news.content ;
             clone.querySelector(".most-read-title").href = news.url;
             clone.querySelector(".most-read-image").src = news.imageUrl || "https://via.placeholder.com/100";
 
@@ -215,3 +215,4 @@ async function loadMovieNews() {
 };
 
 loadMovieNews();
+
