@@ -49,8 +49,6 @@ git clone https://github.com/AKASH-GPT-1678/PolyTikka.git
 
 cd PolyTikka
 
-cd docs
-
 #run index.html
 
 cd backend 
