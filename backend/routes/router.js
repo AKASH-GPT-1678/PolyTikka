@@ -1,9 +1,9 @@
 const express = require("express");
-const {createPoliticians , getPoliticiansByNam , getFullDetailsByName} = require("../controllers/createPolitician.js");
-const {ratePolitician , topRatedPoliticians ,mostSearhchedPoliticians} = require("../controllers/ratingPoliticians.js");
-const {registerUser, loginUser} = require("../controllers/registerUser.js");
-const {getTrendingNews} = require("../controllers/trendingNews.js");
-const {getPoliticalNews ,getNewsByCategory , getTopNewsByReads, getAllNews} = require("../controllers/newsArticles.js");
+const {createPoliticians , getPoliticiansByNam , getFullDetailsByName} = require("../controllers/create.controller.js");
+const {ratePolitician , topRatedPoliticians ,mostSearhchedPoliticians} = require("../controllers/rating.controller.js");
+const {registerUser, loginUser} = require("../controllers/register.controller.js");
+const {getTrendingNews} = require("../controllers/treding.controller.js");
+const {getPoliticalNews ,getNewsByCategory , getTopNewsByReads, getAllNews} = require("../controllers/news.controller.js");
 const {getMovieNews} = require("../controllers/movies.controller.js");
 const router = express.Router();
 
