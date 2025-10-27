@@ -28,4 +28,40 @@ Database: PostgreSQL
 
 ---
 
+## ENV Variables Setup
+
+```env
+
+DATABASE_URL=
+JWT_SECRET=
+PROJECT_ID=
+NODE_ENV=
+
+
+
+```
+
+## SetUp Guide
+
+```bash
+
+git clone https://github.com/AKASH-GPT-1678/PolyTikka.git
+
+cd PolyTikka
+
+cd docs
+
+#run index.html
+
+cd backend 
+
+npm install
+
+npm start 
+
+```
+
+
+
+
 
