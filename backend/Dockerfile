@@ -21,7 +21,7 @@ COPY . .
 
 
 # Expose the port
-EXPOSE 3402
+EXPOSE 3000
 
 # Start the app
 CMD ["node", "server.js"]
