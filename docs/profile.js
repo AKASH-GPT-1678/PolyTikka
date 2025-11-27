@@ -235,7 +235,7 @@ async function updatePoliticainData() {
 
     statCards[3].querySelector('.stat-value').textContent = data.assetDetail.totalAssets;
     statCards[4].querySelector('.stat-value').textContent = data.assetDetail.movableAssets;
-    statCards[5].querySelector('.stat-value').textContent = data.assetDetail.immovableAssets;
+    // statCards[5].querySelector('.stat-value').textContent = data.assetDetail.immovableAssets;
 
     // Allot test values
 
@@ -277,13 +277,17 @@ async function updatePoliticainData() {
     });
 
     const profile = data.PublicProfile;
+    console.log("Profile:", profile);
 
-    // Populate text content
+    if (!profile) {
+        console.error("PublicProfile is missing from data");
+        return;
+    }
+
     document.getElementById('coreIdeologyTitle').textContent = profile.coreIdeology;
     document.getElementById('visionStatement').textContent = profile.visionStatement;
     document.getElementById('publicPerception').textContent = profile.publicPerception;
     document.getElementById('leadershipStyle').textContent = profile.leadershipStyle;
-
     // Populate focus areas
     const focusAreasContainer = document.getElementById('focusAreas');
     focusAreasContainer.innerHTML = '';
