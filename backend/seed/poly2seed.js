@@ -5,151 +5,224 @@ const prisma = new PrismaClient();
 async function seedPoliticians() {
   await prisma.politician.create({
   data: {
-    name: "Narendra Modi",
-    party: "Bharatiya Janata Party (BJP)",
-    state: "Gujarat",
-    constituency: "Varanasi",
-    age: 74,
-    gender: "Male",
-    education: "MA (Political Science)",
-    criminalCases: 0,
-    totalAssets: 3023.5,
-    position: "Prime Minister of India",
-    biography:
-      "Narendra Modi is the 14th Prime Minister of India, known for economic reforms, foreign policy leadership, and large-scale governance initiatives.",
-    profileImage:
-      "https://polytika.s3.eu-north-1.amazonaws.com/narendra_modi.jpg",
-    avgRatings: 4,
-    numOfSearched: 1200450,
-    ratingsOutOf: BigInt(2240000),
+  name: "Dr. Subrahmanyam Jaishankar",
+  party: "Bharatiya Janata Party (BJP)",
+  state: "Gujarat",
+  constituency: "Rajya Sabha",
+  age: 69,
+  gender: "Male",
+  education: "B.A. in Political Science, St. Stephen's College, Delhi; M.A. in Political Science and M.Phil. in International Relations, Jawaharlal Nehru University; Ph.D. in International Relations, Jawaharlal Nehru University",
+  criminalCases: 0,
+  totalAssets: 4850.6,
+  position: "Minister of External Affairs, Government of India",
+  biography:
+    "Dr. S. Jaishankar is India's External Affairs Minister and a distinguished diplomat with over four decades of experience in foreign service. Former Foreign Secretary and Ambassador to multiple countries, he is known for his articulate defense of India's national interests and strategic vision on the global stage.",
+  profileImage:
+    "https://polytika.s3.eu-north-1.amazonaws.com/s_jaishankar.webp",
+  avgRatings: 4.2,
+  numOfSearched: 720000,
+  ratingsOutOf: BigInt(1400000),
 
-    // -------------------- Work History --------------------
-    workHistory: {
-      create: [
-        {
-          role: "Chief Minister",
-          startYear: 2001,
-          endYear: 2014,
-          constituency: "Maninagar",
-          state: "Gujarat"
-        },
-        {
-          role: "Prime Minister",
-          startYear: 2014,
-          endYear: null,
-          constituency: "Varanasi",
-          state: "Uttar Pradesh"
-        }
-      ]
-    },
-
-    // -------------------- Election History --------------------
-    electionResult: {
-      create: [
-        {
-          year: 2019,
-          electionType: "Lok Sabha",
-          constituency: "Varanasi",
-          state: "Uttar Pradesh",
-          party: "BJP",
-          result: "✅ Won",
-          totalVotes: 692260,
-          voteShare: 63.6,
-          opponentName: "Shalini Yadav (SP)",
-          victoryMargin: 479505
-        },
-        {
-          year: 2014,
-          electionType: "Lok Sabha",
-          constituency: "Varanasi",
-          state: "Uttar Pradesh",
-          party: "BJP",
-          result: "✅ Won",
-          totalVotes: 581022,
-          voteShare: 56.4,
-          opponentName: "Arvind Kejriwal (AAP)",
-          victoryMargin: 371784
-        }
-      ]
-    },
-
-    // -------------------- Family --------------------
-    familyDetail: {
-      create: {
-        spouse: "Jashodaben Narendrabhai Modi",
-        children: 0,
-        fatherName: "Damodardas Mulchand Modi",
-        motherName: "Heeraben Modi",
-        background: "Born into a modest family in Vadnagar, Gujarat.",
-        familyProfession: "Tea & small business",
-        economicStatus: "Lower Middle",
-        familyOrigin: "Urban",
-        community: "OBC",
-        politicalLegacy: "Self-Made"
+  // -------------------- Work History --------------------
+  workHistory: {
+    create: [
+      {
+        role: "Indian Foreign Service Officer",
+        startYear: 1977,
+        endYear: 2015,
+        constituency: null,
+        state: null
+      },
+      {
+        role: "Ambassador to Czech Republic",
+        startYear: 2001,
+        endYear: 2004,
+        constituency: null,
+        state: null
+      },
+      {
+        role: "Ambassador to Singapore",
+        startYear: 2007,
+        endYear: 2009,
+        constituency: null,
+        state: null
+      },
+      {
+        role: "High Commissioner to China",
+        startYear: 2009,
+        endYear: 2013,
+        constituency: null,
+        state: null
+      },
+      {
+        role: "Ambassador to United States",
+        startYear: 2013,
+        endYear: 2015,
+        constituency: null,
+        state: null
+      },
+      {
+        role: "Foreign Secretary of India",
+        startYear: 2015,
+        endYear: 2018,
+        constituency: null,
+        state: null
+      },
+      {
+        role: "President, Global Corporate Affairs, Tata Sons",
+        startYear: 2018,
+        endYear: 2019,
+        constituency: null,
+        state: null
+      },
+      {
+        role: "Member of Parliament, Rajya Sabha",
+        startYear: 2019,
+        endYear: null,
+        constituency: "Rajya Sabha",
+        state: "Gujarat"
+      },
+      {
+        role: "Minister of External Affairs",
+        startYear: 2019,
+        endYear: null,
+        constituency: "Rajya Sabha",
+        state: "Gujarat"
       }
-    },
+    ]
+  },
 
-    // -------------------- Assets --------------------
-    assetDetail: {
-      create: {
-        totalAssets: 3023.5,
-        movableAssets: 1723.5,
-        immovableAssets: 1300
+  // -------------------- Election History --------------------
+  electionResult: {
+    create: [
+      {
+        year: 2019,
+        electionType: "Rajya Sabha",
+        constituency: "Rajya Sabha",
+        state: "Gujarat",
+        party: "BJP",
+        result: "✅ Elected",
+        totalVotes: 1,
+        voteShare: 1,
+        opponentName: "N/A",
+        victoryMargin: 1
+      },
+      {
+        year: 2024,
+        electionType: "Rajya Sabha",
+        constituency: "Rajya Sabha",
+        state: "Gujarat",
+        party: "BJP",
+        result: "✅ Re-elected",
+        totalVotes: 1,
+        voteShare: 1,
+        opponentName: "N/A",
+        victoryMargin: 1
       }
-    },
+    ]
+  },
 
-    // -------------------- Criminal Cases --------------------
-    criminalCase: {
-      create: [
-        {
-          title: "None",
-          description: "No criminal convictions or pending criminal cases.",
-          status: "Clean",
-          filedAt: null
-        }
-      ]
-    },
-
-    // -------------------- Public Profile --------------------
-    PublicProfile: {
-      create: {
-        coreIdeology: "Nationalism and Development",
-        visionStatement:
-          "To transform India into a global economic and cultural powerhouse.",
-        publicPerception:
-          "Highly influential leader with strong global presence and mass appeal.",
-        keyStrengths: [
-          "Leadership",
-          "Public Speaking",
-          "Foreign Policy"
-        ],
-        focusAreas: [
-          "Infrastructure",
-          "Economy",
-          "Welfare Schemes"
-        ],
-        leadershipStyle: "Strong and Decisive"
-      }
-    },
-
-    // -------------------- News Articles --------------------
-    newsArticles: {
-      create: [
-        {
-          headline: "PM Modi launches new infrastructure initiatives",
-          url: "https://thehindu.com/modi-infra-initiatives",
-          publishedAt: new Date("2024-02-15T00:00:00.000Z")
-        },
-        {
-          headline: "India strengthens global ties under PM Modi",
-          url: "https://indianexpress.com/modi-global-ties",
-          publishedAt: new Date("2024-03-01T00:00:00.000Z")
-        }
-      ]
+  // -------------------- Family --------------------
+  familyDetail: {
+    create: {
+      spouse: "Kyoko Jaishankar",
+      children: 3,
+      fatherName: "K. Subrahmanyam (Late, National Security Advisor and Strategic Affairs Expert)",
+      motherName: "Sulochana Subrahmanyam",
+      background: "Born into an intellectual family; father was a renowned strategic affairs expert and former member of the National Security Advisory Board.",
+      familyProfession: "Diplomacy, Strategic Affairs, and Academia",
+      economicStatus: "Upper Middle",
+      familyOrigin: "Urban Professional Background",
+      community: "General",
+      politicalLegacy: "Self-Made in Politics, Legacy in Strategic Affairs"
     }
+  },
+
+  // -------------------- Assets --------------------
+  assetDetail: {
+    create: {
+      totalAssets: 4850.6,
+      movableAssets: 2950.4,
+      immovableAssets: 1900.2
+    }
+  },
+
+  // -------------------- Criminal Cases --------------------
+  criminalCase: {
+    create: [
+      {
+        title: "None",
+        description: "No criminal convictions or pending criminal cases.",
+        status: "Clean",
+        filedAt: null
+      }
+    ]
+  },
+
+  // -------------------- Public Profile --------------------
+  PublicProfile: {
+    create: {
+      coreIdeology: "Strategic Autonomy, National Interest, and Multi-Alignment",
+      visionStatement:
+        "To position India as a leading global power through strategic partnerships, economic diplomacy, and unwavering defense of national interests.",
+      publicPerception:
+        "Widely respected as one of India's finest diplomats and foreign policy experts. Known for his articulate, confident defense of India on international platforms and his candid, no-nonsense approach to global affairs. Popular for his strong responses to Western criticism and advocacy for the Global South.",
+      keyStrengths: [
+        "Foreign Policy Expertise",
+        "Strategic Communication",
+        "Diplomatic Experience",
+        "Crisis Management",
+        "Global Network",
+        "Articulate Spokesperson"
+      ],
+      focusAreas: [
+        "Foreign Affairs",
+        "Strategic Partnerships",
+        "India-US Relations",
+        "Neighborhood Diplomacy",
+        "Economic Diplomacy",
+        "Global South Leadership",
+        "Multilateral Forums"
+      ],
+      leadershipStyle: "Assertive and Articulate"
+    }
+  },
+
+  // -------------------- News Articles --------------------
+  newsArticles: {
+    create: [
+      {
+        headline: "Jaishankar defends India's position on Russia-Ukraine at international forum",
+        url: "https://thehindu.com/jaishankar-russia-ukraine-stance",
+        publishedAt: new Date("2024-09-15T00:00:00.000Z")
+      },
+      {
+        headline: "EAM Jaishankar holds talks with US Secretary of State on bilateral cooperation",
+        url: "https://indianexpress.com/jaishankar-us-bilateral-talks",
+        publishedAt: new Date("2024-10-05T00:00:00.000Z")
+      },
+      {
+        headline: "India-China border resolution discussed by External Affairs Minister",
+        url: "https://thehindu.com/jaishankar-india-china-border",
+        publishedAt: new Date("2024-10-21T00:00:00.000Z")
+      },
+      {
+        headline: "Jaishankar addresses diaspora, emphasizes India's growing global role",
+        url: "https://indianexpress.com/jaishankar-diaspora-global-india",
+        publishedAt: new Date("2024-11-10T00:00:00.000Z")
+      },
+      {
+        headline: "External Affairs Minister advocates for Global South at UN General Assembly",
+        url: "https://thehindu.com/jaishankar-unga-global-south",
+        publishedAt: new Date("2024-09-25T00:00:00.000Z")
+      }
+    ]
   }
-});
-  
+}
+
+
+  });
+
 }
 
 
@@ -158,7 +231,7 @@ async function seedPoliticians() {
 
 
 
-[ 'https://polytika.s3.eu-north-1.amazonaws.com/asauddin_owaisi.jpg',
+['https://polytika.s3.eu-north-1.amazonaws.com/asauddin_owaisi.jpg',
   "https://polytika.s3.eu-north-1.amazonaws.com/rajnath_singh.jpg",
   "https://polytika.s3.eu-north-1.amazonaws.com/shashi-tharoor.jpg",
   "https://polytika.s3.eu-north-1.amazonaws.com/amit-shah.jpg"
