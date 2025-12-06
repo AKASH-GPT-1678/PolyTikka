@@ -22,5 +22,8 @@ router.get("/getByCategory/:category" , getNewsByCategory);
 router.get("/topReads" , getTopNewsByReads);
 router.get("/movies" , getMovieNews);
 router.get("/allNews" , getAllNews);
-
+app.post("/rajesh", (req, res) => {
+    console.log("Received data:", req.body); // Logs request body
+    res.status(200).send({ message: "Data received successfully!" });
+});
 module.exports = router;
