@@ -5,6 +5,7 @@ const {registerUser, loginUser} = require("../controllers/register.controller.js
 const {getTrendingNews} = require("../controllers/treding.controller.js");
 const {getPoliticalNews ,getNewsByCategory , getTopNewsByReads, getAllNews} = require("../controllers/news.controller.js");
 const {getMovieNews} = require("../controllers/movies.controller.js");
+const { route } = require("../app.js");
 const router = express.Router();
 
 
@@ -22,7 +23,7 @@ router.get("/getByCategory/:category" , getNewsByCategory);
 router.get("/topReads" , getTopNewsByReads);
 router.get("/movies" , getMovieNews);
 router.get("/allNews" , getAllNews);
-app.post("/rajesh", (req, res) => {
+router.post("/rajesh", (req, res) => {
     console.log("Received data:", req.body); // Logs request body
     res.status(200).send({ message: "Data received successfully!" });
 });
